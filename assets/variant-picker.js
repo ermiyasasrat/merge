@@ -57,6 +57,7 @@ export default class VariantPicker extends Component {
     if (!selectedOption) return;
 
     this.updateSelectedOption(event.target);
+    this.updateVariantImages(selectedOption);
     this.dispatchEvent(new VariantSelectedEvent({ id: selectedOption.dataset.optionValueId ?? '' }));
 
     const isOnProductPage =
@@ -94,6 +95,33 @@ export default class VariantPicker extends Component {
         history.replaceState({}, '', url.toString());
       });
     }
+  }
+
+  /**
+   * Updates the variant images display.
+   * @param {HTMLElement} selectedOption - The selected option.
+   */
+  updateVariantImages(selectedOption) {
+    const variantId = selectedOption.dataset.variantId;
+    const optionValueId = selectedOption.dataset.optionValueId;
+    
+    if (!variantId && !optionValueId) return;
+
+    const variantImagesContainer = this.querySelector('.variant-images-container');
+    if (!variantImagesContainer) return;
+
+    const variantImages = variantImagesContainer.querySelectorAll('.variant-image-item');
+    
+    variantImages.forEach((imageItem) => {
+      const matchesVariant = imageItem.dataset.variantId === variantId;
+      const matchesOption = imageItem.dataset.optionValueId === optionValueId;
+      
+      if (matchesVariant || matchesOption) {
+        imageItem.setAttribute('data-selected', 'true');
+      } else {
+        imageItem.removeAttribute('data-selected');
+      }
+    });
   }
 
   /**
