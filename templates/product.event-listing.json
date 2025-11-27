@@ -1,0 +1,169 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "home_builder_DcKUb3": {
+      "type": "home-builder",
+      "blocks": {
+        "promobox_dTF3Va": {
+          "type": "promobox",
+          "settings": {
+            "url": "",
+            "image": "shopify://shop_images/Osmanthus_-_HK_Event_464186ed-8b45-4bb2-84a1-478380dbbc3d.jpg",
+            "image_size": 2450,
+            "image_mobile": "shopify://shop_images/Osmanthus_HK_-_Event_Mobile_421e67f6-398f-49de-99db-f12f81f046b1.jpg",
+            "image_mobile_size": 2000,
+            "image_position_x": 50,
+            "color_image_mask": "",
+            "image_mask_opacity": 0.1,
+            "text_line_1": "",
+            "text_line_2": "",
+            "text_line_3": "",
+            "style": "1",
+            "button_1": "",
+            "button_1_url": "",
+            "color_button_type_1": "default",
+            "button_2": "Button #2 text",
+            "button_2_url": "",
+            "color_button_type_2": "default",
+            "list_1": "",
+            "custom_html": "",
+            "video_external_url": "",
+            "video_mp4_url": "",
+            "video_autoplay": true,
+            "video_controls": false,
+            "type": "clean",
+            "content_position": "center",
+            "content_align": "center",
+            "add_container": false,
+            "content_width": 100,
+            "text_width": 0,
+            "height": "auto",
+            "min_height": 0,
+            "size_of_column": "auto",
+            "visible": "desktop_mobile",
+            "parallax": "disable",
+            "animation_to": "none",
+            "animation_from": "none",
+            "animation_opacity": "none",
+            "animation_text": "none",
+            "color_text_1": "",
+            "color_text_2": "",
+            "color_text_3": "",
+            "color_text_bg": "",
+            "color_curtain_bg": "",
+            "customization_class": ""
+          }
+        }
+      },
+      "block_order": [
+        "promobox_dTF3Va"
+      ],
+      "custom_css": [],
+      "settings": {
+        "title": "",
+        "container": "fullwidth",
+        "size_of_columns": "1",
+        "size_of_columns_mobile": "1",
+        "margins_for_columns": "none",
+        "align_of_columns": "top_center",
+        "disable_column_paddings": false,
+        "precedence": "",
+        "customization_class": ""
+      }
+    },
+    "main": {
+      "type": "main-product",
+      "blocks": {
+        "b0febcf2-a38c-4ae7-a929-10af2ad0e5f4": {
+          "type": "tab_custom",
+          "settings": {
+            "title": "Terms & Conditions:",
+            "content": "<p>Prices are in Hong Kong dollars and subject to 10% service charge. Only written cancellations will be accepted, and no-shows will be charged in full. All confirmed fees are non-refundable for cancellations made less than 10 working days before the event. Bookings are taken on a first-come, first-served basis and seats are limited. Please note that programmes, entertainment, and venues are subject to change without prior notice.</p>",
+            "page_content": ""
+          }
+        },
+        "959240db-9a88-436b-8c09-b6c9e0ebb7a8": {
+          "type": "tab_custom",
+          "disabled": true,
+          "settings": {
+            "title": "INGREDIENTS",
+            "content": "<ul><li>Cold Brewed Sixty Stone Mountain Tea (93%)</li><li>White Grape Juice From Concentrate</li><li>Citric Acid</li><li>Vitamin C</li><li>Carbon Dioxide.</li></ul>",
+            "page_content": ""
+          }
+        }
+      },
+      "block_order": [
+        "b0febcf2-a38c-4ae7-a929-10af2ad0e5f4",
+        "959240db-9a88-436b-8c09-b6c9e0ebb7a8"
+      ],
+      "custom_css": [],
+      "settings": {
+        "gallery_size": "6",
+        "sidebar": "off",
+        "enable_sticky_sidebar": true,
+        "show_tabs": true,
+        "show_tab_description": false,
+        "show_tab_reviews": false,
+        "scrolling_to_opened_tab": false,
+        "tabs_type": "tabs"
+      }
+    },
+    "related-products": {
+      "type": "carousel-related-products",
+      "disabled": true,
+      "settings": {
+        "show_section": true,
+        "type": "related",
+        "title": "RELATED PRODUCTS",
+        "size_of_columns": "4",
+        "max_count": 6,
+        "autoplay": true,
+        "speed": 5,
+        "infinite": true,
+        "arrows": true,
+        "bullets": true
+      }
+    },
+    "carousel_products_eamdXr": {
+      "type": "carousel-products",
+      "blocks": {
+        "collection_fXYCbU": {
+          "type": "collection",
+          "settings": {
+            "title": "Discover The Range",
+            "collection": "frontpage"
+          }
+        }
+      },
+      "block_order": [
+        "collection_fXYCbU"
+      ],
+      "name": "Product carousel",
+      "settings": {
+        "show_title": true,
+        "container": "boxed",
+        "size_of_columns": "4",
+        "max_count": 6,
+        "autoplay": true,
+        "speed": 5,
+        "infinite": true,
+        "arrows": true,
+        "bullets": false
+      }
+    }
+  },
+  "order": [
+    "home_builder_DcKUb3",
+    "main",
+    "related-products",
+    "carousel_products_eamdXr"
+  ]
+}

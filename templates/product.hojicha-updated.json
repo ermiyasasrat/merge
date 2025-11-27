@@ -1,0 +1,356 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-product",
+      "blocks": {
+        "b0febcf2-a38c-4ae7-a929-10af2ad0e5f4": {
+          "type": "tab_custom",
+          "settings": {
+            "title": "Cocktail Suggestions",
+            "content": "<p><a href=\"/pages/pina-faux-lada-1\" title=\"PINA FAUX-LADA 1\">Pina Faux-Lada</a></p><p><a href=\"/pages/st-clements-2-1\" title=\"ST CLEMENT'S #2 1\">St Clement's #2</a></p>",
+            "page_content": ""
+          }
+        },
+        "959240db-9a88-436b-8c09-b6c9e0ebb7a8": {
+          "type": "tab_custom",
+          "settings": {
+            "title": "Ingredients",
+            "content": "<p>• 24 Hour Cold Brewed Hojicha Tea (93%)<br/>• White Grape Juice From Concentrate<br/>• Acid (Citric Acid)<br/>• Vitamin C<br/>• Carbon Dioxide</p>",
+            "page_content": ""
+          }
+        },
+        "760c5b02-7d38-4eff-81f4-1532702ad545": {
+          "type": "tab_custom",
+          "settings": {
+            "title": "nutritional info",
+            "content": "<ul><li>Energy: 77kJ/18kcal</li><li>Protein: 1.0g</li><li>Carbohydrates: 3.6g, Of which sugars: 2.8g</li><li>Fat: &lt;0.1g, Of which saturates: &lt;0.1g</li><li>Salt: &lt;0.1g</li><li>Caffeine: 7mg</li></ul>",
+            "page_content": ""
+          }
+        }
+      },
+      "block_order": [
+        "b0febcf2-a38c-4ae7-a929-10af2ad0e5f4",
+        "959240db-9a88-436b-8c09-b6c9e0ebb7a8",
+        "760c5b02-7d38-4eff-81f4-1532702ad545"
+      ],
+      "settings": {
+        "gallery_size": "6",
+        "sidebar": "off",
+        "enable_sticky_sidebar": true,
+        "show_tabs": true,
+        "show_tab_description": false,
+        "show_tab_reviews": true,
+        "scrolling_to_opened_tab": false,
+        "tabs_type": "tabs"
+      }
+    },
+    "16548539320f6a3e04": {
+      "type": "spacer",
+      "settings": {
+        "margin_top": 30,
+        "margin_bottom": 30,
+        "margin_top_mobile": 0,
+        "margin_bottom_mobile": 0,
+        "container": "boxed",
+        "show_separator": true,
+        "title": ""
+      }
+    },
+    "17308891002f532f7a": {
+      "type": "apps",
+      "settings": {}
+    },
+    "1634128129c7f7073c": {
+      "type": "home-builder",
+      "blocks": {
+        "7cec1383-4d32-4930-87ce-4fe8b3ed1e36": {
+          "type": "promobox",
+          "settings": {
+            "url": "",
+            "image_size": 1450,
+            "image_mobile_size": 550,
+            "image_position_x": 50,
+            "color_image_mask": "",
+            "image_mask_opacity": 0.5,
+            "text_line_1": "",
+            "text_line_2": "",
+            "text_line_3": "This tea is grown at an altitude of approximately 200m in Shizuoka Prefecture, the largest tea producing area in Japan, where more than 40% of the country’s tea is grown. The mild climate and diverse terrain make it ideal for tea cultivation. This Hojicha is made by roasting second flush Sencha green tea, a process which changes the colour to a deep reddish brown and produces a toasty, nutty flavour. The tea was originally developed in the 1920s by a Kyoto tea merchant as a way of making use of leftover leaves, stems, stalks and twigs. Merchants around Japan soon started to roast Hojicha near their shop entrances, attracting customers with its wonderful toasted aroma.",
+            "style": "8",
+            "button_1": "",
+            "button_1_url": "",
+            "color_button_type_1": "default",
+            "button_2": "Button #2 text",
+            "button_2_url": "",
+            "color_button_type_2": "default",
+            "list_1": "",
+            "custom_html": "",
+            "video_external_url": "",
+            "video_mp4_url": "",
+            "video_autoplay": true,
+            "video_controls": false,
+            "type": "text",
+            "content_position": "center",
+            "content_align": "left",
+            "add_container": false,
+            "content_width": 100,
+            "text_width": 0,
+            "height": "auto",
+            "min_height": 0,
+            "size_of_column": "auto",
+            "visible": "desktop_mobile",
+            "parallax": "disable",
+            "animation_to": "none",
+            "animation_from": "none",
+            "animation_opacity": "none",
+            "animation_text": "none",
+            "color_text_1": "",
+            "color_text_2": "",
+            "color_text_3": "",
+            "color_text_bg": "",
+            "color_curtain_bg": "",
+            "customization_class": ""
+          }
+        },
+        "e0da6f6c-8b2a-4023-92ab-91c1d9545e4f": {
+          "type": "promobox",
+          "settings": {
+            "url": "",
+            "image": "shopify://shop_images/japan_1_1.jpg",
+            "image_size": 1450,
+            "image_mobile_size": 550,
+            "image_position_x": 50,
+            "color_image_mask": "rgba(0,0,0,0)",
+            "image_mask_opacity": 0.5,
+            "text_line_1": "",
+            "text_line_2": "FAST, CLEAN, AND FLEXIBLE",
+            "text_line_3": "Shella is the fastest, featured, fresh, dynamically developing, best converting Shopify theme. Try it now! The first theme according to 15 Best Themes for Your Shopify eCommerce Business",
+            "style": "8",
+            "button_1": "",
+            "button_1_url": "shopify://pages/look-book-br-autumn-winter-2018",
+            "color_button_type_1": "default",
+            "button_2": "",
+            "button_2_url": "",
+            "color_button_type_2": "default",
+            "list_1": "",
+            "custom_html": "",
+            "video_external_url": "",
+            "video_mp4_url": "",
+            "video_autoplay": true,
+            "video_controls": false,
+            "type": "clean",
+            "content_position": "center_right",
+            "content_align": "left",
+            "add_container": false,
+            "content_width": 78,
+            "text_width": 0,
+            "height": "auto",
+            "min_height": 0,
+            "size_of_column": "auto",
+            "visible": "desktop_mobile",
+            "parallax": "disable",
+            "animation_to": "none",
+            "animation_from": "none",
+            "animation_opacity": "none",
+            "animation_text": "none",
+            "color_text_1": "",
+            "color_text_2": "",
+            "color_text_3": "",
+            "color_text_bg": "",
+            "color_curtain_bg": "",
+            "customization_class": ""
+          }
+        }
+      },
+      "block_order": [
+        "7cec1383-4d32-4930-87ce-4fe8b3ed1e36",
+        "e0da6f6c-8b2a-4023-92ab-91c1d9545e4f"
+      ],
+      "settings": {
+        "title": "",
+        "container": "boxed",
+        "size_of_columns": "2",
+        "size_of_columns_mobile": "1",
+        "margins_for_columns": "preset_4",
+        "align_of_columns": "center",
+        "disable_column_paddings": false,
+        "precedence": "2,1",
+        "customization_class": ""
+      }
+    },
+    "16548541846e42527e": {
+      "type": "spacer",
+      "settings": {
+        "margin_top": 30,
+        "margin_bottom": 0,
+        "margin_top_mobile": 0,
+        "margin_bottom_mobile": 0,
+        "container": "boxed",
+        "show_separator": false,
+        "title": ""
+      }
+    },
+    "165485443667c775c2": {
+      "type": "home-builder",
+      "blocks": {
+        "14fa075a-d592-4fe9-9638-683d6c2d7884": {
+          "type": "promobox",
+          "settings": {
+            "url": "",
+            "image": "shopify://shop_images/JohnnyStephensPhotography-14.jpg",
+            "image_size": 1450,
+            "image_mobile_size": 550,
+            "image_position_x": 50,
+            "color_image_mask": "",
+            "image_mask_opacity": 0.5,
+            "text_line_1": "Text line #1",
+            "text_line_2": "Text line #2",
+            "text_line_3": "Text line #3",
+            "style": "1",
+            "button_1": "Button #1 text",
+            "button_1_url": "",
+            "color_button_type_1": "default",
+            "button_2": "Button #2 text",
+            "button_2_url": "",
+            "color_button_type_2": "default",
+            "list_1": "",
+            "custom_html": "",
+            "video_external_url": "",
+            "video_mp4_url": "",
+            "video_autoplay": true,
+            "video_controls": false,
+            "type": "clean",
+            "content_position": "center",
+            "content_align": "center",
+            "add_container": false,
+            "content_width": 100,
+            "text_width": 0,
+            "height": "auto",
+            "min_height": 0,
+            "size_of_column": "auto",
+            "visible": "desktop_mobile",
+            "parallax": "disable",
+            "animation_to": "none",
+            "animation_from": "none",
+            "animation_opacity": "none",
+            "animation_text": "none",
+            "color_text_1": "",
+            "color_text_2": "",
+            "color_text_3": "",
+            "color_text_bg": "",
+            "color_curtain_bg": "",
+            "customization_class": ""
+          }
+        },
+        "5c23b50e-1ece-464d-a14e-3372e387cbb6": {
+          "type": "promobox",
+          "settings": {
+            "url": "",
+            "image_size": 1450,
+            "image_mobile_size": 550,
+            "image_position_x": 50,
+            "color_image_mask": "",
+            "image_mask_opacity": 0.5,
+            "text_line_1": "",
+            "text_line_2": "PERFECTLY PAIRED",
+            "text_line_3": "Honey Spencer, sommelier, wine consultant and co-founder of Bastarda\"In short, both my partner and I loved the teas and our overall discussion revolved around how refreshing they would be in restaurants, both for guests wanting to drink something interesting and food friendly without the booze, but also for Sommeliers, giving them another string in their bow in terms of interesting pairings with food.Hojicha was my favourite. This was really interesting; I loved the savoury elements. Notes of pungent, umami, savoury (with lifted sweetness) wet autumn leaf. Food matches: pork, mushrooms, parmesan, roasted tomatoes, roasted nuts, asparagus\"",
+            "style": "8",
+            "button_1": "",
+            "button_1_url": "",
+            "color_button_type_1": "default",
+            "button_2": "Button #2 text",
+            "button_2_url": "",
+            "color_button_type_2": "default",
+            "list_1": "",
+            "custom_html": "",
+            "video_external_url": "",
+            "video_mp4_url": "",
+            "video_autoplay": true,
+            "video_controls": false,
+            "type": "text",
+            "content_position": "center_right",
+            "content_align": "left",
+            "add_container": false,
+            "content_width": 78,
+            "text_width": 0,
+            "height": "auto",
+            "min_height": 0,
+            "size_of_column": "auto",
+            "visible": "desktop_mobile",
+            "parallax": "disable",
+            "animation_to": "none",
+            "animation_from": "none",
+            "animation_opacity": "none",
+            "animation_text": "none",
+            "color_text_1": "",
+            "color_text_2": "",
+            "color_text_3": "",
+            "color_text_bg": "",
+            "color_curtain_bg": "",
+            "customization_class": ""
+          }
+        }
+      },
+      "block_order": [
+        "14fa075a-d592-4fe9-9638-683d6c2d7884",
+        "5c23b50e-1ece-464d-a14e-3372e387cbb6"
+      ],
+      "settings": {
+        "title": "",
+        "container": "boxed",
+        "size_of_columns": "2",
+        "size_of_columns_mobile": "1",
+        "margins_for_columns": "preset_4",
+        "align_of_columns": "center",
+        "disable_column_paddings": true,
+        "precedence": "",
+        "customization_class": ""
+      }
+    },
+    "16548544455c728a14": {
+      "type": "spacer",
+      "settings": {
+        "margin_top": 30,
+        "margin_bottom": 0,
+        "margin_top_mobile": 30,
+        "margin_bottom_mobile": 0,
+        "container": "boxed",
+        "show_separator": false,
+        "title": ""
+      }
+    },
+    "related-products": {
+      "type": "carousel-related-products",
+      "settings": {
+        "show_section": true,
+        "type": "recommendations",
+        "title": "RELATED PRODUCTS",
+        "size_of_columns": "4",
+        "max_count": 6,
+        "autoplay": true,
+        "speed": 5,
+        "infinite": true,
+        "arrows": true,
+        "bullets": true
+      }
+    }
+  },
+  "order": [
+    "main",
+    "16548539320f6a3e04",
+    "17308891002f532f7a",
+    "1634128129c7f7073c",
+    "16548541846e42527e",
+    "165485443667c775c2",
+    "16548544455c728a14",
+    "related-products"
+  ]
+}

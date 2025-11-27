@@ -1,0 +1,249 @@
+{% if section.settings.hero_image != blank %}
+  {% assign image = section.settings.hero_image %}
+  <section class="aop-hero-section" role="region" aria-label="Art of Pairing Hero">
+    <img 
+      src="{{ image | image_url: width: 1280 }}" 
+      srcset="{{ image | image_url: width: 640 }} 640w, {{ image | image_url: width: 1280 }} 1280w"
+      sizes="100vw"
+      alt="{{ section.settings.hero_heading | escape }}"
+      loading="lazy"
+      class="aop-hero-img"
+      width="100%"
+      height="100%"
+    >
+
+    <!-- <div class="hero-vector-frame" aria-hidden="true"></div>     -->
+    <!-- <div class="hero-outline-frame" aria-hidden="true"></div>    
+    <div class="text-gradient-bg" aria-hidden="true"></div> -->
+    {% comment %} <div class="hero-outline-frame" aria-hidden="true">
+      <img 
+        src="https://cdn.shopify.com/s/files/1/0581/7362/0405/files/Subtract.svg?v=1755596030" 
+        alt=""
+        loading="lazy"
+        width="100%"
+        height="100%"
+        >
+    </div> {% endcomment %}
+    <div class="text-gradient-bg" aria-hidden="true">
+        <img 
+        src="https://cdn.shopify.com/s/files/1/0581/7362/0405/files/Rectangle_52.png?v=1755596032" 
+        alt=""
+        loading="lazy"
+        width="100%"
+        height="100%"
+        >
+    </div>
+    {% if section.settings.hero_heading != blank %}
+      <div class="aop-hero-overlay">
+        <h1>{{ section.settings.hero_heading | escape }}</h1>
+      </div>
+    {% endif %}
+  </section>
+{% endif %}
+
+<style>
+
+  .hero-vector-frame {
+      position: absolute;
+      top: 23.52px;
+      left: 221.47px;
+      width: 378.05px;
+      height: 43.28px;
+      /* border: 1px solid #000000; */
+      background: #D9D9D9;
+      opacity: 1;
+      z-index: 4;
+      pointer-events: none;
+  }
+  .shopify-section.aop-hero-container {
+      padding-top: 40px;
+  }
+  .aop-hero-section {
+    position: relative;
+    max-width: 1280px;
+    max-height: 598px;
+    overflow: hidden;
+    margin: 0 auto;
+  }
+
+  .aop-hero-img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  .aop-hero-overlay {
+    position: absolute;
+    top: 50%;
+    left: 29%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    z-index: 2;
+    max-width: 297px;
+  }
+
+    .aop-hero-overlay h1 {
+      font-size: 49.1px;
+      width: 100%;
+      font-family: "span" !important;
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+      line-height: 119%;
+      margin: 0;
+      color: #EFE7DB;
+    }
+
+  /* .aop-hero-overlay h1 {
+    font-size: 49.1px;
+    max-width: 298px;
+    font-family: "span", sans-serif !important;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+    line-height: 119%;
+    margin: 0;
+    color: #fff;
+  } */
+
+  /* .text-gradient-bg {
+    position: absolute;
+    top: 0;
+    left: 47%;
+    width: 64%;
+    height: 100%;
+    background: linear-gradient(270deg, rgba(42, 20, 4, 0.98) 0%, rgba(42, 20, 4, 0) 100%);
+    opacity: 1;
+    z-index: 2;
+    pointer-events: none;
+  } */
+
+  /* .hero-outline-frame {
+    position: absolute;
+    inset: 0;
+    margin: auto;
+    width: 94%;
+    aspect-ratio: 1108 / 470;
+    border: 3px solid #BCE9E9;
+    border-radius: 32px;
+    z-index: 3;
+    pointer-events: none;
+  } */
+
+    .text-gradient-bg {
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+      z-index: 2;
+      pointer-events: none;
+    }
+  
+    .hero-outline-frame {
+      position: absolute;
+      inset: 0;
+      margin: auto;
+      width: 94%;
+      aspect-ratio: 1108 / 470;
+      border-radius: 32px;
+      z-index: 3;
+      pointer-events: none;
+    }
+
+  @media screen and ( max-width: 1024px){
+     .aop-hero-section {
+        max-width: 910px;
+      }
+
+    .section_title-and-text {
+      max-width: 910px;
+    }
+
+    .section_blog-post-list {
+      max-width: 910px;
+    }
+  }
+
+   @media screen and ( max-width: 768px){
+    .aop-hero-section {
+        max-width: 688px;
+    }
+
+    .section_title-and-text {
+      max-width: 688px;
+    }
+
+    .section_blog-post-list {
+      max-width: 688px;
+    }
+   }
+
+  @media screen and ( max-width: 425px){
+    .aop-hero-section {
+        max-width: 375px;
+    }
+
+    .section_title-and-text {
+      max-width: 375px;
+    }
+
+    .section_blog-post-list {
+     max-width: 375px;
+    }
+   }
+
+  @media screen and ( max-width: 375px){
+    .aop-hero-section {
+        max-width: 335px;
+    }
+
+    .section_title-and-text {
+      max-width: 335px;
+    }
+
+    .section_blog-post-list {
+     max-width: 335px;
+    }
+   }
+
+   @media screen and ( max-width: 320px){
+    .aop-hero-section {
+        max-width: 285px;
+    }
+
+    .section_title-and-text {
+      max-width: 285px;
+    }
+
+    .section_blog-post-list {
+     max-width: 285px;
+    }
+   }
+</style>
+
+
+{% schema %}
+{
+  "name": "Hero Image",
+  "tag": "section",
+  "class": "aop-hero-container",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "hero_image",
+      "label": "Hero Image",
+      "info": "Upload a high-resolution image for the hero section. 1280 x 550px is recommended."
+    },
+    {
+      "type": "text",
+      "id": "hero_heading",
+      "label": "Hero Heading",
+      "default": "THE ART OF PAIRING"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Hero Image",
+      "category": "3) Static content"
+    }
+  ]
+}
+{% endschema %}

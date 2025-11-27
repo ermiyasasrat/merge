@@ -1,0 +1,310 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-product",
+      "blocks": {
+        "b0febcf2-a38c-4ae7-a929-10af2ad0e5f4": {
+          "type": "tab_custom",
+          "disabled": true,
+          "settings": {
+            "title": "ADDITIONAL",
+            "content": "",
+            "page_content": ""
+          }
+        },
+        "959240db-9a88-436b-8c09-b6c9e0ebb7a8": {
+          "type": "tab_custom",
+          "disabled": true,
+          "settings": {
+            "title": "CUSTOM TAB",
+            "content": "",
+            "page_content": ""
+          }
+        }
+      },
+      "block_order": [
+        "b0febcf2-a38c-4ae7-a929-10af2ad0e5f4",
+        "959240db-9a88-436b-8c09-b6c9e0ebb7a8"
+      ],
+      "settings": {
+        "gallery_size": "6",
+        "sidebar": "off",
+        "enable_sticky_sidebar": true,
+        "show_tabs": true,
+        "show_tab_description": false,
+        "show_tab_reviews": true,
+        "scrolling_to_opened_tab": false,
+        "tabs_type": "tabs"
+      }
+    },
+    "home_builder_UyQrY6": {
+      "type": "home-builder",
+      "blocks": {
+        "promobox_qc44Ny": {
+          "type": "promobox",
+          "settings": {
+            "url": "",
+            "image_size": 1450,
+            "image_mobile_size": 550,
+            "image_position_x": 50,
+            "color_image_mask": "",
+            "image_mask_opacity": 0.5,
+            "text_line_1": "",
+            "text_line_2": "ORIGIN AND TERROIR",
+            "text_line_3": "Saicho comes in 3 expressions:  Darjeeling, which has notes of mandarin, ginger and wood spice and gentle, dry tannins which makes it incredibly food friendly and an ideal accompaniment to grilled pork or a hearty lasagne.  Hojicha, a roasted green tea from Japan, has a uniquely savoury flavour making it the ideal pairing for steak and or oxtail soup.   Jasmine, which is beautifully floral and has notes of fresh green apples, lychee, elderflower and of course jasmine. A touch of sweetness and the slightly chewy tannins make it a great alternative to Moscato d’Asti to accompany desserts like peach melba, elderflower jellies or panna cotta.",
+            "style": "1",
+            "button_1": "",
+            "button_1_url": "",
+            "color_button_type_1": "default",
+            "button_2": "Button #2 text",
+            "button_2_url": "",
+            "color_button_type_2": "default",
+            "list_1": "",
+            "custom_html": "",
+            "video_external_url": "",
+            "video_mp4_url": "",
+            "video_autoplay": true,
+            "video_controls": false,
+            "type": "text",
+            "content_position": "center",
+            "content_align": "left",
+            "add_container": false,
+            "content_width": 100,
+            "text_width": 0,
+            "height": "auto",
+            "min_height": 0,
+            "size_of_column": "auto",
+            "visible": "desktop_mobile",
+            "parallax": "disable",
+            "animation_to": "none",
+            "animation_from": "none",
+            "animation_opacity": "none",
+            "animation_text": "none",
+            "color_text_1": "",
+            "color_text_2": "",
+            "color_text_3": "",
+            "color_text_bg": "",
+            "color_curtain_bg": "",
+            "customization_class": ""
+          }
+        },
+        "promobox_Y94KyE": {
+          "type": "promobox",
+          "settings": {
+            "url": "",
+            "image": "shopify://shop_images/Shared_from_Lightroom_mobile_df3b7dce-5706-4c35-89a9-6da7d19d2b50.jpg",
+            "image_size": 1450,
+            "image_mobile_size": 550,
+            "image_position_x": 50,
+            "color_image_mask": "",
+            "image_mask_opacity": 0.5,
+            "text_line_1": "Text line #1",
+            "text_line_2": "Text line #2",
+            "text_line_3": "Text line #3",
+            "style": "1",
+            "button_1": "Button #1 text",
+            "button_1_url": "",
+            "color_button_type_1": "default",
+            "button_2": "Button #2 text",
+            "button_2_url": "",
+            "color_button_type_2": "default",
+            "list_1": "",
+            "custom_html": "",
+            "video_external_url": "",
+            "video_mp4_url": "",
+            "video_autoplay": true,
+            "video_controls": false,
+            "type": "clean",
+            "content_position": "center",
+            "content_align": "center",
+            "add_container": false,
+            "content_width": 100,
+            "text_width": 0,
+            "height": "auto",
+            "min_height": 0,
+            "size_of_column": "auto",
+            "visible": "desktop_mobile",
+            "parallax": "disable",
+            "animation_to": "none",
+            "animation_from": "none",
+            "animation_opacity": "none",
+            "animation_text": "none",
+            "color_text_1": "",
+            "color_text_2": "",
+            "color_text_3": "",
+            "color_text_bg": "",
+            "color_curtain_bg": "",
+            "customization_class": ""
+          }
+        }
+      },
+      "block_order": [
+        "promobox_qc44Ny",
+        "promobox_Y94KyE"
+      ],
+      "settings": {
+        "title": "",
+        "container": "boxed",
+        "size_of_columns": "2",
+        "size_of_columns_mobile": "1",
+        "margins_for_columns": "preset_4",
+        "align_of_columns": "center",
+        "disable_column_paddings": false,
+        "precedence": ",1",
+        "customization_class": ""
+      }
+    },
+    "home_builder_Ci3eJR": {
+      "type": "home-builder",
+      "blocks": {
+        "promobox_8ABYM9": {
+          "type": "promobox",
+          "settings": {
+            "url": "",
+            "image": "shopify://shop_images/Johnny_Stephens_Photography-14_46eb9cfd-1ddd-44f2-958a-578f4f275635.jpg",
+            "image_size": 1450,
+            "image_mobile_size": 550,
+            "image_position_x": 50,
+            "color_image_mask": "",
+            "image_mask_opacity": 0.5,
+            "text_line_1": "Text line #1",
+            "text_line_2": "Text line #2",
+            "text_line_3": "Text line #3",
+            "style": "1",
+            "button_1": "Button #1 text",
+            "button_1_url": "",
+            "color_button_type_1": "default",
+            "button_2": "Button #2 text",
+            "button_2_url": "",
+            "color_button_type_2": "default",
+            "list_1": "",
+            "custom_html": "",
+            "video_external_url": "",
+            "video_mp4_url": "",
+            "video_autoplay": true,
+            "video_controls": false,
+            "type": "clean",
+            "content_position": "center",
+            "content_align": "center",
+            "add_container": false,
+            "content_width": 100,
+            "text_width": 0,
+            "height": "auto",
+            "min_height": 0,
+            "size_of_column": "auto",
+            "visible": "desktop_mobile",
+            "parallax": "disable",
+            "animation_to": "none",
+            "animation_from": "none",
+            "animation_opacity": "none",
+            "animation_text": "none",
+            "color_text_1": "",
+            "color_text_2": "",
+            "color_text_3": "",
+            "color_text_bg": "",
+            "color_curtain_bg": "",
+            "customization_class": ""
+          }
+        },
+        "promobox_P73zQ8": {
+          "type": "promobox",
+          "settings": {
+            "url": "",
+            "image_size": 1450,
+            "image_mobile_size": 550,
+            "image_position_x": 50,
+            "color_image_mask": "",
+            "image_mask_opacity": 0.5,
+            "text_line_1": "",
+            "text_line_2": "PERFECTLY PAIRED",
+            "text_line_3": "Matteo Montone, Wine Director at Berners Tavern:Darjeeling has aromas of ripe yellow plums, golden apple skin and blonde tobacco. At the palate has a fine mousse with good texture, tannins and a fruity finish. Perfect with seabass ceviche served with avocado, tomatoes and ginger sauce. The tannins and the bubbles counterbalance the oiliness of the dish, while cleansing the palate.Hojicha has aromas of orange zest, roasted hazelnut, smoke and mushroom. It is rich, full bodied, with a round texture and a slightly bitter after taste. Perfect to match with a roasted duck served with mushroom puree. The tea’s aromas profile naturally complement the character of the dish. Jasmine has a pronounced floral character with rose petal, creamy texture and refreshing spicy finish. Reminds me of the texture of a Kabinett Riesling but with bubbles. I would match it with poached lobster served with a lemon verbena reduction. The acidity and bubbles of the tea cut well through the sweet meat of the lobster.",
+            "style": "1",
+            "button_1": "",
+            "button_1_url": "",
+            "color_button_type_1": "default",
+            "button_2": "Button #2 text",
+            "button_2_url": "",
+            "color_button_type_2": "default",
+            "list_1": "",
+            "custom_html": "",
+            "video_external_url": "",
+            "video_mp4_url": "",
+            "video_autoplay": true,
+            "video_controls": false,
+            "type": "text",
+            "content_position": "center",
+            "content_align": "left",
+            "add_container": false,
+            "content_width": 100,
+            "text_width": 0,
+            "height": "auto",
+            "min_height": 0,
+            "size_of_column": "auto",
+            "visible": "desktop_mobile",
+            "parallax": "disable",
+            "animation_to": "none",
+            "animation_from": "none",
+            "animation_opacity": "none",
+            "animation_text": "none",
+            "color_text_1": "",
+            "color_text_2": "",
+            "color_text_3": "",
+            "color_text_bg": "",
+            "color_curtain_bg": "",
+            "customization_class": ""
+          }
+        }
+      },
+      "block_order": [
+        "promobox_8ABYM9",
+        "promobox_P73zQ8"
+      ],
+      "settings": {
+        "title": "",
+        "container": "boxed",
+        "size_of_columns": "2",
+        "size_of_columns_mobile": "1",
+        "margins_for_columns": "preset_4",
+        "align_of_columns": "center",
+        "disable_column_paddings": false,
+        "precedence": ",1",
+        "customization_class": ""
+      }
+    },
+    "related-products": {
+      "type": "carousel-related-products",
+      "settings": {
+        "show_section": true,
+        "type": "related",
+        "title": "RELATED PRODUCTS",
+        "size_of_columns": "4",
+        "max_count": 6,
+        "autoplay": true,
+        "speed": 5,
+        "infinite": true,
+        "arrows": true,
+        "bullets": true
+      }
+    },
+    "1714135004e4439eaf": {
+      "type": "apps",
+      "settings": {}
+    }
+  },
+  "order": [
+    "main",
+    "home_builder_UyQrY6",
+    "home_builder_Ci3eJR",
+    "related-products",
+    "1714135004e4439eaf"
+  ]
+}

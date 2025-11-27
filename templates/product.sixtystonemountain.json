@@ -1,0 +1,581 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-product",
+      "blocks": {
+        "b0febcf2-a38c-4ae7-a929-10af2ad0e5f4": {
+          "type": "tab_custom",
+          "settings": {
+            "title": "NUTRITIONAL INFORMATION",
+            "content": "<p>Energy 85kJ/20kcal<br/>Protein 0.4g<br/>Carbohydrates 3.7g<br/>Of which sugars 3.7g<br/>Fat 0.4g<br/>Of which saturates 0.2g<br/>Salt &lt;0.1g<br/>Caffeine 20mg</p>",
+            "page_content": ""
+          }
+        },
+        "959240db-9a88-436b-8c09-b6c9e0ebb7a8": {
+          "type": "tab_custom",
+          "settings": {
+            "title": "INGREDIENTS",
+            "content": "<ul><li>Cold Brewed Sixty Stone Mountain Tea (93%)</li><li>White Grape Juice From Concentrate</li><li>Citric Acid</li><li>Vitamin C</li><li>Carbon Dioxide.</li></ul>",
+            "page_content": ""
+          }
+        }
+      },
+      "block_order": [
+        "b0febcf2-a38c-4ae7-a929-10af2ad0e5f4",
+        "959240db-9a88-436b-8c09-b6c9e0ebb7a8"
+      ],
+      "settings": {
+        "gallery_size": "6",
+        "sidebar": "off",
+        "enable_sticky_sidebar": true,
+        "show_tabs": true,
+        "show_tab_description": false,
+        "show_tab_reviews": true,
+        "scrolling_to_opened_tab": false,
+        "tabs_type": "tabs"
+      }
+    },
+    "1714135004e4439eaf": {
+      "type": "apps",
+      "settings": {}
+    },
+    "home_builder_PYBxnd": {
+      "type": "home-builder",
+      "blocks": {
+        "promobox_nnyaDX": {
+          "type": "promobox",
+          "settings": {
+            "url": "",
+            "image": "shopify://shop_images/SD24_-_Rare_Tea_Landscape.jpg",
+            "image_size": 1450,
+            "image_mobile_size": 550,
+            "image_position_x": 50,
+            "color_image_mask": "",
+            "image_mask_opacity": 0.5,
+            "text_line_1": "Text line #1",
+            "text_line_2": "Text line #2",
+            "text_line_3": "Text line #3",
+            "style": "1",
+            "button_1": "Button #1 text",
+            "button_1_url": "",
+            "color_button_type_1": "default",
+            "button_2": "Button #2 text",
+            "button_2_url": "",
+            "color_button_type_2": "default",
+            "list_1": "",
+            "custom_html": "",
+            "video_external_url": "",
+            "video_mp4_url": "",
+            "video_autoplay": true,
+            "video_controls": false,
+            "type": "clean",
+            "content_position": "center",
+            "content_align": "center",
+            "add_container": false,
+            "content_width": 100,
+            "text_width": 0,
+            "height": "auto",
+            "min_height": 0,
+            "size_of_column": "auto",
+            "visible": "desktop_mobile",
+            "parallax": "disable",
+            "animation_to": "none",
+            "animation_from": "none",
+            "animation_opacity": "none",
+            "animation_text": "none",
+            "color_text_1": "",
+            "color_text_2": "",
+            "color_text_3": "",
+            "color_text_bg": "",
+            "color_curtain_bg": "",
+            "customization_class": ""
+          }
+        },
+        "promobox_UMqGQ6": {
+          "type": "promobox",
+          "settings": {
+            "url": "",
+            "image_size": 1450,
+            "image_mobile_size": 550,
+            "image_position_x": 50,
+            "color_image_mask": "",
+            "image_mask_opacity": 0.5,
+            "text_line_1": "",
+            "text_line_2": "THE RARE TEA COLLECTION",
+            "text_line_3": "At Saicho, we are on a perpetual quest to uncover and honour the artistry of tea production. We are excited to share Sixty Stone Mountain, a rare find that embodies the essence of Taiwan’s lush tea-growing regions. This sparkling tea is a tribute to the meticulous cultivation practices and the unique terroir of Fuli, Hualien, which produces tea of unparalleled character and quality. Our commitment to sourcing single-origin teas ensures that each sip tells the unique story of its birthplace.",
+            "style": "2",
+            "button_1": "",
+            "button_1_url": "",
+            "color_button_type_1": "default",
+            "button_2": "",
+            "button_2_url": "",
+            "color_button_type_2": "default",
+            "list_1": "",
+            "custom_html": "",
+            "video_external_url": "",
+            "video_mp4_url": "",
+            "video_autoplay": true,
+            "video_controls": false,
+            "type": "text",
+            "content_position": "center",
+            "content_align": "left",
+            "add_container": false,
+            "content_width": 100,
+            "text_width": 0,
+            "height": "auto",
+            "min_height": 0,
+            "size_of_column": "auto",
+            "visible": "desktop_mobile",
+            "parallax": "disable",
+            "animation_to": "none",
+            "animation_from": "none",
+            "animation_opacity": "none",
+            "animation_text": "none",
+            "color_text_1": "",
+            "color_text_2": "",
+            "color_text_3": "",
+            "color_text_bg": "",
+            "color_curtain_bg": "",
+            "customization_class": ""
+          }
+        }
+      },
+      "block_order": [
+        "promobox_nnyaDX",
+        "promobox_UMqGQ6"
+      ],
+      "settings": {
+        "title": "",
+        "container": "boxed",
+        "size_of_columns": "2",
+        "size_of_columns_mobile": "1",
+        "margins_for_columns": "none",
+        "align_of_columns": "top_center",
+        "disable_column_paddings": false,
+        "precedence": "",
+        "customization_class": ""
+      }
+    },
+    "spacer_GkMhJj": {
+      "type": "spacer",
+      "settings": {
+        "margin_top": 60,
+        "margin_bottom": 0,
+        "margin_top_mobile": 0,
+        "margin_bottom_mobile": 0,
+        "container": "boxed",
+        "show_separator": false,
+        "title": ""
+      }
+    },
+    "home_builder_EHCFjR": {
+      "type": "home-builder",
+      "blocks": {
+        "promobox_R64Vtj": {
+          "type": "promobox",
+          "settings": {
+            "url": "",
+            "image_size": 1450,
+            "image_mobile_size": 550,
+            "image_position_x": 50,
+            "color_image_mask": "",
+            "image_mask_opacity": 0.5,
+            "text_line_1": "",
+            "text_line_2": "ORIGIN AND TERROIR",
+            "text_line_3": "Spanning just two-thirds of a hectare and at an altitude of 945 metres above sea level, this unique plot thrives from the moisture brought by the Pacific Ocean's Kuroshio current. The tea’s distinct characteristics are a result of the meticulously maintained ecological diversity of the tea garden, where tiny leafhoppers flourish. These tea jassids help impart a honey-like fragrance, a signature trait of this exceptional high mountain tea.",
+            "style": "2",
+            "button_1": "",
+            "button_1_url": "",
+            "color_button_type_1": "default",
+            "button_2": "",
+            "button_2_url": "",
+            "color_button_type_2": "clean-transparent",
+            "list_1": "",
+            "custom_html": "",
+            "video_external_url": "",
+            "video_mp4_url": "",
+            "video_autoplay": true,
+            "video_controls": false,
+            "type": "text",
+            "content_position": "center",
+            "content_align": "left",
+            "add_container": false,
+            "content_width": 100,
+            "text_width": 0,
+            "height": "auto",
+            "min_height": 0,
+            "size_of_column": "auto",
+            "visible": "desktop_mobile",
+            "parallax": "disable",
+            "animation_to": "none",
+            "animation_from": "none",
+            "animation_opacity": "none",
+            "animation_text": "none",
+            "color_text_1": "",
+            "color_text_2": "",
+            "color_text_3": "",
+            "color_text_bg": "",
+            "color_curtain_bg": "",
+            "customization_class": ""
+          }
+        },
+        "promobox_LQpacB": {
+          "type": "promobox",
+          "settings": {
+            "url": "",
+            "image": "shopify://shop_images/SD24_-_Rare_Tea_Landscape_1.jpg",
+            "image_size": 1450,
+            "image_mobile_size": 550,
+            "image_position_x": 50,
+            "color_image_mask": "",
+            "image_mask_opacity": 0.5,
+            "text_line_1": "Text line #1",
+            "text_line_2": "Text line #2",
+            "text_line_3": "Text line #3",
+            "style": "1",
+            "button_1": "Button #1 text",
+            "button_1_url": "",
+            "color_button_type_1": "default",
+            "button_2": "Button #2 text",
+            "button_2_url": "",
+            "color_button_type_2": "default",
+            "list_1": "",
+            "custom_html": "",
+            "video_external_url": "",
+            "video_mp4_url": "",
+            "video_autoplay": true,
+            "video_controls": false,
+            "type": "clean",
+            "content_position": "center",
+            "content_align": "center",
+            "add_container": false,
+            "content_width": 100,
+            "text_width": 0,
+            "height": "auto",
+            "min_height": 0,
+            "size_of_column": "auto",
+            "visible": "desktop_mobile",
+            "parallax": "disable",
+            "animation_to": "none",
+            "animation_from": "none",
+            "animation_opacity": "none",
+            "animation_text": "none",
+            "color_text_1": "",
+            "color_text_2": "",
+            "color_text_3": "",
+            "color_text_bg": "",
+            "color_curtain_bg": "",
+            "customization_class": ""
+          }
+        }
+      },
+      "block_order": [
+        "promobox_R64Vtj",
+        "promobox_LQpacB"
+      ],
+      "settings": {
+        "title": "",
+        "container": "boxed",
+        "size_of_columns": "2",
+        "size_of_columns_mobile": "1",
+        "margins_for_columns": "none",
+        "align_of_columns": "top_center",
+        "disable_column_paddings": false,
+        "precedence": "2,1",
+        "customization_class": ""
+      }
+    },
+    "spacer_UcexG3": {
+      "type": "spacer",
+      "settings": {
+        "margin_top": 60,
+        "margin_bottom": 0,
+        "margin_top_mobile": 0,
+        "margin_bottom_mobile": 0,
+        "container": "boxed",
+        "show_separator": false,
+        "title": ""
+      }
+    },
+    "home_builder_hJMjpA": {
+      "type": "home-builder",
+      "blocks": {
+        "promobox_q4A9EH": {
+          "type": "promobox",
+          "settings": {
+            "url": "",
+            "image": "shopify://shop_images/SD24_-_Rare_Tea_Landscape_2.jpg",
+            "image_size": 1450,
+            "image_mobile_size": 550,
+            "image_position_x": 50,
+            "color_image_mask": "",
+            "image_mask_opacity": 0.5,
+            "text_line_1": "Text line #1",
+            "text_line_2": "Text line #2",
+            "text_line_3": "Text line #3",
+            "style": "1",
+            "button_1": "Button #1 text",
+            "button_1_url": "",
+            "color_button_type_1": "default",
+            "button_2": "Button #2 text",
+            "button_2_url": "",
+            "color_button_type_2": "default",
+            "list_1": "",
+            "custom_html": "",
+            "video_external_url": "",
+            "video_mp4_url": "",
+            "video_autoplay": true,
+            "video_controls": false,
+            "type": "clean",
+            "content_position": "center",
+            "content_align": "center",
+            "add_container": false,
+            "content_width": 100,
+            "text_width": 0,
+            "height": "auto",
+            "min_height": 0,
+            "size_of_column": "auto",
+            "visible": "desktop_mobile",
+            "parallax": "disable",
+            "animation_to": "none",
+            "animation_from": "none",
+            "animation_opacity": "none",
+            "animation_text": "none",
+            "color_text_1": "",
+            "color_text_2": "",
+            "color_text_3": "",
+            "color_text_bg": "",
+            "color_curtain_bg": "",
+            "customization_class": ""
+          }
+        },
+        "promobox_49BttV": {
+          "type": "promobox",
+          "settings": {
+            "url": "",
+            "image_size": 1450,
+            "image_mobile_size": 550,
+            "image_position_x": 50,
+            "color_image_mask": "",
+            "image_mask_opacity": 0.5,
+            "text_line_1": "",
+            "text_line_2": "CRAFTSMANSHIP AND EXPERTISE",
+            "text_line_3": "Handpicked in July 2023, this delicate tea was expertly transformed under the guidance of Tea Master Junjie Lin. The leaves underwent a careful process to become a black tea with around 90% oxidation. Over several months, the tea was re-roasted, enhancing and preserving its rich aroma and intricate flavour profile.",
+            "style": "1",
+            "button_1": "",
+            "button_1_url": "",
+            "color_button_type_1": "default",
+            "button_2": "",
+            "button_2_url": "",
+            "color_button_type_2": "clean-transparent",
+            "list_1": "",
+            "custom_html": "",
+            "video_external_url": "",
+            "video_mp4_url": "",
+            "video_autoplay": true,
+            "video_controls": false,
+            "type": "text",
+            "content_position": "center",
+            "content_align": "left",
+            "add_container": false,
+            "content_width": 100,
+            "text_width": 0,
+            "height": "auto",
+            "min_height": 0,
+            "size_of_column": "auto",
+            "visible": "desktop_mobile",
+            "parallax": "disable",
+            "animation_to": "none",
+            "animation_from": "none",
+            "animation_opacity": "none",
+            "animation_text": "none",
+            "color_text_1": "",
+            "color_text_2": "",
+            "color_text_3": "",
+            "color_text_bg": "",
+            "color_curtain_bg": "",
+            "customization_class": ""
+          }
+        }
+      },
+      "block_order": [
+        "promobox_q4A9EH",
+        "promobox_49BttV"
+      ],
+      "settings": {
+        "title": "",
+        "container": "boxed",
+        "size_of_columns": "2",
+        "size_of_columns_mobile": "1",
+        "margins_for_columns": "none",
+        "align_of_columns": "top_center",
+        "disable_column_paddings": false,
+        "precedence": "",
+        "customization_class": ""
+      }
+    },
+    "spacer_bJwy48": {
+      "type": "spacer",
+      "settings": {
+        "margin_top": 60,
+        "margin_bottom": 0,
+        "margin_top_mobile": 0,
+        "margin_bottom_mobile": 0,
+        "container": "boxed",
+        "show_separator": false,
+        "title": ""
+      }
+    },
+    "home_builder_WVbEKb": {
+      "type": "home-builder",
+      "blocks": {
+        "promobox_YXBxi9": {
+          "type": "promobox",
+          "settings": {
+            "url": "",
+            "image": "shopify://shop_images/SD24_-_Rare_Tea_Landscape_3.jpg",
+            "image_size": 1450,
+            "image_mobile_size": 550,
+            "image_position_x": 50,
+            "color_image_mask": "",
+            "image_mask_opacity": 0.5,
+            "text_line_1": "Text line #1",
+            "text_line_2": "Text line #2",
+            "text_line_3": "Text line #3",
+            "style": "1",
+            "button_1": "Button #1 text",
+            "button_1_url": "",
+            "color_button_type_1": "default",
+            "button_2": "Button #2 text",
+            "button_2_url": "",
+            "color_button_type_2": "default",
+            "list_1": "",
+            "custom_html": "",
+            "video_external_url": "",
+            "video_mp4_url": "",
+            "video_autoplay": true,
+            "video_controls": false,
+            "type": "clean",
+            "content_position": "center",
+            "content_align": "center",
+            "add_container": false,
+            "content_width": 100,
+            "text_width": 0,
+            "height": "auto",
+            "min_height": 0,
+            "size_of_column": "auto",
+            "visible": "desktop_mobile",
+            "parallax": "disable",
+            "animation_to": "none",
+            "animation_from": "none",
+            "animation_opacity": "none",
+            "animation_text": "none",
+            "color_text_1": "",
+            "color_text_2": "",
+            "color_text_3": "",
+            "color_text_bg": "",
+            "color_curtain_bg": "",
+            "customization_class": ""
+          }
+        }
+      },
+      "block_order": [
+        "promobox_YXBxi9"
+      ],
+      "settings": {
+        "title": "",
+        "container": "boxed",
+        "size_of_columns": "1",
+        "size_of_columns_mobile": "1",
+        "margins_for_columns": "none",
+        "align_of_columns": "top_center",
+        "disable_column_paddings": false,
+        "precedence": "",
+        "customization_class": ""
+      }
+    },
+    "spacer_gPKR9U": {
+      "type": "spacer",
+      "settings": {
+        "margin_top": 60,
+        "margin_bottom": 0,
+        "margin_top_mobile": 0,
+        "margin_bottom_mobile": 0,
+        "container": "boxed",
+        "show_separator": false,
+        "title": ""
+      }
+    },
+    "related-products": {
+      "type": "carousel-related-products",
+      "settings": {
+        "show_section": true,
+        "type": "related",
+        "title": "RELATED PRODUCTS",
+        "size_of_columns": "4",
+        "max_count": 6,
+        "autoplay": true,
+        "speed": 5,
+        "infinite": true,
+        "arrows": true,
+        "bullets": true
+      }
+    },
+    "spacer_BFURti": {
+      "type": "spacer",
+      "settings": {
+        "margin_top": 60,
+        "margin_bottom": 0,
+        "margin_top_mobile": 0,
+        "margin_bottom_mobile": 0,
+        "container": "boxed",
+        "show_separator": false,
+        "title": ""
+      }
+    },
+    "17308876049f535e8b": {
+      "type": "apps",
+      "blocks": {
+        "loox_reviews_loox_dynamic_section_8cynfa": {
+          "type": "shopify://apps/loox-reviews/blocks/loox-dynamic-section/5c3b337f-fd14-4df5-b1d6-80ec13e6e28e",
+          "settings": {
+            "only_photos": false,
+            "aggregated": false,
+            "limit": 20,
+            "hide_thumbnails": false,
+            "maxwidth": 1080,
+            "is_sample": true
+          }
+        }
+      },
+      "block_order": [
+        "loox_reviews_loox_dynamic_section_8cynfa"
+      ],
+      "settings": {}
+    }
+  },
+  "order": [
+    "main",
+    "1714135004e4439eaf",
+    "home_builder_PYBxnd",
+    "spacer_GkMhJj",
+    "home_builder_EHCFjR",
+    "spacer_UcexG3",
+    "home_builder_hJMjpA",
+    "spacer_bJwy48",
+    "home_builder_WVbEKb",
+    "spacer_gPKR9U",
+    "related-products",
+    "spacer_BFURti",
+    "17308876049f535e8b"
+  ]
+}

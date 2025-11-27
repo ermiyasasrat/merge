@@ -1,0 +1,12 @@
+{
+  "version": 3,
+  "sources": [
+    "header-products-menu.scss"
+  ],
+  "names": [],
+  "mappings": "AAAA,eACI,SAAA,SACA,KAAA,KACA,iBAAA,KACA,QAAA",
+  "file": "header-products-menu.min.css",
+  "sourcesContent": [
+    ".product__list {\n    position: absolute;\n    left: 100%;\n    background-color: white;\n    z-index: 2;\n}"
+  ]
+}

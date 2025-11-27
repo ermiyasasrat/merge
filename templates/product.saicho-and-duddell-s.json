@@ -1,0 +1,373 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-product",
+      "blocks": {
+        "b0febcf2-a38c-4ae7-a929-10af2ad0e5f4": {
+          "type": "tab_custom",
+          "settings": {
+            "title": "This limited edition box contains",
+            "content": "<ul><li>Duddell's signature Lava cream egg custard mooncakes (6pcs)</li><li>Saicho Osmanthus Sparkling Tea (2 x 200ml bottles)</li></ul>",
+            "page_content": ""
+          }
+        },
+        "959240db-9a88-436b-8c09-b6c9e0ebb7a8": {
+          "type": "tab_custom",
+          "settings": {
+            "title": "Ingredients",
+            "content": "<h5><strong>Egg Lava Custard Mooncake</strong></h5><p>Ingredients:</p><p>Wheat Flour, White Bean Paste (contains Sugar, White Bean, Soyabean Oil, Water, Green Bean, Glutinous Rice Flour, Starch), Butter, Egg, Salted Egg Yolk, Humectant (E420), Coconut Milk (contains Coconut Milk, Stabilizer (E415, E412)), Cream (contains Milk, Thickener (E407)), Sugar, Custard Powder (contains Corn Starch, Flavorings, Color (E160a(i)), Flavor Enhancer (E637), Salt, Modified Starch), Trehalose, Isomaltulose, Icing Sugar (contains Sugar, Corn Starch), Condensed Milk (contains Milk, Sugar, Milk Powder, Emulsifier (E322)), Whole Milk Powder, Salt, Color (E160b), Preservative (E202), Maltodextrin, Thickener (E415), Konjac Flour</p><p>This product contains cereals containing gluten, milk, eggs, soyabeans, tree nuts and their products.</p><p>This factory also manufactures peanuts, fish, crustacea and their products.  <br/></p><h5><strong>Osmanthus Sparkling Tea</strong></h5><p>Ingredients: Cold Brewed Osmanthus Tea (93%), White Grape Juice From Concentrate, Acid: Citric Acid, Vitamin C, Carbon Dioxide.</p><p></p>",
+            "page_content": ""
+          }
+        },
+        "760c5b02-7d38-4eff-81f4-1532702ad545": {
+          "type": "tab_custom",
+          "settings": {
+            "title": "Nutritional Info",
+            "content": "<h5><strong>Egg Lava Custard Mooncake</strong></h5><p><br/>Nutrition Information: Per 100g: Energy 410Kcal, Protein 7.2g, Total Fat 20.6g, Saturated fat 9.6g, Trans fat 0g, Carbohydrates 48.2g, Sugars 13.1g, Sodium 231mg</p><h5><strong>Osmanthus Sparkling Tea</strong></h5><p>Nutritional Information: Per 100ml: Energy 92kJ/22kcal, Fat&lt;0.1g, &lt;0.1 of which saturates, Carbohydrates 4.6g of which sugars 4.6, Protein 0.7g, Salt &lt;0.1g, Caffeine 14mg. <br/></p>",
+            "page_content": ""
+          }
+        }
+      },
+      "block_order": [
+        "b0febcf2-a38c-4ae7-a929-10af2ad0e5f4",
+        "959240db-9a88-436b-8c09-b6c9e0ebb7a8",
+        "760c5b02-7d38-4eff-81f4-1532702ad545"
+      ],
+      "custom_css": [
+        ".label--sale {display: none;}"
+      ],
+      "settings": {
+        "gallery_size": "6",
+        "sidebar": "off",
+        "enable_sticky_sidebar": false,
+        "show_tabs": true,
+        "show_tab_description": false,
+        "show_tab_reviews": true,
+        "scrolling_to_opened_tab": false,
+        "tabs_type": "tabs"
+      }
+    },
+    "home_builder_4U4i89": {
+      "type": "home-builder",
+      "name": "Builder",
+      "settings": {
+        "title": "",
+        "container": "fullwidth",
+        "size_of_columns": "1",
+        "size_of_columns_mobile": "1",
+        "margins_for_columns": "none",
+        "align_of_columns": "top_center",
+        "disable_column_paddings": false,
+        "precedence": "",
+        "customization_class": ""
+      }
+    },
+    "1634128129c7f7073c": {
+      "type": "home-builder",
+      "blocks": {
+        "7cec1383-4d32-4930-87ce-4fe8b3ed1e36": {
+          "type": "promobox",
+          "settings": {
+            "url": "",
+            "image_size": 1450,
+            "image_mobile_size": 550,
+            "image_position_x": 50,
+            "color_image_mask": "",
+            "image_mask_opacity": 0.5,
+            "text_line_1": "",
+            "text_line_2": "",
+            "text_line_3": "The Duddell’s x Saicho Osmanthus Sparkling Tea Mooncake Gift Box is priced at HK$520 (early bird offer for HK$498 available up to 30th August, 23:59 HKT), presents a luxurious pairing of six Duddell’s Lava Custard Mooncakes with two 200ml bottles of Saicho Osmanthus Sparkling Tea.Saicho Osmanthus Sparkling Tea is debuting exclusively at Duddell’s during Mid-Autumn Festival celebrations until the end of October.Scented with osmanthus blossoms, this Tie Guan Yin oolong from Xianyou County, China, has notes of apricot, cucumber and custard apples.Pairs well with summer salads, light seafood dishes and soft cheeses.Store in a cool, dry place. Once opened, keep refrigerated and consumed within five days.Sediment may naturally develop over time.Tasting notes: Apricot, mountain cucumber, custard apple.Mooncake Pairing Gift Box offer cannot be used in conjunction with other promotions or offers such as, but not limited to, welcome offers, sign up offers, etc.",
+            "style": "8",
+            "button_1": "",
+            "button_1_url": "",
+            "color_button_type_1": "default",
+            "button_2": "Button #2 text",
+            "button_2_url": "",
+            "color_button_type_2": "default",
+            "list_1": "",
+            "custom_html": "",
+            "video_external_url": "",
+            "video_mp4_url": "",
+            "video_autoplay": true,
+            "video_controls": false,
+            "type": "text",
+            "content_position": "center",
+            "content_align": "left",
+            "add_container": false,
+            "content_width": 100,
+            "text_width": 0,
+            "height": "auto",
+            "min_height": 0,
+            "size_of_column": "auto",
+            "visible": "desktop_mobile",
+            "parallax": "disable",
+            "animation_to": "none",
+            "animation_from": "none",
+            "animation_opacity": "none",
+            "animation_text": "none",
+            "color_text_1": "",
+            "color_text_2": "",
+            "color_text_3": "",
+            "color_text_bg": "",
+            "color_curtain_bg": "",
+            "customization_class": ""
+          }
+        },
+        "e0da6f6c-8b2a-4023-92ab-91c1d9545e4f": {
+          "type": "promobox",
+          "settings": {
+            "url": "",
+            "image": "shopify://shop_images/duddells-mooncakes.jpg",
+            "image_size": 1450,
+            "image_mobile_size": 550,
+            "image_position_x": 50,
+            "color_image_mask": "rgba(0,0,0,0)",
+            "image_mask_opacity": 0.5,
+            "text_line_1": "",
+            "text_line_2": "",
+            "text_line_3": "",
+            "style": "8",
+            "button_1": "",
+            "button_1_url": "shopify://pages/look-book-br-autumn-winter-2018",
+            "color_button_type_1": "default",
+            "button_2": "",
+            "button_2_url": "",
+            "color_button_type_2": "default",
+            "list_1": "",
+            "custom_html": "",
+            "video_external_url": "",
+            "video_mp4_url": "",
+            "video_autoplay": true,
+            "video_controls": false,
+            "type": "clean",
+            "content_position": "center_right",
+            "content_align": "left",
+            "add_container": false,
+            "content_width": 78,
+            "text_width": 0,
+            "height": "auto",
+            "min_height": 0,
+            "size_of_column": "auto",
+            "visible": "desktop_mobile",
+            "parallax": "disable",
+            "animation_to": "none",
+            "animation_from": "none",
+            "animation_opacity": "none",
+            "animation_text": "none",
+            "color_text_1": "",
+            "color_text_2": "",
+            "color_text_3": "",
+            "color_text_bg": "",
+            "color_curtain_bg": "",
+            "customization_class": ""
+          }
+        }
+      },
+      "block_order": [
+        "7cec1383-4d32-4930-87ce-4fe8b3ed1e36",
+        "e0da6f6c-8b2a-4023-92ab-91c1d9545e4f"
+      ],
+      "settings": {
+        "title": "",
+        "container": "boxed",
+        "size_of_columns": "2",
+        "size_of_columns_mobile": "1",
+        "margins_for_columns": "preset_4",
+        "align_of_columns": "center",
+        "disable_column_paddings": false,
+        "precedence": "2,1",
+        "customization_class": ""
+      }
+    },
+    "subscription_form_q8a6h3": {
+      "type": "subscription-form",
+      "disabled": true,
+      "settings": {
+        "title": "Subscribe to our email marketing newsletter to be informed about the status of your order",
+        "paragraph": "",
+        "placeholder": "Enter Your Email Address",
+        "button_text": "SUBSCRIBE",
+        "style": "1"
+      }
+    },
+    "16548541846e42527e": {
+      "type": "spacer",
+      "disabled": true,
+      "settings": {
+        "margin_top": 30,
+        "margin_bottom": 0,
+        "margin_top_mobile": 0,
+        "margin_bottom_mobile": 0,
+        "container": "boxed",
+        "show_separator": false,
+        "title": ""
+      }
+    },
+    "165485443667c775c2": {
+      "type": "home-builder",
+      "blocks": {
+        "14fa075a-d592-4fe9-9638-683d6c2d7884": {
+          "type": "promobox",
+          "settings": {
+            "url": "",
+            "image": "shopify://shop_images/custom_resized_1b6d33c5-efc4-49b.jpg",
+            "image_size": 1450,
+            "image_mobile_size": 550,
+            "image_position_x": 50,
+            "color_image_mask": "",
+            "image_mask_opacity": 0.5,
+            "text_line_1": "Text line #1",
+            "text_line_2": "Text line #2",
+            "text_line_3": "Text line #3",
+            "style": "1",
+            "button_1": "Button #1 text",
+            "button_1_url": "",
+            "color_button_type_1": "default",
+            "button_2": "Button #2 text",
+            "button_2_url": "",
+            "color_button_type_2": "default",
+            "list_1": "",
+            "custom_html": "",
+            "video_external_url": "",
+            "video_mp4_url": "",
+            "video_autoplay": true,
+            "video_controls": false,
+            "type": "clean",
+            "content_position": "center",
+            "content_align": "center",
+            "add_container": false,
+            "content_width": 100,
+            "text_width": 0,
+            "height": "100",
+            "min_height": 0,
+            "size_of_column": "auto",
+            "visible": "desktop_mobile",
+            "parallax": "disable",
+            "animation_to": "none",
+            "animation_from": "none",
+            "animation_opacity": "none",
+            "animation_text": "none",
+            "color_text_1": "",
+            "color_text_2": "",
+            "color_text_3": "",
+            "color_text_bg": "",
+            "color_curtain_bg": "",
+            "customization_class": ""
+          }
+        },
+        "5c23b50e-1ece-464d-a14e-3372e387cbb6": {
+          "type": "promobox",
+          "settings": {
+            "url": "",
+            "image_size": 1450,
+            "image_mobile_size": 550,
+            "image_position_x": 50,
+            "color_image_mask": "",
+            "image_mask_opacity": 0.5,
+            "text_line_1": "",
+            "text_line_2": "PERFECTLY PAIRED",
+            "text_line_3": "Katie Exton, sommelier and co-founder of Lorne Restaurant:\"This drink was so food friendly. It worked well with charcuterie, it was lovely with chicken tagine, it also tasted great with lasagne. Every time the drink was refreshing and delicate enough not to clash with any of the ingredients or flavours from the food and had these lovely peach and orange fruity notes but with a refreshing not savoury but also not sweet finish. It also worked with chocolate, where it tasted quite malty and caramelly.\"",
+            "style": "8",
+            "button_1": "",
+            "button_1_url": "",
+            "color_button_type_1": "default",
+            "button_2": "Button #2 text",
+            "button_2_url": "",
+            "color_button_type_2": "default",
+            "list_1": "",
+            "custom_html": "",
+            "video_external_url": "",
+            "video_mp4_url": "",
+            "video_autoplay": true,
+            "video_controls": false,
+            "type": "text",
+            "content_position": "center",
+            "content_align": "left",
+            "add_container": false,
+            "content_width": 78,
+            "text_width": 0,
+            "height": "auto",
+            "min_height": 0,
+            "size_of_column": "auto",
+            "visible": "desktop_mobile",
+            "parallax": "disable",
+            "animation_to": "none",
+            "animation_from": "none",
+            "animation_opacity": "none",
+            "animation_text": "none",
+            "color_text_1": "",
+            "color_text_2": "",
+            "color_text_3": "",
+            "color_text_bg": "",
+            "color_curtain_bg": "",
+            "customization_class": ""
+          }
+        }
+      },
+      "block_order": [
+        "14fa075a-d592-4fe9-9638-683d6c2d7884",
+        "5c23b50e-1ece-464d-a14e-3372e387cbb6"
+      ],
+      "disabled": true,
+      "settings": {
+        "title": "",
+        "container": "boxed",
+        "size_of_columns": "2",
+        "size_of_columns_mobile": "1",
+        "margins_for_columns": "preset_4",
+        "align_of_columns": "center",
+        "disable_column_paddings": true,
+        "precedence": "",
+        "customization_class": ""
+      }
+    },
+    "16548544455c728a14": {
+      "type": "spacer",
+      "disabled": true,
+      "settings": {
+        "margin_top": 30,
+        "margin_bottom": 0,
+        "margin_top_mobile": 30,
+        "margin_bottom_mobile": 0,
+        "container": "boxed",
+        "show_separator": false,
+        "title": ""
+      }
+    },
+    "related-products": {
+      "type": "carousel-related-products",
+      "disabled": true,
+      "settings": {
+        "show_section": true,
+        "type": "recommendations",
+        "title": "RELATED PRODUCTS",
+        "size_of_columns": "4",
+        "max_count": 6,
+        "autoplay": true,
+        "speed": 5,
+        "infinite": true,
+        "arrows": true,
+        "bullets": true
+      }
+    }
+  },
+  "order": [
+    "main",
+    "home_builder_4U4i89",
+    "1634128129c7f7073c",
+    "subscription_form_q8a6h3",
+    "16548541846e42527e",
+    "165485443667c775c2",
+    "16548544455c728a14",
+    "related-products"
+  ]
+}

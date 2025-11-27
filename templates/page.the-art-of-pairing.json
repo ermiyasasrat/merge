@@ -1,0 +1,141 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {
+        "show_title": true,
+        "show_content": true
+      }
+    },
+    "home_builder_BHTigy": {
+      "type": "home-builder",
+      "blocks": {
+        "promobox_UcQK93": {
+          "type": "promobox",
+          "settings": {
+            "url": "",
+            "image": "shopify://shop_images/art-of-pairing-banner-4.jpg",
+            "image_size": 1450,
+            "image_mobile": "shopify://shop_images/art-of-pairing-banner-4-mobile.jpg",
+            "image_mobile_size": 550,
+            "image_position_x": 50,
+            "color_image_mask": "",
+            "image_mask_opacity": 0.5,
+            "text_line_1": "Text line #1",
+            "text_line_2": "Text line #2",
+            "text_line_3": "Text line #3",
+            "style": "1",
+            "button_1": "Button #1 text",
+            "button_1_url": "",
+            "color_button_type_1": "default",
+            "button_2": "Button #2 text",
+            "button_2_url": "",
+            "color_button_type_2": "default",
+            "list_1": "",
+            "custom_html": "",
+            "video_external_url": "",
+            "video_mp4_url": "",
+            "video_autoplay": true,
+            "video_controls": false,
+            "type": "clean",
+            "content_position": "center",
+            "content_align": "center",
+            "add_container": false,
+            "content_width": 100,
+            "text_width": 0,
+            "height": "auto",
+            "min_height": 0,
+            "size_of_column": "auto",
+            "visible": "desktop_mobile",
+            "parallax": "disable",
+            "animation_to": "none",
+            "animation_from": "none",
+            "animation_opacity": "none",
+            "animation_text": "none",
+            "color_text_1": "",
+            "color_text_2": "",
+            "color_text_3": "",
+            "color_text_bg": "",
+            "color_curtain_bg": "",
+            "customization_class": ""
+          }
+        }
+      },
+      "block_order": [
+        "promobox_UcQK93"
+      ],
+      "disabled": true,
+      "name": "Builder",
+      "settings": {
+        "title": "",
+        "container": "fullwidth",
+        "size_of_columns": "1",
+        "size_of_columns_mobile": "1",
+        "margins_for_columns": "none",
+        "align_of_columns": "top_center",
+        "disable_column_paddings": false,
+        "precedence": "",
+        "customization_class": ""
+      }
+    },
+    "hero_image_KFCfnR": {
+      "type": "hero-image",
+      "name": "Hero Image",
+      "settings": {
+        "hero_image": "shopify://shop_images/art-of-pairing-header.jpg",
+        "hero_heading": ""
+      }
+    },
+    "title_and_text_64PGng": {
+      "type": "title-and-text",
+      "name": "Title and Text",
+      "settings": {
+        "show_border_top_bottom": false,
+        "title": "The Art Of Pairing",
+        "text": "<p>A collaborative journey with culinary innovators, exploring the harmonious relationship between Saicho's sparkling teas and exceptional cuisine.</p>",
+        "button_link": "",
+        "button_link_target": "#blog-list",
+        "button_text": "Explore Collaborations"
+      }
+    },
+    "title_and_text_qzX3bh": {
+      "type": "title-and-text",
+      "name": "Title and Text",
+      "settings": {
+        "show_border_top_bottom": true,
+        "title": "Crafting Exceptional Moments",
+        "text": "<p>Saicho's Art of Pairing series brings together culinary innovators from around the world to showcase the unique relationship between our sparkling teas and exceptional cuisine. This ongoing collaboration documents the creative process, craftsmanship, and stories behind these artful pairings.</p><p>Each collaboration celebrates the terroir and depth of flavour in our single-origin teas, while honouring the expertise and dedication of our culinary partners. Together, we're redefining the art of non-alcoholic food pairing.</p>",
+        "button_link": "",
+        "button_link_target": "",
+        "button_text": ""
+      }
+    },
+    "blog_post_list_TEzFUb": {
+      "type": "blog-post-list",
+      "name": "Blog Post List",
+      "settings": {
+        "title": "Featured Collaborations",
+        "intro_text": "<p>Discover our partnerships with acclaimed chefs and sommeliers who have created bespoke pairings with Saicho.</p>",
+        "blog": "the-art-of-pairing"
+      }
+    }
+  },
+  "order": [
+    "main",
+    "home_builder_BHTigy",
+    "hero_image_KFCfnR",
+    "title_and_text_64PGng",
+    "title_and_text_qzX3bh",
+    "blog_post_list_TEzFUb"
+  ]
+}

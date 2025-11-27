@@ -1,0 +1,95 @@
+{{ 'section-title-and-text.min.css' | asset_url | stylesheet_tag }}
+
+{% if section.settings.title != blank %}
+    {% style %}
+        {% if section.settings.show_border_top_bottom == true %}
+            #shopify-section-{{ section.id }} {
+                border-top: 1px solid #C3AD89;
+                border-bottom: 1px solid #C3AD89;
+            }
+        {% endif %}
+    {% endstyle %}
+
+    <h2>{{ section.settings.title }}</h2>
+    {% if section.settings.text != blank %}
+        {{ section.settings.text }}
+    {% endif %}
+    {% if section.settings.button_link != blank or section.settings.button_link_target != blank and section.settings.button_text != blank %}
+        {%- liquid
+                assign button_link = section.settings.button_link
+                if section.settings.button_link_target != blank
+                    assign button_link = section.settings.button_link | append: section.settings.button_link_target
+                endif
+        -%}
+        <a href="{{ button_link }}" class="{% if section.settings.button_link_target != blank %}scroll-to {% endif %}inline-button">
+            {{ section.settings.button_text }}
+        </a>
+    {% endif %}
+{% endif %}
+
+{% javascript %}
+    jQuery(() => {
+        if($('.scroll-to').length) {
+            $('.scroll-to').on('click', function(event) {
+                event.preventDefault();
+                const target = $(this).attr('href');
+                if (target.startsWith('#')) {
+                    $('html, body').animate({
+                        scrollTop: $(target).offset().top - 200
+                    }, 500);
+                } else {
+                    window.location.href = target;
+                }
+            });
+        }
+    });
+{% endjavascript %}
+
+{% schema %}
+{
+    "name": "Title and Text",
+    "class": "section_title-and-text",
+    "settings": [
+        {
+            "type": "checkbox",
+            "id": "show_border_top_bottom",
+            "label": "Show Border Top and Bottom",
+            "default": true
+        },
+        {
+            "type": "text",
+            "id": "title",
+            "label": "Title",
+            "default": "Your Title Here"
+        },
+        {
+            "type": "richtext",
+            "id": "text",
+            "label": "Text",
+            "default": "<p>Your text content goes here.</p>"
+        },
+        {
+            "type": "url",
+            "id": "button_link",
+            "label": "CTA Link"
+        },
+        {
+            "type": "text",
+            "id": "button_link_target",
+            "label": "CTA Link Scroll Target",
+            "info": "Use this to scroll to a specific section on the page. Example: #section-id"
+        },
+        {
+            "type": "text",
+            "id": "button_text",
+            "label": "CTA Text"
+        }
+    ],
+    "presets": [
+        {
+            "name": "Title and Text",
+            "category": "3) Static content"
+        }
+    ]
+}
+{% endschema %}

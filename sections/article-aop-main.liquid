@@ -1,0 +1,619 @@
+{{ 'section-article-aop-main.min.css' | asset_url | stylesheet_tag }}
+<script src="{{ 'section-article-aop-main.min.js' | asset_url }}" defer="defer"></script>
+{% comment %} <script src="https://www.youtube.com/iframe_api" defer="defer"></script> {% endcomment %}
+
+<div id="blog-post-block" class="aop-section">
+  <div class="loading-spinner">
+    <div class="spinner"></div>
+  </div>
+</div>
+
+<script>
+  function renderPortableText(
+    blocks = [],
+    highlightItalic = false,
+    italicColor = null,
+    enableTextColor = false,
+    textColor = null
+  ) {
+    return blocks
+      .map((block) => {
+        if (block._type === 'block') {
+          const tag = block.style === 'h3' ? 'h3' : 'p';
+
+          const text = block.children
+            .map((child) => {
+              let innerText = child.text || '';
+
+              const isItalic = child.marks?.includes('em');
+              const isBold = child.marks?.includes('strong');
+
+              // Apply italic color if enabled and mark is present
+              if (isItalic && highlightItalic && italicColor) {
+                innerText = `<em style="color:${italicColor};">${innerText}</em>`;
+              } else if (isItalic) {
+                innerText = `<em>${innerText}</em>`;
+              }
+
+              if (isBold) {
+                innerText = `<strong>${innerText}</strong>`;
+              }
+
+              // Apply textColor only if not italic-highlighted
+              if (!isItalic && enableTextColor && textColor) {
+                innerText = `<span style="color:${textColor};">${innerText}</span>`;
+              }
+
+              return innerText;
+            })
+            .join('');
+
+          return `<${tag}>${text}</${tag}>`;
+        }
+
+        // ✅ Handle custom lineSpan block
+        if (block._type === 'lineSpan') {
+          const lineColor = block.color || '#C6AD84'; // default color if not set
+          return `<span class="line-separator" style="color:${lineColor};">____</span>`;
+        }
+
+        return '';
+      })
+      .join('');
+  }
+
+  function formatLocationPart(value) {
+    if (!value) return "";
+
+    // If it's an array, join values first
+    if (Array.isArray(value)) {
+      return value
+        .map(v =>
+          v
+            .toString()
+            .replace(/_/g, ' ')
+            .split(' ')
+            .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+            .join(' ')
+        )
+        .join(', ');
+    }
+
+    // If it's just a string
+    return value
+      .toString()
+      .replace(/_/g, ' ')
+      .split(' ')
+      .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+      .join(' ');
+  }
+
+  function buildCroppedSanityImageUrl(image) {
+    const assetRef = image?.asset?._ref || image?.asset?._id;
+    const crop = image?.crop;
+
+    if (!assetRef) return '';
+
+    const match = assetRef.match(/^image-([^-]+)-(\d+x\d+)-([a-z]+)$/);
+    if (!match) return '';
+
+    const [, id, dimensions, format] = match;
+    const [origWidth, origHeight] = dimensions.split('x').map(Number);
+
+    const baseUrl = `https://cdn.sanity.io/images/czbipk52/production/${id}-${dimensions}.${format}`;
+
+    if (!crop) return baseUrl;
+
+    const { top = 0, bottom = 0, left = 0, right = 0 } = crop;
+
+    const x = Math.round(left * origWidth);
+    const y = Math.round(top * origHeight);
+    const width = Math.round((1 - left - right) * origWidth);
+    const height = Math.round((1 - top - bottom) * origHeight);
+
+    return `${baseUrl}?rect=${x},${y},${width},${height}`;
+  }
+
+  document.addEventListener('DOMContentLoaded', async () => {
+    const container = document.getElementById('blog-post-block');
+    const pathParts = window.location.pathname.split('/');
+    const slug = pathParts[pathParts.length - 1];
+
+    if (!slug.trim()) {
+      console.warn('Invalid URL!');
+      return;
+    }
+
+    const region = "{{ localization.country.iso_code | default: 'GB' | escape }}";
+    const language = "{{ request.locale.iso_code | default: 'en' | escape }}";
+
+    {% comment %} const query = `*[
+  _type == "artOfPairing" &&
+  slug.current == $slug &&
+  $region in region &&
+  language == $language &&
+  publishedAt < now()
+][0]{    
+      _id,
+      _type,
+      _key,
+      title,
+      region,
+      language,
+      publishedAt,
+      bodySections[]{
+         _type,
+         _key,
+        headingH3,
+        hasH3Color,
+        h3Color,
+        customH3Color,
+        headingH4,
+        hasH4Color,
+        h4Color,
+        customH4Color,
+        content,
+        highlightItalic,
+        italicColor,
+        customItalicColor,
+        layout,
+        textColor,
+        customTextColor,
+        enableTextColor,
+        image {
+          asset->{ _ref, _id, url },
+          alt,
+          crop
+        },
+        backgroundColor,
+        customBackgroundColor,
+        hasBorder,
+        borderColor,
+        customBorderColor,
+        chefName,
+        cuisine,
+        location,
+        media {
+          mainImage {
+            asset->{_ref, _id, url},
+            alt,
+            crop
+          },
+          youtubeUrl
+        },
+        mainImage {
+          asset->{ _ref, _id, url },
+          alt,
+          crop
+        },
+        youtubeUrl,
+        subImage {
+          asset->{ _ref, _id, url },
+          alt,
+          crop
+        },
+        layoutWidthOption,
+        customWidthPercent,
+        customWidthPixels
+      }
+    }`; {% endcomment %}
+
+
+const query = `*[
+  _type == "artOfPairing" &&
+  slug.current == $slug &&
+  $region in region &&
+  publishedAt < now()
+][0]{    
+      _id,
+      _type,
+      _key,
+      title,
+      region,
+      language,
+      publishedAt,
+      bodySections[]{
+         _type,
+         _key,
+        headingH3,
+        hasH3Color,
+        h3Color,
+        customH3Color,
+        headingH4,
+        hasH4Color,
+        h4Color,
+        customH4Color,
+        content,
+        highlightItalic,
+        italicColor,
+        customItalicColor,
+        layout,
+        textColor,
+        customTextColor,
+        enableTextColor,
+        image {
+          asset->{ _ref, _id, url },
+          alt,
+          crop
+        },
+        backgroundColor,
+        customBackgroundColor,
+        hasBorder,
+        borderColor,
+        customBorderColor,
+        chefName,
+        cuisine,
+        location,
+        media {
+          mainImage {
+            asset->{_ref, _id, url},
+            alt,
+            crop
+          },
+          youtubeUrl
+        },
+        mainImage {
+          asset->{ _ref, _id, url },
+          alt,
+          crop
+        },
+        youtubeUrl,
+        subImage {
+          asset->{ _ref, _id, url },
+          alt,
+          crop
+        },
+        layoutWidthOption,
+        customWidthPercent,
+        customWidthPixels
+      }
+    }`;
+
+    let sanityURL = `https://czbipk52.api.sanity.io/v2025-07-04/data/query/production?query=${encodeURIComponent(
+      query
+    )}`;
+    sanityURL += `&%24slug="${slug}"`;
+    sanityURL += `&%24region="${region}"`;
+    {% comment %} sanityURL += `&%24language="${language}"`; {% endcomment %}
+    sanityURL += `&perspective=published`;
+
+    try {
+      const res = await fetch(sanityURL);
+      const { result: post } = await res.json();
+
+      if (!post) {
+        container.innerHTML = `
+          <div class="blog-not-found">
+            <p>Blog not found.</p>
+          </div>
+        `;
+        return;
+      }
+
+      const foodPairingText = post.foodPairing?.map((item) => item?.children?.[0]?.text).join(', ') || 'N/A';
+
+      // Begin rendering
+      let html = '';
+
+      if (!Array.isArray(post.bodySections) || !post.bodySections.some((b) => b && b._type)) {
+        container.innerHTML = "<p class='empty-message'>No content available for this blog post.</p>";
+        return;
+      }
+
+      // Body Sections Rendering
+      if (post.bodySections) {
+        for (const block of post.bodySections) {
+          if (!block || !block._type) continue;
+
+          // Determine width style
+          let widthStyle = 'width: 100%;';
+          if (block.layoutWidthOption === 'custom' && typeof block.customWidthPercent === 'number') {
+            widthStyle = `width: ${block.customWidthPercent}%;`;
+          } else if (block.layoutWidthOption === 'custom_pixel' && typeof block.customWidthPixels === 'number') {
+            widthStyle = `max-width: ${block.customWidthPixels}px;`;
+          }
+
+          // Determine background color
+          let bgColor = '';
+          if (block.backgroundColor === 'custom' && block.customBackgroundColor?.hex) {
+            bgColor = block.customBackgroundColor.hex;
+          } else {
+            bgColor = block.backgroundColor || '';
+          }
+
+          // Determine border color
+          let borderColor = '';
+          if (block.borderColor === 'custom' && block.customBorderColor?.hex) {
+            borderColor = block.customBorderColor.hex;
+          } else {
+            borderColor = block.borderColor || '';
+          }
+
+          const hasBorder = block.hasBorder;
+
+          // Combine all styles
+          const style = `
+              ${bgColor ? `background-color:${bgColor};` : ''}
+              ${
+                hasBorder && borderColor
+                  ? `border-width:1px 0px 1px 0px; border-style:solid; border-color:${borderColor};`
+                  : ''
+              }
+              ${widthStyle}
+            `.trim();
+
+          const styleAttr = style ? `style="${style}"` : '';
+          // const styleAttr = `style="${[style, widthStyle].filter(Boolean).join(' ')}"`;
+
+          // ✳️ Render imageContentBlock (new block type)
+          if (block._type === 'imageContentBlock') {
+            const contentHtml = Array.isArray(block.content) ? renderPortableText(block.content) : '';
+
+             const mainImage = block.media?.mainImage;
+            const mainImageUrl = mainImage?.crop ? buildCroppedSanityImageUrl(mainImage) : mainImage?.asset?.url || '';
+
+            // ✅ YouTube support
+            const youtubeUrl = block.media?.youtubeUrl || '';
+            let youtubeEmbed = '';
+            if (youtubeUrl) {
+              // Extract YouTube video ID from url (works for both youtube.com and youtu.be)
+              const videoIdMatch = youtubeUrl.match(/(?:youtube\.com\/.*v=|youtu\.be\/)([^&?/]+)/);
+              const videoId = videoIdMatch ? videoIdMatch[1] : null;
+
+              if (videoId) {
+                youtubeEmbed = `
+                  <div class="aop-hero youtube-wrapper">
+                    <div class="responsive-video">
+                      <iframe
+                        src="https://www.youtube.com/embed/${videoId}?controls=0&modestbranding=1&rel=0&enablejsapi=1"
+                        width="1280"
+                        height="720"
+                        title="Saicho"
+                        frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        referrerpolicy="strict-origin-when-cross-origin"
+                        allowfullscreen>
+                      </iframe>
+                      </div>
+                  </div>
+                `;
+              }
+            }
+
+            const subImage = block.subImage;
+            const subImageUrl = subImage?.crop ? buildCroppedSanityImageUrl(subImage) : subImage?.asset?.url || '';
+
+            html += `
+                  <div class="aop-image-section" ${styleAttr}>
+                    <div class="aop-image-row">
+                      ${
+                        youtubeEmbed
+                          ? youtubeEmbed
+                          : mainImageUrl
+                          ? `<div class="aop-hero"><img src="${mainImageUrl}" alt="${mainImage.alt || ''}" /></div>`
+                          : ''
+                      }
+                      ${
+                        subImageUrl
+                          ? `
+                        <div class="aop-sub-image">
+                          <img src="${subImageUrl}" alt="${subImage.alt || ''}" />
+                        </div>
+                      `
+                          : ''
+                      }
+                    </div>
+                    ${
+                      contentHtml
+                        ? `
+                      <div class="aop-image-content">
+                        ${contentHtml}
+                      </div>
+                    `
+                        : ''
+                    }
+                  </div>
+                `;
+            continue;
+          }
+
+          // ✳️ Chef Profile Block
+          if (block._type === 'chefProfileBlock') {
+            const chefImage = block.image;
+            const chefImageUrl = chefImage?.crop
+              ? buildCroppedSanityImageUrl(chefImage)
+              : chefImage?.asset?.url || '';
+
+            const altText = chefImage?.alt || '';
+            const chefName = block.chefName || '';
+
+            // ✅ Fix cuisine to handle arrays
+            const cuisineLabel = block.cuisine
+              ? (Array.isArray(block.cuisine)
+                  ? block.cuisine.map(c => formatLocationPart(c)).join(', ')
+                  : formatLocationPart(block.cuisine))
+              : '';
+
+            const locationObj = block.location || {};
+            const locationParts = [];
+
+            if (typeof locationObj === 'object') {
+              if (locationObj.neighborhood) {
+                const n = Array.isArray(locationObj.neighborhood) ? locationObj.neighborhood : [locationObj.neighborhood];
+                n.forEach(val => locationParts.push(formatLocationPart(val)));
+              }
+              if (locationObj.city) {
+                const c = Array.isArray(locationObj.city) ? locationObj.city : [locationObj.city];
+                c.forEach(val => locationParts.push(formatLocationPart(val)));
+              }
+              if (locationObj.country) {
+                const c = Array.isArray(locationObj.country) ? locationObj.country : [locationObj.country];
+                c.forEach(val => locationParts.push(formatLocationPart(val)));
+              }
+            } else if (typeof block.location === 'string') {
+              locationParts.push(formatLocationPart(block.location));
+            }
+
+            const locationText = locationParts.filter(Boolean).join(', ');
+
+            html += `
+                  <div class="aop-chef-profile" ${styleAttr}>
+                    <div class="aop-meta bg_clsnn_nww">
+                      <div class="top corners"></div>
+                      <div class="bottom corners"></div>
+                      <div class="aop-meta-img">
+                        <img src="${chefImageUrl}" alt="${altText}" />
+                      </div>
+                      <div class='aop-meta-detail'>
+                        <div class="aop-meta-info">
+                          <div class='aop-meta-info_nww'>
+                            <p class='bor_clsn_nww'><span class="aop-label">CHEF</span><br>${chefName}</p>
+                            <p><span class="aop-label">CUISINE</span><br>${cuisineLabel}</p>
+                          </div>
+                          <p class='bor_clsn_nwwss'><span class="aop-label">LOCATION</span><br>${locationText}</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                `;
+            continue;
+          }
+
+
+          // ✳️ Text Section Block
+          if (block._type === 'textSectionBlock') {
+            const italicColor = block.italicColor === 'custom' ? block.customItalicColor?.hex : block.italicColor;
+            const h3Color = block.h3Color === 'custom' ? block.customH3Color?.hex : block.h3Color;
+            const h4Color = block.h4Color === 'custom' ? block.customH4Color?.hex : block.h4Color;
+            const textColor = block.textColor === 'custom' ? block.customTextColor?.hex : block.textColor;
+
+            const headingH3 = block.headingH3 || '';
+            const headingH4 = block.headingH4 || '';
+
+            const headingH4Html = headingH4
+              ? `<h4 style="color:${block.hasH4Color ? h4Color || '#51504E' : '#51504E'};">${headingH4}</h4>`
+              : '';
+
+            const headingH3Html = headingH3
+              ? `<h3 style="color:${block.hasH3Color ? h3Color || '#51504E' : '#51504E'};">${headingH3}</h3>`
+              : '';
+
+            const content = renderPortableText(
+              block.content,
+              block.highlightItalic,
+              italicColor,
+              block.enableTextColor,
+              textColor
+            );
+
+            const textStyleAttr = block.enableTextColor && textColor ? ` style="color:${textColor};"` : '';
+
+            if (block.layout === 'centered') {
+              html += `
+                  <div class="aop-body centered" ${styleAttr}>
+                    ${headingH4Html}
+                    ${headingH3Html}
+                    <p${textStyleAttr}>${content}</p>
+                  </div>
+                `;
+            } else if (block.layout === 'imageLeft' || block.layout === 'imageRight') {
+              const isLeft = block.layout === 'imageLeft';
+              const sectionImage = block.image;
+              const sectionImageUrl = sectionImage?.crop
+                ? buildCroppedSanityImageUrl(sectionImage)
+                : sectionImage?.asset?.url || '';
+
+              html += `
+                  <div class="aop-body split ${isLeft ? 'left' : 'right'}" ${styleAttr}>
+                    <div class="aop-body-img">
+                      <img src="${sectionImageUrl}" alt="${sectionImage?.alt || ''}" />
+                    </div>
+                    <div class="aop-body-text">
+                      ${headingH3Html}
+                      ${headingH4Html}
+                       <p${textStyleAttr}>${content}</p>
+                    </div>
+                  </div>
+                `;
+            } else if (block.layout === 'banner') {
+              html += `
+                  <div class="aop-body banner" ${styleAttr}>
+                   <div class="container">
+                     <div class="stoke">
+                        <div class="top corners"></div>
+                        <div class="middle"></div>
+                        <div class="bottom corners"></div>
+                      </div>
+                    <div class=""> 
+                     ${headingH3Html}
+                     ${headingH4Html}
+                     <p${textStyleAttr}>${content}</p>
+                    </div>
+                  </div>
+                  </div>
+                `;
+            }
+          }
+        }
+      }
+
+      container.innerHTML = html;
+    } catch (err) {
+      console.error('Sanity fetch error:', err);
+      container.innerHTML = '<p>Failed to load blog post.</p>';
+    }
+  });
+</script>
+
+{% if article.metafields.aop != blank %}
+  {% assign metafields = article.metafields.aop %}
+{% elsif article.metafields.custom != blank %}
+  {% assign metafields = article.metafields.custom %}
+{% endif %}
+
+{% if metafields.related_products.value != blank or metafields.aop_related_products.value != blank %}
+  <div class="related-products">
+    <h2>SHOP OUR RANGE OF METICULOUSLY CRAFTED SINGLE ORIGIN TEAS</h2>
+    <div class="product-list">
+      {% if metafields.aop_related_products.value != blank %}
+        {% for product in metafields.aop_related_products.value %}
+          <div class="product-item">
+            <a href="{{ product.url }}">
+              {{ product.featured_image | image_url: width: 300 | image_tag }}
+              <h3>{{ product.title }}</h3>
+            </a>
+            <p>{{ product.price | money }} - {{ product.first_available_variant.title }}</p>          
+            <a class="add-link" href="{{ product.url }}">SHOP NOW</a>
+          </div>
+        {% endfor %}
+      {% endif %}
+
+      {% if metafields.related_products.value != blank %}
+        {% for product in metafields.related_products.value %}
+          <div class="product-item">
+            <a href="{{ product.url }}">
+              {{ product.featured_image | image_url: width: 300 | image_tag }}
+              <h3>{{ product.title }}</h3>
+            </a>
+            <p>{{ product.price | money }} - {{ product.first_available_variant.title }}</p>            
+            <a class="add-link" href="{{ product.url }}">SHOP NOW</a>
+          </div>
+        {% endfor %}
+      {% endif %}
+    </div>
+  </div>
+{% endif %}
+
+{% schema %}
+{
+  "name": "AoP Main Body",
+  "class": "section_aop-main-body",
+  "settings": [],
+  "presets": [
+    {
+      "name": "AoP Main Body",
+      "category": "8) AoP Articles"
+    }
+  ]
+}
+{% endschema %}

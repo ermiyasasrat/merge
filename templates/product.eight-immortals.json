@@ -1,0 +1,351 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-product",
+      "blocks": {
+        "b0febcf2-a38c-4ae7-a929-10af2ad0e5f4": {
+          "type": "tab_custom",
+          "settings": {
+            "title": "Additional Information",
+            "content": "<p>Eight Immortals features the world-famous Dan Cong Oolong Tea – with its namesake deriving from the ancient Daoist parable – grown 1000 metres above sea level in Tian Liao village, atop Phoenix Mountain in Guangdong province. The surrounding rocky terrain, foggy climate, mineral-rich soil, the decades-old towering trees on which they grow, as well as the painstaking harvesting process lend the tea its unparalleled flavour complexity. </p>",
+            "page_content": ""
+          }
+        },
+        "959240db-9a88-436b-8c09-b6c9e0ebb7a8": {
+          "type": "tab_custom",
+          "settings": {
+            "title": "Ingredients",
+            "content": "<p>• 24 Hour Cold Brewed Eight Immortals Tea (94%)<br/>• White Grape Juice From Concentrate<br/>• Acid (Citric Acid)<br/>• Vitamin C<br/>• Carbon Dioxide</p>",
+            "page_content": ""
+          }
+        },
+        "760c5b02-7d38-4eff-81f4-1532702ad545": {
+          "type": "tab_custom",
+          "settings": {
+            "title": "nutritional info",
+            "content": "",
+            "page_content": "nutritional-info-eight-immortals"
+          }
+        }
+      },
+      "block_order": [
+        "b0febcf2-a38c-4ae7-a929-10af2ad0e5f4",
+        "959240db-9a88-436b-8c09-b6c9e0ebb7a8",
+        "760c5b02-7d38-4eff-81f4-1532702ad545"
+      ],
+      "settings": {
+        "gallery_size": "6",
+        "sidebar": "off",
+        "enable_sticky_sidebar": true,
+        "show_tabs": true,
+        "show_tab_description": false,
+        "show_tab_reviews": true,
+        "scrolling_to_opened_tab": false,
+        "tabs_type": "tabs"
+      }
+    },
+    "16548539320f6a3e04": {
+      "type": "spacer",
+      "settings": {
+        "margin_top": 30,
+        "margin_bottom": 30,
+        "margin_top_mobile": 0,
+        "margin_bottom_mobile": 0,
+        "container": "boxed",
+        "show_separator": true,
+        "title": ""
+      }
+    },
+    "1634128129c7f7073c": {
+      "type": "home-builder",
+      "blocks": {
+        "7cec1383-4d32-4930-87ce-4fe8b3ed1e36": {
+          "type": "promobox",
+          "settings": {
+            "url": "",
+            "image_size": 1450,
+            "image_mobile_size": 550,
+            "image_position_x": 50,
+            "color_image_mask": "",
+            "image_mask_opacity": 0.5,
+            "text_line_1": "",
+            "text_line_2": "",
+            "text_line_3": "The tea is grown on Phoenix Mountain which is celebrated for its mineral-rich soils, foggy climate and rocky landscape. While most teas are picked from small bushes, Dan Cong tea trees can grow to heights of three metres or more, making them far harder to harvest but yield incredibly high quality leaves.This particular Eight Immortals tea is from trees that are between 20-30 years old. The trees are graft bred from the original Eight Immortals mother trees. The tea garden, located near Tian Liao village is 1000m above sea level.The tea is harvested by hand in early Spring and then goes through the meticulous processing steps of withering, rolling and roasting, overseen by Tea Master Mr Huang.",
+            "style": "8",
+            "button_1": "",
+            "button_1_url": "",
+            "color_button_type_1": "default",
+            "button_2": "Button #2 text",
+            "button_2_url": "",
+            "color_button_type_2": "default",
+            "list_1": "",
+            "custom_html": "",
+            "video_external_url": "",
+            "video_mp4_url": "",
+            "video_autoplay": true,
+            "video_controls": false,
+            "type": "text",
+            "content_position": "center",
+            "content_align": "left",
+            "add_container": false,
+            "content_width": 100,
+            "text_width": 0,
+            "height": "auto",
+            "min_height": 0,
+            "size_of_column": "auto",
+            "visible": "desktop_mobile",
+            "parallax": "disable",
+            "animation_to": "none",
+            "animation_from": "none",
+            "animation_opacity": "none",
+            "animation_text": "none",
+            "color_text_1": "",
+            "color_text_2": "",
+            "color_text_3": "",
+            "color_text_bg": "",
+            "color_curtain_bg": "",
+            "customization_class": ""
+          }
+        },
+        "e0da6f6c-8b2a-4023-92ab-91c1d9545e4f": {
+          "type": "promobox",
+          "settings": {
+            "url": "",
+            "image": "shopify://shop_images/Tea_garden_2_480x480_01ef457d-9bdc-46bc-893a-4f0f414fe7ad.jpg",
+            "image_size": 1450,
+            "image_mobile_size": 550,
+            "image_position_x": 50,
+            "color_image_mask": "rgba(0,0,0,0)",
+            "image_mask_opacity": 0.5,
+            "text_line_1": "",
+            "text_line_2": "FAST, CLEAN, AND FLEXIBLE",
+            "text_line_3": "Shella is the fastest, featured, fresh, dynamically developing, best converting Shopify theme. Try it now! The first theme according to 15 Best Themes for Your Shopify eCommerce Business",
+            "style": "8",
+            "button_1": "",
+            "button_1_url": "shopify://pages/look-book-br-autumn-winter-2018",
+            "color_button_type_1": "default",
+            "button_2": "",
+            "button_2_url": "",
+            "color_button_type_2": "default",
+            "list_1": "",
+            "custom_html": "",
+            "video_external_url": "",
+            "video_mp4_url": "",
+            "video_autoplay": true,
+            "video_controls": false,
+            "type": "clean",
+            "content_position": "center_right",
+            "content_align": "left",
+            "add_container": false,
+            "content_width": 78,
+            "text_width": 0,
+            "height": "auto",
+            "min_height": 0,
+            "size_of_column": "auto",
+            "visible": "desktop_mobile",
+            "parallax": "disable",
+            "animation_to": "none",
+            "animation_from": "none",
+            "animation_opacity": "none",
+            "animation_text": "none",
+            "color_text_1": "",
+            "color_text_2": "",
+            "color_text_3": "",
+            "color_text_bg": "",
+            "color_curtain_bg": "",
+            "customization_class": ""
+          }
+        }
+      },
+      "block_order": [
+        "7cec1383-4d32-4930-87ce-4fe8b3ed1e36",
+        "e0da6f6c-8b2a-4023-92ab-91c1d9545e4f"
+      ],
+      "settings": {
+        "title": "",
+        "container": "boxed",
+        "size_of_columns": "2",
+        "size_of_columns_mobile": "1",
+        "margins_for_columns": "preset_4",
+        "align_of_columns": "center",
+        "disable_column_paddings": false,
+        "precedence": "2,1",
+        "customization_class": ""
+      }
+    },
+    "16548541846e42527e": {
+      "type": "spacer",
+      "settings": {
+        "margin_top": 30,
+        "margin_bottom": 0,
+        "margin_top_mobile": 0,
+        "margin_bottom_mobile": 0,
+        "container": "boxed",
+        "show_separator": false,
+        "title": ""
+      }
+    },
+    "165485443667c775c2": {
+      "type": "home-builder",
+      "blocks": {
+        "14fa075a-d592-4fe9-9638-683d6c2d7884": {
+          "type": "promobox",
+          "settings": {
+            "url": "",
+            "image": "shopify://shop_images/Saicho_Eight_Immortals_bottle_on.jpg",
+            "image_size": 1450,
+            "image_mobile_size": 550,
+            "image_position_x": 50,
+            "color_image_mask": "",
+            "image_mask_opacity": 0.5,
+            "text_line_1": "Text line #1",
+            "text_line_2": "Text line #2",
+            "text_line_3": "Text line #3",
+            "style": "1",
+            "button_1": "Button #1 text",
+            "button_1_url": "",
+            "color_button_type_1": "default",
+            "button_2": "Button #2 text",
+            "button_2_url": "",
+            "color_button_type_2": "default",
+            "list_1": "",
+            "custom_html": "",
+            "video_external_url": "",
+            "video_mp4_url": "",
+            "video_autoplay": true,
+            "video_controls": false,
+            "type": "clean",
+            "content_position": "center",
+            "content_align": "center",
+            "add_container": false,
+            "content_width": 100,
+            "text_width": 0,
+            "height": "auto",
+            "min_height": 0,
+            "size_of_column": "auto",
+            "visible": "desktop_mobile",
+            "parallax": "disable",
+            "animation_to": "none",
+            "animation_from": "none",
+            "animation_opacity": "none",
+            "animation_text": "none",
+            "color_text_1": "",
+            "color_text_2": "",
+            "color_text_3": "",
+            "color_text_bg": "",
+            "color_curtain_bg": "",
+            "customization_class": ""
+          }
+        },
+        "5c23b50e-1ece-464d-a14e-3372e387cbb6": {
+          "type": "promobox",
+          "settings": {
+            "url": "",
+            "image_size": 1450,
+            "image_mobile_size": 550,
+            "image_position_x": 50,
+            "color_image_mask": "",
+            "image_mask_opacity": 0.5,
+            "text_line_1": "",
+            "text_line_2": "PERFECTLY PAIRED",
+            "text_line_3": "Matthew Davison, sommelier at Fischer's Baslow Hall:\"This masterfully crafted tea creates a distinctively fragrant and complex drink. On the nose, it offers notes of nectarine, ginger, sweet baking spices and confit peach with an underlying earthiness. The palate reveals further flavours of ginger, mango, tangerine, marigold and cantaloupe melon. A bitterness reminiscent of blood orange is followed by herbal characters of anise, fennel and tarragon. The tea’s subtle savouriness and lightly tannic finish make it ideal for pairing with soft cheeses or spiced dishes such as harissa roasted squash.\"",
+            "style": "8",
+            "button_1": "",
+            "button_1_url": "",
+            "color_button_type_1": "default",
+            "button_2": "Button #2 text",
+            "button_2_url": "",
+            "color_button_type_2": "default",
+            "list_1": "",
+            "custom_html": "",
+            "video_external_url": "",
+            "video_mp4_url": "",
+            "video_autoplay": true,
+            "video_controls": false,
+            "type": "text",
+            "content_position": "center_right",
+            "content_align": "left",
+            "add_container": false,
+            "content_width": 78,
+            "text_width": 0,
+            "height": "auto",
+            "min_height": 0,
+            "size_of_column": "auto",
+            "visible": "desktop_mobile",
+            "parallax": "disable",
+            "animation_to": "none",
+            "animation_from": "none",
+            "animation_opacity": "none",
+            "animation_text": "none",
+            "color_text_1": "",
+            "color_text_2": "",
+            "color_text_3": "",
+            "color_text_bg": "",
+            "color_curtain_bg": "",
+            "customization_class": ""
+          }
+        }
+      },
+      "block_order": [
+        "14fa075a-d592-4fe9-9638-683d6c2d7884",
+        "5c23b50e-1ece-464d-a14e-3372e387cbb6"
+      ],
+      "settings": {
+        "title": "",
+        "container": "boxed",
+        "size_of_columns": "2",
+        "size_of_columns_mobile": "1",
+        "margins_for_columns": "preset_4",
+        "align_of_columns": "center",
+        "disable_column_paddings": false,
+        "precedence": "",
+        "customization_class": ""
+      }
+    },
+    "16548544455c728a14": {
+      "type": "spacer",
+      "settings": {
+        "margin_top": 30,
+        "margin_bottom": 0,
+        "margin_top_mobile": 30,
+        "margin_bottom_mobile": 0,
+        "container": "boxed",
+        "show_separator": false,
+        "title": ""
+      }
+    },
+    "related-products": {
+      "type": "carousel-related-products",
+      "settings": {
+        "show_section": true,
+        "type": "recommendations",
+        "title": "RELATED PRODUCTS",
+        "size_of_columns": "4",
+        "max_count": 6,
+        "autoplay": true,
+        "speed": 5,
+        "infinite": true,
+        "arrows": true,
+        "bullets": true
+      }
+    }
+  },
+  "order": [
+    "main",
+    "16548539320f6a3e04",
+    "1634128129c7f7073c",
+    "16548541846e42527e",
+    "165485443667c775c2",
+    "16548544455c728a14",
+    "related-products"
+  ]
+}

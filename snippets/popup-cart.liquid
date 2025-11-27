@@ -1,0 +1,60 @@
+<div class="popup-cart py-25 px-20 js-popup-cart-ajax" data-popup-content>
+    <div class="popup-cart__head d-flex align-items-center">
+        <h5 class="m-0">{{ 'general.popups.cart.title' | t }} <span>{{ 'general.popups.cart.count' | t: count: cart.item_count }}</span></h5>
+        <i class="popup-cart__close ml-auto cursor-pointer" data-js-popup-close>{% render 'icon-theme-164' %}</i>
+    </div>
+    {%- if cart.items.size > 0 -%}
+        <div class="popup-cart__content">
+            <div class="popup-cart__items mt-15">
+                {%- for item in cart.items -%}
+                    {% include 'product-cart' with disable_lazyload: disable_lazyload %}
+                {%- endfor -%}
+            </div>
+            <div class="popup-cart__footer position-sticky bottom-0 border-top pt-5 pb-25">
+                {%- if cart.cart_level_discount_applications.size > 0 -%}
+                    <div class="popup-cart__discounts">
+                        {%- for discount_application in cart.cart_level_discount_applications -%}
+                            <div class="popup-cart__discount h6 d-flex align-items-center my-10">
+                                <span class="d-flex align-items-center mr-10">
+                                    <i class="mt-2 mr-6">{% include 'icon-theme-137' %}</i> <span>{{ discount_application.title | upcase }}</span>
+                                </span>
+                                <span class="h5 d-flex align-items-center mb-0 ml-auto">
+                                    <span class="mb-2">-</span><span>{% include 'product-get-price' with price: discount_application.total_allocated_amount %}</span>
+                                </span>
+                            </div>
+                        {%- endfor -%}
+                    </div>
+                {%- endif -%}
+                {%- if cart.total_discounts > 0 and cart.cart_level_discount_applications.size > 1 -%}
+                    <div class="popup-cart__discounts">
+                        <div class="popup-cart__discount h6 d-flex align-items-center my-10">
+                            <span class="d-flex align-items-center mr-10">
+                                {{ 'cart.general.savings' | t }}
+                            </span>
+                            <span class="h5 d-flex align-items-center mb-0 ml-auto">
+                                {% include 'product-get-price' with price: cart.total_discounts %}
+                            </span>
+                        </div>
+                    </div>
+                {%- endif -%}
+                <div class="popup-cart__subtotal h5 d-flex align-items-center mt-10 mb-0">
+                    <p class="m-0">{{ 'general.popups.cart.subtotal' | t }}</p>
+                    <span class="ml-auto">
+                        {% include 'product-get-price' with price: cart.total_price %}
+                    </span>
+                </div>
+                {%- if settings.cart_show_free_shipping -%}
+                    <div class="popup-cart__free-shipping my-20">
+                        {% render 'free-shipping' %}
+                    </div>
+                {%- endif -%}
+                <div class="popup-cart__buttons mt-15">
+                    <a href="{{ routes.root_url }}{% if routes.root_url != '/' %}/{% endif %}checkout" class="btn btn--full btn--secondary">{{ 'general.popups.cart.button_to_checkout' | t }}</a>
+                    <a href="{{ routes.cart_url }}" class="btn btn--full mt-20">{{ 'general.popups.cart.button_to_cart' | t }}</a>
+                </div>
+            </div>
+        </div>
+    {%- else -%}
+        <div class="popup-cart__empty mt-20">{{ 'general.popups.cart.empty' | t }}</div>
+    {%- endif -%}
+</div>

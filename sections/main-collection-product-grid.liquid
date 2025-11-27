@@ -1,0 +1,2264 @@
+{% include 'global-variables' %}
+{%- assign sort_by = collection.sort_by | default: collection.default_sort_by -%}
+{% comment %}View grid{% endcomment %}
+{%- assign breakpoints = 'xs|sm|md|lg|xl' | split: '|' -%}
+{% capture grid_values %}{{ section.settings.default_view_grid_xs }}|{{ section.settings.default_view_grid_sm }}|{{ section.settings.default_view_grid_md }}|{{ section.settings.default_view_grid_lg }}|{{ section.settings.default_view_grid_xl }}{% endcapture %}
+{%- assign grid_values = grid_values | split: '|' -%}
+{%- for bp in breakpoints -%}
+    {%- assign grid_value = grid_values[forloop.index0] -%}
+    {%- assign grid_set = 12 -%}
+    {%- if grid_value == 'list' -%}
+        {% capture list_breakpoints %}{{ list_breakpoints }}{% if list_breakpoints != blank %}|{% endif %}{{ bp }}{% endcapture %}
+    {%- else -%}
+        {%- assign grid_set = grid_set | divided_by: grid_value -%}
+        {%- if grid_value == '1' -%}
+            {% capture centered_breakpoints %}{{ centered_breakpoints }}{% if centered_breakpoints != blank %}|{% endif %}{{ bp }}{% endcapture %}
+        {%- endif -%}
+    {%- endif -%}
+    {% capture grid_classes %}{% if grid_classes %}{{ grid_classes }} {% endif %}col{% if bp != 'xs' %}-{{ bp }}{% endif %}-{{ grid_set }}{% endcapture %}
+{%- endfor -%}
+{%- assign centered_breakpoints = centered_breakpoints | split: '|' -%}
+{%- for bp in centered_breakpoints -%}
+    {% capture centered_classes %}{{ centered_classes }} collection-grid-centered-{{ bp }}{% endcapture %}
+{%- endfor -%}
+{%- assign list_breakpoints = list_breakpoints | split: '|' -%}
+{% capture list_wrapper_classes %} {%- if section.settings.view_grid_list_design == '1' -%}collection-grid-list--v1{%- elsif section.settings.view_grid_list_design == '2' -%}collection-grid-list--v2{% endif %}{% endcapture %}
+{%- for bp in list_breakpoints -%}
+    {% capture list_wrapper_classes %}{{ list_wrapper_classes }} collection-grid-list-{{ bp }}{% endcapture %}
+{%- endfor -%}
+<div class="page-width collection-filters" id="main-collection-filters" data-id="{{ section.id }}">
+  <div class="collections pb-10">
+      <div id="CollectionBreadcrumbs">
+          {% include 'breadcrumbs' %}
+      </div>
+      <div id="CollectionHeadingTop"></div>
+      <div class="mt-10 mt-lg-{{ offset_collection_page_content_margin_top_d }} overflow-hidden">
+            <div class="{% if section.settings.container == 'fullwidth' %}container-fluid{% else %}container{% endif %}">
+                <div class="row mb-40 mb-lg-{{ offset_collection_page_pagination_margin_bottom_d }}">
+                    {%- if settings.collection_show_sidebar != 'hide' -%}
+                        {%- if settings.collection_sidebar_position == 'dropdown' -%}
+                            <div class="collections__sidebar collection-sidebar-type-1 collections__sidebar--dropdown d-none">
+                                {% include 'collection-sidebar' %}
+                            </div>
+                        {%- elsif settings.collection_sidebar_position == 'left' or settings.collection_sidebar_position == 'right' -%}
+                            <div class="collections__sidebar collection-sidebar-type-1 collections__sidebar--width-md d-none col-auto d-lg-block collections__sidebar--{% if settings.collection_sidebar_position == 'right' %}right order-2{% else %}left{% endif %}{% if settings.collection_enable_sticky %} sticky-sidebar-lg js-sticky-sidebar{% endif %}">
+                                {%- if settings.collection_enable_sticky -%}
+                                    <div data-js-sticky-sidebar-body>
+                                {%- endif -%}
+                                        <div data-js-position-desktop="sidebar">
+                                            {% include 'collection-sidebar' %}
+                                        </div>
+                                {%- if settings.collection_enable_sticky -%}
+                                    </div>
+                                {%- endif -%}
+                            </div>
+                        {%- endif -%}
+                    {%- else -%}
+                        <div class="d-none">
+                            {% include 'collection-sidebar' %}
+                        </div>
+                    {%- endif -%}
+                    <div class="collections__body col pb-25">
+                        <div id="CollectionHeadingProductsGridWidth"></div>
+                        {%- if section.settings.view_grid_visibility != 'hide' -%} 
+                            {%- for bp in breakpoints -%}
+                                    {% capture grid_attrs %}{{ grid_attrs }} data-value-{{ bp }}="{{ grid_values[forloop.index0] }}"{% endcapture %}
+                            {%- endfor -%}
+                        {%- endif -%}
+                        <div class="collection-body{% if section.settings.view_grid_visibility != 'hide' %} js-collection-grid{% endif %}"{% if grid_attrs %}{{ grid_attrs }}{% endif %}>
+                            {%- if section.settings.sort_by_visibility != 'hide' or section.settings.info_visibility != 'hide' or section.settings.view_length_visibility != 'hide' or section.settings.view_grid_visibility != 'hide' -%}
+                                {%- capture sort_by_html -%}
+                                        {%- if section.settings.sort_by_visibility != 'hide' -%}
+                                            <div class="collection-control__sort-by-wrapper d-none d-lg-block" data-js-position-desktop="sort-by">
+                                                <div class="collection-control__sort-by mr-20{% if section.settings.sort_by_visibility == 'desktop_n_mobile' %} js-position{% endif %}" data-js-position-name="sort-by">
+                                                    <collection-sorting-clone-form>
+                                                        <form id="CollectionFiltersSortingCloneForm" class="mb-0">
+                                                            <div class="js-sh-filter" data-index="tags-sorting-clone">
+                                                                <div class="collection-filters__item">
+                                                                    <div class="collection-filters__field">
+                                                                        <div class="select position-relative js-dropdown js-select">
+                                                                            {%- assign sort_by = collection.sort_by | default: collection.default_sort_by -%}
+                                                                            <div class="d-flex align-items-center" data-js-dropdown-button>
+                                                                                <label class="collection-filters__label caption-large mb-0 mr-5" for="SortByClone">{{ 'collection_template.sort_by_label' | t }}:</label>
+                                                                                <select name="sort_by_clone" class="collection-filters__sort select__select caption-large p-0 pr-10 pr-lg-25 mb-0 border-0 cursor-pointer" id="SortByClone">
+                                                                                    {%- for option in collection.sort_options -%}
+                                                                                        <option value="{{ option.value | escape }}"{% if option.value == sort_by %} selected="selected"{% endif %}>{{ option.name | escape }}</option>
+                                                                                        {%- capture dropdown_options -%}
+                                                                                            {{ dropdown_options }}
+                                                                                            <span data-value="{{ option.value | escape }}"{% if option.value == sort_by %} class="selected"{% endif %}>{{ option.name | escape }}</span>
+                                                                                        {%- endcapture -%}
+                                                                                    {%- endfor -%}
+                                                                                </select>
+                                                                                <i class="position-absolute d-none d-lg-inline right-0">{% render 'icon-theme-229' %}</i>
+                                                                            </div>
+                                                                            <div class="select__dropdown dropdown d-none position-lg-absolute top-lg-100 left-lg-0" data-js-dropdown data-js-select-dropdown>
+                                                                                <div class="px-15 pb-30 py-lg-15">
+                                                                                    {{ dropdown_options }}
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <noscript>
+                                                                        <button type="submit" class="facets__button-no-js">{{ 'collection_template.sort_button' | t }}</button>
+                                                                    </noscript>
+                                                                </div>
+                                                            </div>
+                                                        </form>
+                                                    </collection-sorting-clone-form>
+                                                </div>
+                                            </div>
+                                        {%- endif -%}
+                                {%- endcapture -%}
+                                <div class="collection-control mb-25 mb-lg-{{ offset_collection_page_products_margin_top_d }}">
+                                    <div class="row">
+                                        {%- if settings.collection_show_sidebar != 'hide' and settings.collection_sidebar_position == 'dropdown' -%}
+                                            {%- assign desktop_need_button = true -%}
+                                        {%- endif -%}
+                                        {%- if settings.collection_show_sidebar == 'desktop_and_mobile' -%}
+                                            {%- assign mobile_need_button = true -%}
+                                        {%- endif -%}
+                                        {% capture control_grid %}col{% if mobile_need_button %}-8{% else %}-0{% endif %} col-lg{% if desktop_need_button %}-4{% endif %}{% if mobile_need_button != true %} d-none{% else %} d-flex{% endif %}|col-lg{% if desktop_need_button %}-3{% endif %}|col{% if mobile_need_button %}-4{% else %}-12{% endif %} col-lg{% if desktop_need_button %}-5{% endif %}{% endcapture %}
+                                        {%- assign control_grid = control_grid | split: '|' -%}
+                                        <div class="{{ control_grid[0] }} d-lg-flex align-items-center">
+                                            {%- if settings.collection_show_sidebar != 'hide' -%}
+                                                <div class="{% if mobile_need_button == true %}d-flex{% else %}d-none{% endif %}{% if desktop_need_button == true %} d-lg-flex{% else %} d-lg-none{% endif %} mr-30">
+                                                    <div class="collection-control__button-sidebar d-flex align-items-center cursor-pointer js-popup-button" data-js-popup-button="sidebar">
+                                                        <i class="mr-5">{% render 'icon-theme-084' %}</i>
+                                                        {{ 'collection_template.filter_button' | t }}
+                                                        <span id="CollectionProductCountMobileFilterButton"><span class="d-inline ml-3">{% if collection.products_count > 0 %}({{ collection.products_count }}){% endif %}</span></span>
+                                                    </div>
+                                                </div>
+                                            {%- endif -%}
+                                            {%- if desktop_need_button != true -%}
+                                                {{ sort_by_html }}
+                                                {%- assign added_sort_by_html = true -%}
+                                            {%- endif -%}
+                                        </div>
+                                        <div class="{{ control_grid[1] }} d-none d-lg-flex flex-lg-center" data-js-position-desktop="collection-info">
+                                            <div{% if section.settings.info_visibility == 'desktop_n_mobile' %} class="js-position"{% endif %} data-js-position-name="collection-info">
+                                                {%- if section.settings.info_visibility != 'hide' -%}
+                                                    <div class="collection-control__information">
+                                                        <div class="collection-product-count light" role="status">
+                                                            <p id="CollectionProductCount" class="collection-product-count__text m-0">
+                                                                {%- if collection.products_count == 0 -%}
+                                                                    {{ 'collection_template.product_count_empty' | t }}
+                                                                {%- elsif collection.products_count == collection.all_products_count -%}
+                                                                    {{ 'collection_template.product_count_simple' | t: count: collection.products_count }}
+                                                                {%- else -%}
+                                                                    {{ 'collection_template.product_count' | t: product_count: collection.products_count, count: collection.all_products_count }}
+                                                                {%- endif -%}
+                                                            </p>
+                                                        </div>
+                                                    </div>
+                                                {%- endif -%}
+                                            </div>
+                                        </div>
+                                        <div class="collection-control__view-wrapper {{ control_grid[2] }} d-flex justify-content-lg-end align-items-center">
+                                            {%- if settings.collection_sidebar_position == 'dropdown' or settings.collection_sidebar_position == 'top' -%}
+                                                {%- unless added_sort_by_html-%}
+                                                    {{ sort_by_html }}
+                                                {%- endunless-%}
+                                            {%- endif -%}
+                                            {%- if section.settings.view_length_visibility != 'hide' -%}
+                                                {% comment %}
+                                                <div class="d-none d-lg-block" data-js-position-desktop="view-length">
+                                                    <div class="collection-control__view-length{% if section.settings.view_length_visibility == 'desktop_n_mobile' %} js-position{% endif %}" data-js-position-name="view-length">
+                                                        <div class="select position-relative js-dropdown js-select">
+                                                            <div class="d-flex align-items-center" data-js-dropdown-button>
+                                                                <label for="ViewLength" class="mb-0 mr-5">{{ 'collection_template.view_length_label' | t }}:</label>
+                                                                <select name="view_length" class="p-0 pr-10 pr-lg-25 mb-0 border-0 cursor-pointer" id="ViewLength">
+                                                                    {%- assign view_length_values = '6|12|18|24|48' | split: '|' -%}
+                                                                    {%- for view_length_value in view_length_values -%}
+                                                                        {%- assign enable_view_length_prop = 'enable_view_length_' | append: view_length_value -%}
+                                                                        {%- if section.settings[enable_view_length_prop] or view_length_value == section.settings.default_view_length -%}
+                                                                            {% capture view_length_handles %}{{ view_length_handles }}{% if view_length_handles != blank %}|{% endif %}{{ view_length_value }}{% endcapture %}
+                                                                        {%- endif -%}
+                                                                    {%- endfor -%}
+                                                                    {%- assign view_length_handles = view_length_handles | split: '|' -%}
+                                                                    {%- assign dropdown_options = null -%}
+                                                                    {%- for handle in view_length_handles -%}
+                                                                        {%- assign handle_num = handle | abs -%}
+                                                                        <option value="{{ handle }}"{% if handle_num == view_length %} selected{% endif %}>{{ handle }}</option>
+                                                                        {%- capture option -%}
+                                                                        <span data-value="{{ handle }}"{% if handle_num == view_length %} class="selected"{% endif %}>{{ handle }}</span>
+                                                                        {%- endcapture -%}
+                                                                        {% assign dropdown_options = dropdown_options | append: option %}
+                                                                    {%- endfor -%}
+                                                                </select>
+                                                                <i class="position-absolute d-none d-lg-inline right-0">{% render 'icon-theme-229' %}</i>
+                                                            </div>
+                                                            <div class="select__dropdown dropdown d-none position-lg-absolute top-lg-100 left-lg-0" data-js-dropdown data-js-select-dropdown>
+                                                                <div class="px-15 pb-30 py-lg-15">
+                                                                    {{ dropdown_options }}
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                {% endcomment %}
+                                            {%- endif -%}
+                                            {%- if section.settings.view_grid_visibility != 'hide' -%}
+                                                <div class="collection-control__grid-buttons ml-auto ml-lg-15{% if section.settings.view_grid_visibility == 'desktop' %} d-none d-lg-block{% endif %}"
+                                                    {% if section.settings.enable_grid_tooltip -%}
+                                                        data-js-tooltip
+                                                        data-tippy-content="{{ 'collection_template.view_grid_tooltip' | t }}"
+                                                        data-tippy-placement="top"
+                                                        data-tippy-distance="8"
+                                                    {%- endif -%}
+                                                >
+                                                    <div class="collection-grid-buttons d-flex" data-js-collection-grid-buttons>
+                                                        {%- assign view_grid_handles = '1|2|3|4|6|list' | split: '|' -%}
+                                                        {%- assign view_grid_visible_classes = ' d-md-none|| d-none d-sm-block| d-none d-md-block| d-none d-lg-block| d-none d-lg-block' | split: '|' -%}
+                                                        {% capture view_grid_icons %}{% render 'icon-theme-304' %}|<span class="d-lg-none">{% render 'icon-theme-185' %}</span><span class="d-none d-lg-block">{% render 'icon-theme-323' %}</span>|<span class="d-lg-none">{% render 'icon-theme-186' %}</span><span class="d-none d-lg-block">{% render 'icon-theme-324' %}</span>|<span class="d-lg-none">{% render 'icon-theme-305' %}</span><span class="d-none d-lg-block">{% render 'icon-theme-325' %}</span>|<span class="d-lg-none">{% render 'icon-theme-305' %}</span><span class="d-none d-lg-block">{% render 'icon-theme-326' %}</span>|<span class="d-lg-none">{% render 'icon-theme-187' %}</span><span class="d-none d-lg-block">{% render 'icon-theme-327' %}</span>{% endcapture %}
+                                                        {%- assign view_grid_icons = view_grid_icons | split: '|' -%}
+                                                        {%- for handle in view_grid_handles -%}
+                                                            {%- assign visible_prop = 'show_view_grid_' | append: handle -%}
+                                                            {%- if section.settings[visible_prop] == false -%}
+                                                                {%- continue -%}
+                                                            {%- endif -%}
+                                                            {%- assign active_attrs = null -%}
+                                                            {%- for value in grid_values -%}
+                                                                {%- if value == handle -%}
+                                                                    {% capture attr %} data-active-{{ breakpoints[forloop.index0] }}{% endcapture %}
+                                                                    {% assign active_attrs = active_attrs | append: attr %}
+                                                                {%- endif -%}
+                                                            {%- endfor -%}
+                                                            <div class="mx-8 mx-lg-4 cursor-pointer{{ view_grid_visible_classes[forloop.index0] }}" data-value="{{ handle }}"{{ active_attrs }}>
+                                                                <i>{{ view_grid_icons[forloop.index0] }}</i>
+                                                            </div>
+                                                        {%- endfor -%}
+                                                    </div>
+                                                </div>
+                                            {%- endif -%}
+                                        </div>
+                                        {%- if section.settings.sort_by_visibility == 'desktop_n_mobile' or section.settings.view_length_visibility == 'desktop_n_mobile' -%}
+                                            <div class="col-12 d-lg-none mt-15">
+                                                <div class="row align-items-center">
+                                                    {%- if section.settings.sort_by_visibility == 'desktop_n_mobile' -%}
+                                                        <div class="col-6 col-sm-5 col-md-4" data-js-position-mobile="sort-by"></div>
+                                                    {%- elsif section.settings.info_visibility == 'desktop_n_mobile' -%}
+                                                        <div class="col-6 col-sm-5 col-md-4" data-js-position-mobile="collection-info"></div>
+                                                    {%- endif -%}
+                                                    {%- if section.settings.view_length_visibility == 'desktop_n_mobile' -%}
+                                                        <div class="col-6 col-sm-7 col-md-8 d-flex justify-content-end" data-js-position-mobile="view-length"></div>
+                                                    {%- endif -%}
+                                                </div>
+                                            </div>
+                                        {%- endif -%}
+                                        {%- if section.settings.info_visibility == 'desktop_n_mobile' and section.settings.sort_by_visibility == 'desktop_n_mobile' -%}
+                                            <div class="col-12 d-lg-none mt-15" data-js-position-mobile="collection-info"></div>
+                                        {%- endif -%}
+                                        {%- if settings.collection_sidebar_position == 'top' and settings.collection_show_sidebar != 'hide' -%}
+                                            <div class="col-12 d-none d-lg-block mt-20 mb-10">
+                                                <div class="collections__sidebar collections__sidebar--top collection-sidebar-type-2 position-relative invisible" data-js-position-desktop="sidebar" data-accordion-desktop-as-dropdown="sidebar-section">
+                                                    {% include 'collection-sidebar' %}
+                                                </div>
+                                            </div>
+                                        {%- endif -%}
+                                        {%- if section.settings.current_filters_visibility != 'hide' or settings.collection_sidebar_position == 'top' -%}
+                                            {% capture current_filters_html %}
+                                                {% include 'collection-current-filters', type: '2' %}
+                                            {% endcapture %}
+                                            <div id="CollectionCurrentFiltersClone" class="col-12 collections__sidebar__current-filters{% if section.settings.current_filters_visibility == 'mobile' and settings.collection_sidebar_position != 'top' %} d-lg-none{% elsif section.settings.current_filters_visibility == 'desktop' %} d-none d-lg-block{% endif %}">
+                                                <div class="mt-25 mt-lg-15{% unless has_current_filters %} d-none{% endunless %}">
+                                                    {{ current_filters_html }}
+                                                </div>
+                                            </div>
+                                        {%- endif -%}
+                                    </div>
+                                </div>
+                            {%- endif -%}
+                            <div id="CollectionBuilder"></div>
+                            <div id="CollectionProducts" class="collection-products{{ list_wrapper_classes }}{{ centered_classes }}">
+                                {%- paginate collection.products by section.settings.products_per_page -%}
+                                    <div id="main-collection-product-grid" data-id="{{ section.id }}">
+                                        <div id="CollectionProductGrid" class="row collection-product-grid{% if collection.products.size == 0 %} collection-product-grid--empty{% endif %}">
+                                            {%- if collection.products.size == 0 -%}
+                                                <div class="col">
+                                                    <div class="d-flex flex-column align-items-center py-40 py-md-100 my-100">
+                                                        <h2 class="h3">{{ 'collection_template.empty_title' | t }}</h1>
+                                                        <p>{{ 'collection_template.empty_paragraph' | t }}</p>
+                                                        <a href="{{ collection.url }}" class="btn empty-btn mt-20">{{ 'collection_template.use_fewer_filters' | t }}</a>
+                                                    </div>
+                                                </div>
+                                            {%- else -%}
+                                                {%- for product in collection.products -%}
+                                                    <div class="{{ grid_classes }}">
+                                                    {% include 'product-collection' product_margin_bottom: offset_collection_page_product_margin_bottom_d %}
+                                                    </div>
+                                                {%- endfor -%}
+                                            {%- endif -%}
+                                        </div>
+                                        <collection-pagination class="d-block" data-pagination-type="{{ settings.layout_pagination_type }}">
+                                            <div id="CollectionPagination">
+                                                {%- if paginate.pages > 1 -%}
+                                                    {% render 'pagination', paginate: paginate, anchor: '', type: settings.layout_pagination_type %}
+                                                {%- endif -%}
+                                            </div>
+                                        </collection-pagination>
+                                    </div>
+                                {%- endpaginate -%}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="CollectionHeadingBottom"></div>
+    </div>
+</div>
+
+<script>
+    window.renderCollectionPageHeadings = function(html = document, clearContainers) {
+        const pageHeading = html.querySelectorAll('.collection-page-heading-template');
+        const headingTop = document.getElementById('CollectionHeadingTop');
+        const headingProductsGridWidth = document.getElementById('CollectionHeadingProductsGridWidth');
+        const headingBottom = document.getElementById('CollectionHeadingBottom');
+
+        if(clearContainers) {
+            headingTop.innerHTML = '';
+            headingProductsGridWidth.innerHTML = '';
+            headingBottom.innerHTML = '';
+        }
+        pageHeading.forEach(element => {
+            const collectionHeadingInsertElement = element.classList.contains('collection-page-heading-template--position-container') || element.classList.contains('collection-page-heading-template--position-fullwidth') ?
+                headingTop :
+                element.classList.contains('collection-page-heading-template--position-container_n_bottom') || element.classList.contains('collection-page-heading-template--position-fullwidth_n_bottom') ?
+                headingBottom :
+                headingProductsGridWidth;
+                
+            collectionHeadingInsertElement.appendChild(element.content.cloneNode(true));
+            element.closest('.shopify-section').remove();
+        });
+    };
+    window.renderCollectionPageBuilders = function(html = document, renderOnlyInsert = false, clearContainers) {
+        const pageBuilder = html.querySelectorAll('.collection-page-builder-template:not(.processed)');
+        const collectionBuilder = document.getElementById('CollectionBuilder');
+        const selectorCollectionHiddenElements = [
+            '#CollectionProducts',
+            '.collection-sidebar-section--content-filters',
+            '.collection-sidebar-section--content-current-filters',
+            '#CollectionCurrentFiltersClone',
+            '.collection-control__sort-by',
+            '.collection-control__information',
+            '.collection-control__view-wrapper'
+        ];
+        let hasBuilderReplaceContent = false;
+
+        if(clearContainers) collectionBuilder.innerHTML = '';
+        pageBuilder.forEach(element => {
+            const sectionTypeInsert = element.classList.contains('collection-page-builder-template--type-insert');
+
+            if(renderOnlyInsert && !sectionTypeInsert) {
+                return;
+            }
+            if (sectionTypeInsert) {
+                const collectionProductGrid = document.getElementById('CollectionProductGrid');
+
+                if (collectionProductGrid && !collectionProductGrid.classList.contains('collection-product-grid--empty')) {
+                    const productGridClasses = collectionProductGrid.children[0].getAttribute('class');
+
+                    for (let elementBlock of element.content.children) {
+                        let gridElement = document.createElement('div');
+                        let gridElementClone = elementBlock.cloneNode(true);
+                        
+                        gridElement.setAttribute('data-promobox-grid-visible', gridElementClone.dataset.promoboxGridVisible);
+                        gridElementClone.removeAttribute('data-promobox-grid-visible');
+                        gridElement.setAttribute('class', productGridClasses);
+                        gridElement.appendChild(gridElementClone);
+                        collectionProductGrid.insertAdjacentElement('afterbegin', gridElement);
+                    }
+                }
+            } else {
+                if (element.content.querySelector('.collection-page-builder')) hasBuilderReplaceContent = true;
+                if (hasBuilderReplaceContent) collectionBuilder.appendChild(element.content.cloneNode(true));
+                
+                element.closest('.shopify-section').remove();
+            }
+            
+            element.classList.add('processed');
+        });
+        selectorCollectionHiddenElements.forEach(selector => {
+            const elements = document.querySelectorAll(selector);
+
+            elements.forEach(element =>  element.classList[hasBuilderReplaceContent ? 'add' : 'remove']('d-none-important'));
+        });
+    };
+    renderCollectionPageHeadings();
+    renderCollectionPageBuilders();
+</script>
+{%- if settings.collection_sidebar_position == 'top' and settings.collection_show_sidebar != 'hide' -%}
+    <script>
+        window.checkFilterAccordion = (function() {
+            let lastValueIsDesktop = false;
+
+            function toggleFilterAccordion(element, show = true) {
+                element.querySelector('.collection-sidebar-section__head').classList[show ? 'add' : 'remove']('open');
+                element.querySelector('.collection-sidebar-section__accordion').classList[show ? 'remove' : 'add']('d-none');
+            };
+            return function(html = document, forced) {
+                const isDesktop = window.innerWidth > theme.breakpoints.main - 1;
+                
+                if(!forced && lastValueIsDesktop === isDesktop) return;
+                
+                html.querySelectorAll('.collection-sidebar-section[data-js-accordion]')
+                    .forEach(element => {
+                        toggleFilterAccordion(element, 
+                            isDesktop ? 
+                            false : 
+                            element.dataset.accordionDefaultState === 'open' ? 
+                            true : 
+                            false
+                        );
+                    });  
+                lastValueIsDesktop = isDesktop;
+            };
+        })();
+
+        window.checkFilterAccordion();
+        window.addEventListener('resize', () => window.checkFilterAccordion());
+        document.querySelector('.collections__sidebar--top').classList.remove('invisible');
+    </script>
+{%- endif -%}
+{%- if section.settings.view_grid_visibility != 'hide' -%}
+    <script>
+        class ProductsView {
+            constructor() {
+                this.selectorElement = '.js-collection-grid';
+                this.element = document.querySelector(this.selectorElement);
+                
+                this.load();
+            }
+
+            load() {
+                let gridObj = localStorage.getItem('collection-grid');
+                
+                if(window.location.href.indexOf('collection-grid=reset') !== -1) localStorage.setItem('collection-grid', null);
+                else if(gridObj) this.firstPageLoad(gridObj);
+
+                this.element.querySelectorAll('[data-js-collection-grid-buttons] [data-value]').forEach(element => element.addEventListener('click', this.onButtonsClick.bind(this)));
+            }
+
+            firstPageLoad(obj) {
+                const parsedObj = JSON.parse(obj);
+                let isDefault = true;
+                
+                for(let key in parsedObj) {
+                    let valueAttr = `data-value-${key}`;
+
+                    if(this.element.getAttribute(valueAttr) === parsedObj[key]) {
+                        continue;
+                    }
+                    
+                    isDefault = false;
+                    let activeAttr = `data-active-${key}`;
+                    let activeButton = this.element.querySelector(`[data-js-collection-grid-buttons] [${activeAttr}]`);
+                    let currentButton = this.element.querySelector(`[data-js-collection-grid-buttons] [data-value="${parsedObj[key]}"]`);
+
+                    this.element.setAttribute(valueAttr, parsedObj[key]);
+                    if(activeButton) activeButton.removeAttribute(activeAttr);
+                    if(currentButton) currentButton.setAttribute(activeAttr, true);
+                }
+                
+                if(!isDefault) this.update();
+            }
+
+            onButtonsClick(event) {
+                const activeAttr = `data-active-${theme.current.bp}`;
+
+                if(!event.currentTarget.hasAttribute(activeAttr)) {
+                    const activeButton = this.element.querySelector(`[data-js-collection-grid-buttons] [${activeAttr}]`);
+                    let gridObj = {};
+                    
+                    if(activeButton) activeButton.removeAttribute(activeAttr);
+
+                    event.currentTarget.setAttribute(activeAttr, true);
+                    this.element.setAttribute(`data-value-${theme.current.bp}`, event.currentTarget.dataset.value);
+                    this.update();
+
+                    for(let key in theme.breakpoints.values) {
+                        gridObj[key] = this.element.getAttribute(`data-value-${key}`);
+                    }
+
+                    localStorage.setItem('collection-grid', JSON.stringify(gridObj));
+                }
+            }
+
+            update(html = document) {
+                const collectionProducts = html.getElementById('CollectionProducts');
+                let gridClasses = '';
+                
+                for (let key in theme.breakpoints.values) {
+                    let gridValue = this.element.getAttribute(`data-value-${key}`);
+                    let columnSize = (gridValue === 'list' ? 12 : 12 / +gridValue);
+                    
+                    collectionProducts.classList[+gridValue === 1 ? 'add' : 'remove'](`collection-grid-centered-${key}`);
+                    collectionProducts.classList[gridValue === 'list' ? 'add' : 'remove'](`collection-grid-list-${key}`);
+                    gridClasses += `${gridClasses !== '' ? ' ' : ''}col-${key === 'xs' ? '' : `${key}-`}${columnSize}`;
+                }
+                
+                collectionProducts.querySelectorAll('[data-js-product], [data-js-promobox]')
+                    .forEach(element => {
+                        element.parentNode.setAttribute('class', gridClasses);
+                    });
+
+                window.dispatchEvent(new Event('checkImages'));
+            }
+        }
+        
+        theme.ProductsView = new ProductsView;
+    </script>
+{%- endif -%}
+{%- if settings.collection_enable_sticky -%}
+    <script>
+        theme.AssetsLoader.require('scripts', 'sticky_sidebar');
+    </script>
+{%- endif -%}
+
+
+{% schema %}
+{
+  "name": "Product grid",
+  "class": "collection-grid-section",
+  "settings": [
+  {
+    "type": "paragraph",
+    "content": "You can add sections \"Heading\" and \"Banner Builder\" for the header of the collection pages and for the banners. To do this, select the \"Add section -> Collection page heading\" or \"Add section -> Collection banner builder\" section on this page."
+    },
+  {
+    "type": "paragraph",
+    "content": "Attention! After making changes in this section, press the \"Save\" button in the admin panel to see the \"Heading\" and \"Banner Builder\" sections if these sections have been added to the page."
+    },
+    {
+        "type": "select",
+        "id": "container",
+        "label": "Content width",
+        "default": "boxed",
+        "options": [
+            {
+                "value": "boxed",
+                "label": "Boxed"
+            },
+            {
+                "value": "fullwidth",
+                "label": "Fullwidth"
+            }
+            
+        ]
+    },
+    {
+      "type": "range",
+      "id": "products_per_page",
+      "min": 4,
+      "max": 24,
+      "step": 1,
+      "default": 12,
+      "label": "Products per page"
+    },
+    {
+      "type": "header",
+      "content": "Filtering"
+    },
+    {
+        "type": "checkbox",
+        "id": "enable_default_filtering",
+        "label": "Enable default filtering",
+        "info": "Or turn off filtering by default and turn on filtering by tags if this option is disabled.",
+        "default": true
+    },
+    {
+        "type": "paragraph",
+        "content": "[Customize filters](\/admin\/menus) in the admin panel and add a block to \"Add block -> Filters\" to show the filters. These settings apply only to the \"Filters\" block."
+      },
+    {
+        "type": "checkbox",
+        "id": "show_selected_filters_counter",
+        "default": true,
+        "label": "Show selected filters counter & button \"Reset\""
+    },
+    {
+        "type": "checkbox",
+        "id": "show_filter_product_count",
+        "label": "Show the count of products on the filter",
+        "default": true
+    },
+    {
+        "type": "checkbox",
+        "id": "hide_disabled_filters",
+        "label": "Hide disabled filters",
+        "info": "Or show and mark as unavailable if this option is disabled",
+        "default": true
+    },
+    {
+        "type": "checkbox",
+        "id": "make_availability_as_rounded",
+        "default": true,
+        "label": "Make availability filter as rounded checkbox"
+    },
+    {
+        "type": "select",
+        "id": "price_filter_type",
+        "label": "Price filter type",
+        "info": "If the \"Theme settings -> Currency -> Enable legacy method of the currency conversion\" option is enabled then only the \"Slider\" option is available",
+        "default": "slider_n_inputs",
+        "options": [
+            {
+            "value": "slider_n_inputs",
+            "label": "Slider & inputs"
+            },
+            {
+            "value": "slider",
+            "label": "Slider"
+            },
+            {
+            "value": "inputs",
+            "label": "Inputs"
+            }
+        ]
+    },
+    {
+      "type": "header",
+      "content": "Sort by"
+    },
+    {
+      "type": "select",
+      "id": "sort_by_visibility",
+      "label": "Show 'Sort by' select",
+      "default": "desktop",
+      "options": [
+          {
+          "value": "desktop",
+          "label": "Only desktop"
+          },
+          {
+          "value": "desktop_n_mobile",
+          "label": "Desktop & mobile"
+          },
+          {
+          "value": "hide",
+          "label": "Hide"
+          }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": "Default value get from collection setting"
+    },
+    {
+      "type": "header",
+      "content": "Information"
+    },
+    {
+      "type": "select",
+      "id": "info_visibility",
+      "label": "Show information",
+      "default": "desktop",
+      "options": [
+          {
+          "value": "desktop",
+          "label": "Only desktop"
+          },
+          {
+          "value": "desktop_n_mobile",
+          "label": "Desktop & mobile"
+          },
+          {
+          "value": "hide",
+          "label": "Hide"
+          }
+      ]
+    },
+    {
+      "type": "header",
+      "content": "Products count (Coming soon)"
+    },
+    {
+        "type": "paragraph",
+        "content": "Attention! Option temporarily unavailable!"
+    },
+    {
+      "type": "select",
+      "id": "view_length_visibility",
+      "label": "Show 'Products count' select",
+      "default": "hide",
+      "options": [
+          {
+          "value": "hide",
+          "label": "Hide"
+          }
+      ]
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_view_length_6",
+      "label": "Enable value 6",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_view_length_12",
+      "label": "Enable value 12",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_view_length_18",
+      "label": "Enable value 18",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_view_length_24",
+      "label": "Enable value 24",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_view_length_48",
+      "label": "Enable value 48",
+      "default": false
+    },
+    {
+      "type": "select",
+      "id": "default_view_length",
+      "label": "Default",
+      "default": "12",
+      "options": [
+          {
+              "value": "6",
+              "label": "6"
+          },
+          {
+              "value": "12",
+              "label": "12"
+          },
+          {
+              "value": "18",
+              "label": "18"
+          },
+          {
+              "value": "24",
+              "label": "24"
+          },
+          {
+              "value": "48",
+              "label": "48"
+          }
+      ]
+    },
+    {
+      "type": "header",
+      "content": "Grid"
+    },
+    {
+      "type": "select",
+      "id": "view_grid_visibility",
+      "label": "Show grid buttons",
+      "default": "desktop_n_mobile",
+      "options": [
+          {
+              "value": "desktop",
+              "label": "Only desktop"
+          },
+          {
+              "value": "desktop_n_mobile",
+              "label": "Desktop & mobile"
+          },
+          {
+              "value": "hide",
+              "label": "Hide"
+          }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": "The buttons dynamically change their availability and remember the selected state at different screen widths. Resize your browser window from small to large to see all available buttons."
+    },
+    {
+      "type": "checkbox",
+      "id": "show_view_grid_1",
+      "label": "Show button '1 item per row'",
+      "info": "Visible only on the mobile",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_view_grid_2",
+      "label": "Show button '2 items per row'",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_view_grid_3",
+      "label": "Show button '3 items per row'",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_view_grid_4",
+      "label": "Show button '4 items per row'",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_view_grid_6",
+      "label": "Show button '6 items per row'",
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "show_view_grid_list",
+      "label": "Show button 'List'",
+      "info": "Visible only on the desktop",
+      "default": true
+    },
+    {
+      "type": "select",
+      "id": "view_grid_list_design",
+      "label": "Product 'List' design",
+      "default": "1",
+      "options": [
+          {
+              "value": "1",
+              "label": "Design #1"
+          },
+          {
+              "value": "2",
+              "label": "Design #2"
+          }
+      ]
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_grid_tooltip",
+      "label": "Enable tooltips",
+      "info": "Don't forget to enable tooltips for the whole theme for this option to work. Theme settings -> Animations -> Tooltips",
+      "default": true
+    },
+    {
+      "type": "select",
+      "id": "default_view_grid_xl",
+      "label": "Default products per row (Extra large)",
+      "default": "3",
+      "options": [
+          {
+              "value": "2",
+              "label": "2"
+          },
+          {
+              "value": "3",
+              "label": "3"
+          },
+          {
+              "value": "4",
+              "label": "4"
+          },
+          {
+              "value": "6",
+              "label": "6"
+          },
+          {
+              "value": "list",
+              "label": "List"
+          }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "default_view_grid_lg",
+      "label": "Default products per row (Large)",
+      "default": "3",
+      "options": [
+          {
+              "value": "2",
+              "label": "2"
+          },
+          {
+              "value": "3",
+              "label": "3"
+          },
+          {
+              "value": "4",
+              "label": "4"
+          },
+          {
+              "value": "6",
+              "label": "6"
+          },
+          {
+              "value": "list",
+              "label": "List"
+          }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "default_view_grid_md",
+      "label": "Default products per row (Medium)",
+      "default": "3",
+      "options": [
+          {
+              "value": "2",
+              "label": "2"
+          },
+          {
+              "value": "3",
+              "label": "3"
+          },
+          {
+              "value": "4",
+              "label": "4"
+          }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "default_view_grid_sm",
+      "label": "Default products per row (Small)",
+      "default": "2",
+      "options": [
+          {
+              "value": "1",
+              "label": "1 (centered)"
+          },
+          {
+              "value": "2",
+              "label": "2"
+          },
+          {
+              "value": "3",
+              "label": "3"
+          }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "default_view_grid_xs",
+      "label": "Default view grid (Extra small)",
+      "default": "2",
+      "options": [
+          {
+              "value": "1",
+              "label": "1 (centered)"
+          },
+          {
+              "value": "2",
+              "label": "2"
+          }
+      ]
+    },
+    {
+      "type": "header",
+      "content": "Current filters over the products grid"
+    },
+    {
+      "type": "select",
+      "id": "current_filters_visibility",
+      "label": "Show current filters",
+      "default": "mobile",
+      "options": [
+          {
+              "value": "mobile",
+              "label": "Only mobile"
+          },
+          {
+              "value": "desktop",
+              "label": "Only desktop"
+          },
+          {
+              "value": "desktop_n_mobile",
+              "label": "Desktop & mobile"
+          },
+          {
+              "value": "hide",
+              "label": "Hide"
+          }
+      ]
+    },
+    {
+        "type": "header",
+        "content": "Filters section"
+    },
+    {
+      "type": "checkbox",
+      "id": "uppercase_filter_title",
+      "default": true,
+      "label": "Uppercase filters section title"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_filter_border",
+      "default": true,
+      "label": "Show filters section border"
+    },
+    {
+      "type": "header",
+      "content": "Video tutorial"
+    },
+    {
+      "type": "paragraph",
+      "content": "[Content](https:\/\/www.youtube.com\/watch?v=vaIWVgy5994&list=PLj-506KaR_vcQjwcpC6yII-1JY0bSj7df&index=12)"
+    },
+    {
+      "type": "header",
+      "content": "User manual"
+    },
+    {
+      "type": "paragraph",
+      "content": "[Content](https:\/\/mpthemes.net\/shella-shopify-theme\/documentation-version4\/doc04-03-collection-page-content.php#content)"
+    }
+  ],
+  "blocks": [
+    {
+        "type": "collections",
+        "name": "Collections",
+        "limit": 1,
+        "settings": [
+            {
+                "type": "header",
+                "content": "Section settings"
+            },
+            {
+                "type": "text",
+                "id": "title",
+                "label": "Title",
+                "default": "COLLECTION"
+            },
+            {
+                "type": "select",
+                "id": "default_state",
+                "label": "Default state",
+                "info": "If the \"Theme settings -> Sidebar position on desktop -> Top & vertical filters\" option is selected, only the \"Open\" and \"Close\" options are available",
+                "default": "open",
+                "options": [
+                    {
+                        "value": "open",
+                        "label": "Open"
+                    },
+                    {
+                        "value": "close",
+                        "label": "Close"
+                    },
+                    {
+                        "value": "fixed",
+                        "label": "Fixed"
+                    },
+                    {
+                        "value": "without_title",
+                        "label": "Without title"
+                    }
+                ]
+            },
+            {
+                "type": "header",
+                "content": "Content"
+            },
+            {
+                "type": "link_list",
+                "id": "menu",
+                "label": "Menu"
+            },
+            {
+                "type": "checkbox",
+                "id": "show_collection_product_count",
+                "label": "Show the count of products on the collection",
+                "default": true
+            }
+        ]
+    },
+    {
+      "type": "current_filters",
+      "name": "Current filters",
+      "limit": 1,
+      "settings": [
+          {
+              "type": "paragraph",
+              "content": "The block is always hidden if there are no active filters. Start filtering to see this block."
+          },
+          {
+              "type": "header",
+              "content": "Section settings"
+          },
+          {
+              "type": "text",
+              "id": "title",
+              "label": "Title",
+              "default": "CURRENT FILTERS"
+          },
+          {
+              "type": "select",
+              "id": "default_state",
+              "label": "Default state",
+              "default": "open",
+              "options": [
+                  {
+                      "value": "open",
+                      "label": "Open"
+                  },
+                  {
+                      "value": "close",
+                      "label": "Close"
+                  },
+                  {
+                      "value": "fixed",
+                      "label": "Fixed"
+                  },
+                  {
+                      "value": "without_title",
+                      "label": "Without title"
+                  }
+              ]
+          },
+          {
+            "type": "header",
+            "content": "Content"
+        },
+          {
+            "type": "checkbox",
+            "id": "show_group",
+            "label": "Show current filters group",
+            "info": "Groups are shown if there is more than 1 group type in active filters. For example: Color and Price",
+            "default": true
+          }
+      ]
+    },
+    {
+      "type": "filters",
+      "name": "Filters",
+      "limit": 1,
+      "settings": [
+      {
+        "type": "paragraph",
+        "content": "This block will be shown if the \"Product grid -> Filtering -> Enable default filtering\" option is enabled."
+      },
+      {
+        "type": "paragraph",
+        "content": "[Customize filters](\/admin\/menus)"
+        },
+        {
+            "type": "header",
+            "content": "Section settings"
+        },
+        
+        {
+            "type": "select",
+            "id": "default_state",
+            "label": "Default state",
+            "info": "If the \"Theme settings -> Sidebar position on desktop -> Top & vertical filters\" option is selected, only the \"Open\" and \"Close\" options are available",
+            "default": "open",
+            "options": [
+                {
+                    "value": "open",
+                    "label": "Open"
+                },
+                {
+                    "value": "close",
+                    "label": "Close"
+                },
+                {
+                    "value": "fixed",
+                    "label": "Fixed"
+                },
+                {
+                    "value": "without_title",
+                    "label": "Without title"
+                }
+            ]
+        },
+        {
+            "type": "header",
+            "content": "Content"
+        },
+        {
+            "type": "select",
+            "id": "layout",
+            "label": "Layout",
+            "default": "1_col",
+            "options": [
+                {
+                    "value": "1_col",
+                    "label": "1 column"
+                },
+                {
+                    "value": "2_col",
+                    "label": "2 columns"
+                },
+                {
+                    "value": "3_col",
+                    "label": "3 columns"
+                },
+                {
+                    "value": "row",
+                    "label": "Row"
+                }
+            ]
+        },
+        {
+            "type": "range",
+            "id": "max_column_size",
+            "min": 0,
+            "max": 30,
+            "step": 1,
+            "label": "Max column size",
+            "info": "Only for setting \"Layout: 2 or 3 columns \". 0 is infinite",
+            "default": 8
+        }
+      ]
+    },
+    {
+        "type": "filter_settings",
+        "name": "Filter settings",
+        "settings": [
+            {
+                "type": "text",
+                "id": "filter_name",
+                "label": "Filter name",
+                "default": "Price"
+            },
+            {
+                "type": "header",
+                "content": "Section settings"
+            },
+            {
+                "type": "text",
+                "id": "title",
+                "label": "Title"
+            },
+            {
+                "type": "select",
+                "id": "default_state",
+                "label": "Default state",
+                "info": "If the \"Theme settings -> Sidebar position on desktop -> Top & vertical filters\" option is selected, only the \"Open\" and \"Close\" options are available",
+                "default": "open",
+                "options": [
+                    {
+                        "value": "open",
+                        "label": "Open"
+                    },
+                    {
+                        "value": "close",
+                        "label": "Close"
+                    },
+                    {
+                        "value": "fixed",
+                        "label": "Fixed"
+                    },
+                    {
+                        "value": "without_title",
+                        "label": "Without title"
+                    }
+                ]
+            },
+            {
+                "type": "header",
+                "content": "Content"
+            },
+            {
+                "type": "checkbox",
+                "id": "make_as_color",
+                "label": "Make as color circle",
+                "info": "Make sure the values for this filter are colors."
+            },
+            {
+                "type": "select",
+                "id": "layout",
+                "label": "Layout",
+                "default": "1_col",
+                "options": [
+                    {
+                        "value": "1_col",
+                        "label": "1 column"
+                    },
+                    {
+                        "value": "2_col",
+                        "label": "2 columns"
+                    },
+                    {
+                        "value": "3_col",
+                        "label": "3 columns"
+                    },
+                    {
+                        "value": "row",
+                        "label": "Row"
+                    }
+                ]
+            },
+            {
+                "type": "range",
+                "id": "max_column_size",
+                "min": 0,
+                "max": 30,
+                "step": 1,
+                "label": "Max column size",
+                "info": "Only for setting \"Layout: 2 or 3 columns \". 0 is infinite",
+                "default": 8
+            }
+        ]
+    },
+    {
+        "type": "tags",
+        "name": "Tags",
+        "settings": [
+        {
+            "type": "paragraph",
+            "content": "This block will be shown if the \"Product grid -> Filtering -> Enable default filtering\" option is disabled."
+          },
+            {
+                "type": "paragraph",
+                "content": "Attention! The tag does not work in conjunction with filters! We recommend using the new version of the filter and the \"Filters\" block!"
+            },
+            {
+                "type": "header",
+                "content": "Section settings"
+            },
+            {
+                "type": "text",
+                "id": "title",
+                "label": "Title",
+                "default": "TAG"
+            },
+            {
+                "type": "select",
+                "id": "default_state",
+                "label": "Default state",
+                "info": "If the \"Theme settings -> Sidebar position on desktop -> Top & vertical filters\" option is selected, only the \"Open\" and \"Close\" options are available",
+                "default": "open",
+                "options": [
+                    {
+                        "value": "open",
+                        "label": "Open"
+                    },
+                    {
+                        "value": "close",
+                        "label": "Close"
+                    },
+                    {
+                        "value": "fixed",
+                        "label": "Fixed"
+                    },
+                    {
+                        "value": "without_title",
+                        "label": "Without title"
+                    }
+                ]
+            },
+            {
+                "type": "header",
+                "content": "Content"
+            },
+            {
+                "type": "checkbox",
+                "id": "show_checkbox",
+                "label": "Show checkbox area",
+                "info": "If this option is disabled, then the \"Make tag as color circle\" option is not available for activation",
+                "default": true
+            },
+            {
+                "type": "checkbox",
+                "id": "make_as_color",
+                "label": "Make tag as color circle",
+                "info": "If this option is enabled, you must manually enter the names of the tags that you want to display in the \"Tags list\" field. For example: Red"
+            },
+            {
+                "type": "textarea",
+                "id": "tags_list",
+                "label": "Tags list",
+                "info": "Break the line to separate tags. Clear the field to automatically show all available tags on the collection."
+            },
+            {
+                "type": "select",
+                "id": "layout",
+                "label": "Layout",
+                "default": "1_col",
+                "options": [
+                    {
+                        "value": "1_col",
+                        "label": "1 column"
+                    },
+                    {
+                        "value": "2_col",
+                        "label": "2 columns"
+                    },
+                    {
+                        "value": "3_col",
+                        "label": "3 columns"
+                    },
+                    {
+                        "value": "row",
+                        "label": "Row"
+                    }
+                ]
+            },
+            {
+                "type": "range",
+                "id": "max_column_size",
+                "min": 0,
+                "max": 30,
+                "step": 1,
+                "label": "Max column size",
+                "info": "Only for setting \"Layout: 2 or 3 columns \". 0 is infinite",
+                "default": 8
+            },
+            {
+                "type": "text",
+                "id": "for_collections",
+                "label": "Section visible on collections",
+                "info": "Separator is ','. Example: mens,womens,accessories. Default - for all collections"
+            }
+        ]
+    },
+    {
+      "type": "products",
+      "name": "Products",
+      "settings": [
+      {
+        "type": "paragraph",
+        "content": "If the \"Theme settings -> Sidebar position on desktop -> Top & vertical filters\" option is selected, then the section will be displayed only on a mobile device."
+    },
+          {
+              "type": "header",
+              "content": "Section settings"
+          },
+          {
+              "type": "text",
+              "id": "title",
+              "label": "Title",
+              "default": "PRODUCTS"
+          },
+          {
+              "type": "select",
+              "id": "default_state",
+              "label": "Default state",
+              "default": "fixed",
+              "options": [
+                  {
+                      "value": "open",
+                      "label": "Open"
+                  },
+                  {
+                      "value": "close",
+                      "label": "Close"
+                  },
+                  {
+                      "value": "fixed",
+                      "label": "Fixed"
+                  },
+                  {
+                      "value": "without_title",
+                      "label": "Without title"
+                  }
+              ]
+          },
+          {
+              "type": "header",
+              "content": "Content"
+          },
+          {
+              "type": "collection",
+              "id": "collection",
+              "label": "Collection"
+          },
+          {
+              "type": "range",
+              "id": "max_count",
+              "min": 0,
+              "max": 10,
+              "step": 1,
+              "unit": "pds",
+              "label": "Max count",
+              "info": "0 is infinite",
+              "default": 3
+          },
+          {
+              "type": "select",
+              "id": "product_type",
+              "label": "Products type",
+              "default": "short",
+              "options": [
+                  {
+                      "value": "short",
+                      "label": "Short"
+                  },
+                  {
+                      "value": "full",
+                      "label": "Full"
+                  }
+              ]
+          }
+      ]
+    },
+    {
+      "type": "custom_html",
+      "name": "Custom HTML",
+      "settings": [
+      {
+        "type": "paragraph",
+        "content": "If the \"Theme settings -> Sidebar position on desktop -> Top & vertical filters\" option is selected, then the section will be displayed only on a mobile device."
+    },
+          {
+              "type": "header",
+              "content": "Section settings"
+          },
+          {
+              "type": "text",
+              "id": "title",
+              "label": "Title",
+              "default": "CUSTOM BLOCK"
+          },
+          {
+              "type": "select",
+              "id": "default_state",
+              "label": "Default state",
+              "default": "fixed",
+              "options": [
+                  {
+                      "value": "open",
+                      "label": "Open"
+                  },
+                  {
+                      "value": "close",
+                      "label": "Close"
+                  },
+                  {
+                      "value": "fixed",
+                      "label": "Fixed"
+                  },
+                  {
+                      "value": "without_title",
+                      "label": "Without title"
+                  }
+              ]
+          },
+          {
+              "type": "header",
+              "content": "Content"
+          },
+          {
+              "type": "page",
+              "id": "page_content",
+              "label": "Page content",
+              "info": "Default page: 'Include Collections Sidebar'"
+          }
+      ]
+    },
+    {
+      "type": "subscription",
+      "name": "Subscription",
+      "settings": [
+        {
+            "type": "paragraph",
+            "content": "If the \"Theme settings -> Sidebar position on desktop -> Top & vertical filters\" option is selected, then the section will be displayed only on a mobile device."
+        },
+          {
+              "type": "header",
+              "content": "Section settings"
+          },
+          {
+              "type": "text",
+              "id": "title",
+              "label": "Title",
+              "default": "SUBSCRIPTION"
+          },
+          {
+              "type": "select",
+              "id": "default_state",
+              "label": "Default state",
+              "default": "without_title",
+              "options": [
+                  {
+                      "value": "open",
+                      "label": "Open"
+                  },
+                  {
+                      "value": "close",
+                      "label": "Close"
+                  },
+                  {
+                      "value": "fixed",
+                      "label": "Fixed"
+                  },
+                  {
+                      "value": "without_title",
+                      "label": "Without title"
+                  }
+              ]
+          },
+          {
+              "type": "header",
+              "content": "Content"
+          },
+          {
+              "type": "text",
+              "id": "paragraph",
+              "label": "Paragraph",
+              "default": "Sign up for Shella updates to receive information about new arrivals, future events and specials."
+          },
+          {
+              "type": "text",
+              "id": "placeholder",
+              "label": "Placeholder",
+              "default": "Enter your email address"
+          },
+          {
+              "type": "text",
+              "id": "button_text",
+              "label": "Button text",
+              "default": "SUBSCRIBE!"
+          }
+      ]
+    },
+    {
+        "type": "promobox",
+        "name": "Promo box (Banner)",
+        "settings": [
+            {
+                "type": "header",
+                "content": "Section settings"
+            },
+            {
+                "type": "text",
+                "id": "title",
+                "label": "Title",
+                "default": "PROMOBOX"
+            },
+            {
+                "type": "select",
+                "id": "default_state",
+                "label": "Default state",
+                "default": "without_title",
+                "options": [
+                    {
+                        "value": "open",
+                        "label": "Open"
+                    },
+                    {
+                        "value": "close",
+                        "label": "Close"
+                    },
+                    {
+                        "value": "fixed",
+                        "label": "Fixed"
+                    },
+                    {
+                        "value": "without_title",
+                        "label": "Without title"
+                    }
+                ]
+            },
+            {
+                "type": "header",
+                "content": "Content"
+            },
+            {
+            "type": "url",
+            "id": "url",
+            "label": "URL for banner"
+            },
+            {
+            "type": "header",
+            "content": "Image"
+            },
+            {
+            "type": "image_picker",
+            "id": "image",
+            "label": "Image",
+            "info": "Recommended size 1440x550 pixels"
+            },
+            {
+            "type": "range",
+            "id": "image_size",
+            "min": 200,
+            "max": 2000,
+            "step": 50,
+            "unit": "px",
+            "label": "Image size",
+            "info": "These are the fields for image quality. If images lazy loading is on, the option is ignored",
+            "default": 1450
+            },
+            {
+            "type": "color",
+            "id": "color_image_mask",
+            "label": "Image mask"
+            },
+            {
+            "type": "range",
+            "id": "image_mask_opacity",
+            "min": 0.1,
+            "max": 1,
+            "step": 0.1,
+            "label": "Image mask opacity",
+            "default": 0.5
+            },
+            {
+            "type": "header",
+            "content": "Text"
+            },
+            {
+            "type": "paragraph",
+            "content": "Delete the line value for the text or button if you want to hide the element"
+            },
+            {
+            "type": "paragraph",
+            "content": "Use '<br>' for the line break"
+            },
+            {
+            "type": "text",
+            "id": "text_line_1",
+            "label": "Text line #1",
+            "default": "Text line #1"
+            },
+            {
+            "type": "text",
+            "id": "text_line_2",
+            "label": "Text line #2",
+            "default": "Text line #2"
+            },
+            {
+            "type": "text",
+            "id": "text_line_3",
+            "label": "Text line #3",
+            "default": "Text line #3"
+            },
+            {
+            "type": "select",
+            "id": "style",
+            "label": "Colorize style",
+            "default": "1",
+            "options": [
+            {
+            "value": "1",
+            "label": "Style #1"
+            },
+            {
+            "value": "2",
+            "label": "Style #2"
+            },
+            {
+            "value": "3",
+            "label": "Style #3"
+            },
+            {
+            "value": "4",
+            "label": "Style #4"
+            },
+            {
+            "value": "5",
+            "label": "Style #5"
+            },
+            {
+            "value": "6",
+            "label": "Style #6"
+            },
+            {
+            "value": "7",
+            "label": "Style #7"
+            },
+            {
+            "value": "8",
+            "label": "Style #8"
+            }
+            ]
+            },
+            {
+            "type": "header",
+            "content": "Button #1"
+            },
+            {
+            "type": "text",
+            "id": "button_1",
+            "label": "Button text",
+            "default": "Button #1 text"
+            },
+            {
+            "type": "url",
+            "id": "button_1_url",
+            "label": "URL for the button"
+            },
+            {
+            "type": "select",
+            "id": "color_button_type_1",
+            "label": "Button style",
+            "default": "default",
+            "options": [
+            {
+            "value": "default",
+            "label": "Default"
+            },
+            {
+            "value": "secondary",
+            "label": "Secondary"
+            },
+            {
+            "value": "invert",
+            "label": "Invert"
+            },
+            {
+            "value": "clean",
+            "label": "Clean"
+            },
+            {
+            "value": "default-transparent",
+            "label": "Transparent default"
+            },
+            {
+            "value": "secondary-transparent",
+            "label": "Transparent secondary"
+            },
+            {
+            "value": "invert-transparent",
+            "label": "Transparent invert"
+            },
+            {
+            "value": "clean-transparent",
+            "label": "Transparent clean"
+            }
+            ]
+            },
+            {
+            "type": "header",
+            "content": "Button #2"
+            },
+            {
+            "type": "text",
+            "id": "button_2",
+            "label": "Button text",
+            "default": "Button #2 text"
+            },
+            {
+            "type": "url",
+            "id": "button_2_url",
+            "label": "URL for the button"
+            },
+            {
+            "type": "select",
+            "id": "color_button_type_2",
+            "label": "Button style",
+            "default": "default",
+            "options": [
+            {
+            "value": "default",
+            "label": "Default"
+            },
+            {
+            "value": "secondary",
+            "label": "Secondary"
+            },
+            {
+            "value": "invert",
+            "label": "Invert"
+            },
+            {
+            "value": "clean",
+            "label": "Clean"
+            },
+            {
+            "value": "default-transparent",
+            "label": "Transparent default"
+            },
+            {
+            "value": "secondary-transparent",
+            "label": "Transparent secondary"
+            },
+            {
+            "value": "invert-transparent",
+            "label": "Transparent invert"
+            },
+            {
+            "value": "clean-transparent",
+            "label": "Transparent clean"
+            }
+            ]
+            },
+            {
+            "type": "header",
+            "content": "Other content"
+            },
+            {
+            "type": "page",
+            "id": "list_1",
+            "label": "List",
+            "info": "Select page with list"
+            },
+            {
+            "type": "page",
+            "id": "custom_html",
+            "label": "Custom HTML",
+            "info": "Replace the whole text content to the page content"
+            },
+            {
+            "type": "header",
+            "content": "Video"
+            },
+            {
+            "type": "video_url",
+            "id": "video_external_url",
+            "label": "Youtube or Vimeo video URL",
+            "accept": ["youtube", "vimeo"]
+            },
+            {
+            "type": "text",
+            "id": "video_mp4_url",
+            "label": "Video URL",
+            "info": "Upload your video in Admin-> Settings-> Files and add a link here"
+            },
+            {
+            "type": "checkbox",
+            "id": "video_autoplay",
+            "label": "Video autoplay",
+            "default": true
+            },
+            {
+            "type": "checkbox",
+            "id": "video_controls",
+            "label": "Video controls",
+            "default": false
+            },
+            {
+            "type": "header",
+            "content": "Layout"
+            },
+            {
+            "type": "select",
+            "id": "type",
+            "label": "Type",
+            "default": "clean",
+            "options": [
+            {
+            "value": "clean",
+            "label": "Clean (Image without text)"
+            },
+            {
+            "value": "clean-bordered",
+            "label": "Clean with border"
+            },
+            {
+            "value": "clean-hover-bordered",
+            "label": "Clean with border on hover"
+            },
+            {
+            "value": "text",
+            "label": "Text v1"
+            },
+            {
+            "value": "text-2",
+            "label": "Text v2"
+            },
+            {
+            "value": "text-3",
+            "label": "Text v3"
+            },
+            {
+            "value": "text-4",
+            "label": "Text v4"
+            },
+            {
+            "value": "text-5",
+            "label": "Text v5"
+            },
+            {
+            "value": "text-6",
+            "label": "Text v6"
+            },
+            {
+            "value": "text-7",
+            "label": "Text v7"
+            },
+            {
+            "value": "text-8",
+            "label": "Text v8"
+            },
+            {
+            "value": "text-9",
+            "label": "Text v9"
+            },
+            {
+            "value": "text-10",
+            "label": "Text v10"
+            },
+            {
+            "value": "type-1",
+            "label": "Type #1 v1 (Text over the image)"
+            },
+            {
+            "value": "type-1-2",
+            "label": "Type #1 v2"
+            },
+            {
+            "value": "type-1-3",
+            "label": "Type #1 v3"
+            },
+            {
+            "value": "type-1-4",
+            "label": "Type #1 v4"
+            },
+            {
+            "value": "type-1-5",
+            "label": "Type #1 v5"
+            },
+            {
+            "value": "type-1-6",
+            "label": "Type #1 v6"
+            },
+            {
+            "value": "type-1-7",
+            "label": "Type #1 v7"
+            },
+            {
+            "value": "type-1-8",
+            "label": "Type #1 v8"
+            },
+            {
+            "value": "type-1-9",
+            "label": "Type #1 v9"
+            },
+            {
+            "value": "type-1-10",
+            "label": "Type #1 v10"
+            },
+            {
+            "value": "type-1-11",
+            "label": "Type #1 v11"
+            },
+            {
+            "value": "type-1-12",
+            "label": "Type #1 v12"
+            },
+            {
+            "value": "type-1-13",
+            "label": "Type #1 v13"
+            },
+            {
+            "value": "type-1-14",
+            "label": "Type #1 v14"
+            },
+            {
+            "value": "type-1-15",
+            "label": "Type #1 v15"
+            },
+            {
+            "value": "type-1-16",
+            "label": "Type #1 v16"
+            },
+            {
+            "value": "type-1-17",
+            "label": "Type #1 v17"
+            },
+            {
+            "value": "type-1-background",
+            "label": "Type #1 with Background v1"
+            },
+            {
+            "value": "type-1-background-2",
+            "label": "Type #1 with Background v2"
+            },
+            {
+            "value": "type-1-background-3",
+            "label": "Type #1 with Background v3"
+            },
+            {
+            "value": "type-1-background-4",
+            "label": "Type #1 with Background v4"
+            },
+            {
+            "value": "type-1-curtain",
+            "label": "Type #1 with Curtain v1"
+            },
+            {
+            "value": "type-1-curtain-2",
+            "label": "Type #1 with Curtain v2"
+            },
+            {
+            "value": "type-1-curtain-3",
+            "label": "Type #1 with Curtain v3"
+            },
+            {
+            "value": "type-2",
+            "label": "Type #2 v1 (Text below the image)"
+            },
+            {
+            "value": "type-2-2",
+            "label": "Type #2 v2"
+            },
+            {
+            "value": "type-2-3",
+            "label": "Type #2 v3"
+            },
+            {
+            "value": "type-2-4",
+            "label": "Type #2 v4"
+            },
+            {
+            "value": "type-2-5",
+            "label": "Type #2 v5"
+            },
+            {
+            "value": "type-2-6",
+            "label": "Type #2 v6"
+            },
+            {
+            "value": "type-2-7",
+            "label": "Type #2 v7"
+            },
+            {
+            "value": "type-2-8",
+            "label": "Type #2 v8"
+            },
+            {
+            "value": "type-2-9",
+            "label": "Type #2 v9"
+            },
+            {
+            "value": "type-2-10",
+            "label": "Type #2 v10"
+            },
+            {
+            "value": "type-2-11",
+            "label": "Type #2 v11"
+            },
+            {
+            "value": "type-2-12",
+            "label": "Type #2 v12"
+            },
+            {
+            "value": "type-2-13",
+            "label": "Type #2 v13"
+            },
+            {
+            "value": "type-3",
+            "label": "Type #3 (Ribbon bottom the image)"
+            },
+            {
+            "value": "type-4",
+            "label": "Type #4 (Animation ribbon bottom the image)"
+            }
+            ]
+            },
+            {
+            "type": "header",
+            "content": "Animation"
+            },
+            {
+            "type": "select",
+            "id": "animation_to",
+            "label": "Move image on hover to",
+            "default": "none",
+            "options": [
+            {
+            "value": "none",
+            "label": "None"
+            },
+            {
+            "value": "center",
+            "label": "Center"
+            },
+            {
+            "value": "top-left",
+            "label": "Top left"
+            },
+            {
+            "value": "top",
+            "label": "Top"
+            },
+            {
+            "value": "top-right",
+            "label": "Top right"
+            },
+            {
+            "value": "right",
+            "label": "Right"
+            },
+            {
+            "value": "bottom-right",
+            "label": "Bottom right"
+            },
+            {
+            "value": "bottom",
+            "label": "Bottom"
+            },
+            {
+            "value": "bottom-left",
+            "label": "Bottom left"
+            },
+            {
+            "value": "left",
+            "label": "Left"
+            }
+            ]
+            },
+            {
+            "type": "select",
+            "id": "animation_from",
+            "label": "Static image position",
+            "default": "none",
+            "options": [
+            {
+            "value": "none",
+            "label": "None"
+            },
+            {
+            "value": "center",
+            "label": "Center"
+            },
+            {
+            "value": "top-left",
+            "label": "Top left"
+            },
+            {
+            "value": "top",
+            "label": "Top"
+            },
+            {
+            "value": "top-right",
+            "label": "Top right"
+            },
+            {
+            "value": "right",
+            "label": "Right"
+            },
+            {
+            "value": "bottom-right",
+            "label": "Bottom right"
+            },
+            {
+            "value": "bottom",
+            "label": "Bottom"
+            },
+            {
+            "value": "bottom-left",
+            "label": "Bottom left"
+            },
+            {
+            "value": "left",
+            "label": "Left"
+            }
+            ]
+            },
+            {
+            "type": "select",
+            "id": "animation_opacity",
+            "label": "Image opacity",
+            "default": "none",
+            "options": [
+            {
+            "value": "none",
+            "label": "None"
+            },
+            {
+            "value": "static_n_hover",
+            "label": "Static & hover"
+            },
+            {
+            "value": "static",
+            "label": "Static"
+            },
+            {
+            "value": "hover",
+            "label": "Hover"
+            }
+            ]
+            }
+        ]
+    }
+  ]
+}
+{% endschema %}

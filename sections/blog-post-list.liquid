@@ -1,0 +1,144 @@
+{%- if section.settings.blog != blank -%}
+  {{ 'section-blog-post-list.min.css' | asset_url | stylesheet_tag }}
+  <script src="{{ 'section-blog-post-list.min.js' | asset_url }}" defer="defer"></script>
+  <!-- <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js" defer></script> -->
+
+  <h2>{{ section.settings.title }}</h2>
+
+  {%- if section.settings.intro_text != blank -%}
+    <div class="intro-text">
+      {{ section.settings.intro_text }}
+    </div>
+  {%- endif -%}
+{%- endif -%}
+
+<div class="aop-main-wrapper">
+  <!-- SECTION: FILTERS -->
+  <section class="aop-static-section featured-collabs">
+    <div class="filter-bar">
+      <!-- Search input -->
+      <div class="input-wrapper">
+        <input type="text" id="searchInput" placeholder="Search">
+        <div class="icon search-icon">
+          <img
+            src="https://cdn.shopify.com/s/files/1/0581/7362/0405/files/Vector_2.svg?v=1755584288"
+            alt="search"
+            height="24px"
+            width="24px"
+          >
+        </div>
+      </div>
+
+      <!-- Country Filter -->
+      <div class="input-wrapper">
+        <label for="country">
+          <span>Country</span>
+          <div id="countryDisplay" class="select-container">
+            <select id="countryFilter" name="country" aria-label="Filter by country">
+              <option value="">All</option>
+            </select>
+            <!--
+              <div style="height: 40px; margin-right:21px;">
+                 <img id="countryArrow" src="https://cdn.shopify.com/s/files/1/0257/1891/5135/files/Vector_3.svg?v=1753345416" alt="Down Arrow" height="16px"  width="16px"/>
+              </div>
+            -->
+          </div>
+        </label>
+      </div>
+
+      <!-- Cuisine Filter -->
+      <div class="input-wrapper">
+        <label for="cuisine">
+          <span>Cuisine</span>
+          <div id="cuisineDisplay" class="select-container">
+            <select id="cuisineFilter" name="cuisine" aria-label="Filter by cuisine">
+              <option value="">All</option>
+            </select>
+            <!--
+              <div style="height: 40px; margin-right:21px;">
+                 <img src="https://cdn.shopify.com/s/files/1/0257/1891/5135/files/Vector_3.svg?v=1753345416" alt="Down Arrow" height="16px"  width="16px"/>
+              </div>
+            -->
+          </div>
+        </label>
+      </div>
+
+      <!-- Country Filter -->
+      <!--
+        <div class="input-wrapper">
+          <select id="countryFilter" class="custom-select">
+            <option value="">Country</option>
+          </select>
+          <div class="custom-select-display" id="countryDisplay">
+            <div id="countryDisplayAll">All</div>
+            <div style="height: 31px;">
+               <img src="https://cdn.shopify.com/s/files/1/0257/1891/5135/files/Vector_3.svg?v=1753345416" alt="Down Arrow" height="14px"  width="14px"/>
+            </div>
+          </div>
+        </div>
+      -->
+
+      <!-- Cuisine Filter -->
+      <!--
+        <div class="input-wrapper">
+          <select id="cuisineFilter">
+            <option value="">Cuisine</option>
+          </select>
+          <div class="custom-select-display" id="cuisineDisplay">
+            <div id="cuisineDisplayAll">All</div>
+            <div style="height: 31px;">
+               <img src="https://cdn.shopify.com/s/files/1/0257/1891/5135/files/Vector_3.svg?v=1753345416" alt="Down Arrow" height="14px"  width="14px"/>
+            </div>
+          </div>
+        </div>
+      -->
+    </div>
+  </section>
+
+  <!-- SECTION 4: BLOG CARDS -->
+  <section class="aop-static-section-cards" id="blog-list">
+    <div class="loading-spinner">
+      <div class="spinner"></div>
+    </div>
+    <div id="blog-new-main-block" class="blog-card-listing"></div>
+  </section>
+</div>
+
+<script>
+  window.shopifyLiquidData = {
+    defaultRegion: "{{ localization.country.iso_code | default: 'GB' | escape }}",
+    defaultLanguage: "{{ request.locale.iso_code | default: 'en' | escape }}",
+  };
+</script>
+
+{% schema %}
+{
+  "name": "Blog Post List",
+  "class": "section_blog-post-list",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title",
+      "default": "Blog Posts"
+    },
+    {
+      "type": "richtext",
+      "id": "intro_text",
+      "label": "Intro Text",
+      "default": "<p>Discover our latest insights and stories.</p>"
+    },
+    {
+      "type": "blog",
+      "id": "blog",
+      "label": "Select Blog"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Blog Post List",
+      "category": "3) Static content"
+    }
+  ]
+}
+{% endschema %}

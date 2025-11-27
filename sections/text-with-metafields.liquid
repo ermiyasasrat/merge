@@ -1,0 +1,370 @@
+<section class="image-with-text-mf section-{{ section.id }}" role="region" aria-label="Product highlights">
+  <div class="iwt-wrapper">
+    {% if product == nil %}
+      {% if request.design_mode %}
+        <div class="iwt-editor-hint">
+          Add this section on a product template to pull product metafields.
+        </div>
+      {% endif %}
+    {% endif %}
+
+    {% for block in section.blocks %}
+      {% liquid
+  assign title = ''
+  assign body_mf = nil
+  assign image_mf = nil
+
+  case block.type
+    when 'origin_and_terroir'
+      assign title = 'ORIGIN AND TERROIR'
+      assign body_mf = product.metafields.custom.origin_and_terroir
+      assign image_mf = product.metafields.custom.pairing_image  
+    when 'perfectly_paired'
+      assign title = 'PERFECTLY PAIRED'
+      assign body_mf = product.metafields.custom.perfectly_paired
+      assign image_mf = product.metafields.custom.origin_image    
+  endcase
+
+  assign image_position = block.settings.image_position
+  if image_position == blank
+    assign image_position = 'left'
+  endif
+%}
+
+      <div class="iwt-block {% if image_position == 'right' %}is-image-right{% else %}is-image-left{% endif %}" {{ block.shopify_attributes }}>
+        <div class="iwt-inner">
+          {%- comment -%} Image container {%- endcomment -%}
+          <div class="image-container">
+            {% if image_mf and image_mf.value %}
+              {% assign img = image_mf.value %}
+              {%- liquid
+                assign alt_text = img.alt
+                if alt_text == blank
+                  assign alt_text = title | append: ' - ' | append: product.title
+                endif
+              -%}
+              {{ img
+                | image_url: width: 2000
+                | image_tag:
+                  loading: 'lazy',
+                  alt: alt_text,
+                  sizes: '(min-width: 1200px) 885px, (min-width: 750px) 50vw, 100vw',
+                  widths: '400,600,800,1000,1200,1500,1770,2000',
+                  class: 'iwt-image'
+              }}
+            {% else %}
+              <div class="iwt-image-placeholder">
+                {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
+              </div>
+            {% endif %}
+          </div>
+
+          {%- comment -%} Text container {%- endcomment -%}
+          <div class="text-container">
+            <div class="text-inner">
+              <h3 class="iwt-title">{{ title }}</h3>
+              {% if body_mf %}
+                {%- comment -%}
+                  Use metafield_text to gracefully render plain or rich text.
+                {%- endcomment -%}
+                <div class="iwt-description">
+                  {{ body_mf | metafield_text }}
+                </div>
+              {% else %}
+                {% if request.design_mode %}
+                  <div class="iwt-description iwt-missing">
+                    Connect the corresponding product metafield to see content here.
+                  </div>
+                {% endif %}
+              {% endif %}
+            </div>
+          </div>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+</section>
+  <style>
+  /* ===== Baseline from your second style block ===== */
+  .image-with-text-mf {
+  margin-bottom: 60px; /* adjust value to match your theme’s vertical rhythm */
+}
+
+  .iwt-wrapper {
+    max-width: 1170px; 
+    margin: 0 auto;
+    padding: 0 15px; 
+  }
+
+  .iwt-editor-hint {
+    font-size: 14px;
+    color: rgb(120,120,120);
+    background: rgb(245,245,245);
+    padding: 12px 14px;
+    border-radius: 8px;
+    margin-bottom: 16px;
+  }
+
+   .iwt-block {
+    margin: 0 auto 40px;
+    max-height: 615px; 
+  }
+
+  .iwt-inner {
+    display: flex;
+    gap: 30px;
+    width: 100%;
+    max-height: 615px;
+    background: transparent;
+  }
+
+  .iwt-block.is-image-right .iwt-inner {
+    flex-direction: row-reverse; /* flip layout */
+  }
+
+  .image-container,
+  .text-container {
+    flex: 1 1 50%;
+    position: relative;
+    max-height: 615px;
+  }
+
+  .image-container {
+    overflow: clip;
+  }
+
+  .iwt-image,
+  .iwt-image-placeholder {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;  /* fill area cleanly */
+  }
+
+  .iwt-image-placeholder svg {
+    width: 100%;
+    height: 100%;
+  }
+
+  /* Text vertically centered, horizontally aligned to start */
+  .text-container {
+    display: flex;
+    align-items: center;    /* vertical center */
+    justify-content: flex-start; /* keep content at start horizontally */
+  }
+
+  .text-inner {
+    width: 100%;
+    max-width: 680px;
+    margin-right: 60px;
+    
+  }
+
+  .iwt-title {
+    margin: 0 0 12px 0;
+    line-height: 1.1;
+    letter-spacing: 0.02em;
+    font-size: 24px;
+    text-transform: uppercase;
+    font-weight: 400;
+    font-family: 'Arimo', sans-serif !important;
+    color: #141414;
+  }
+
+  .iwt-description {
+    font-size: 15px;
+    line-height: 1.6;
+    color: rgb(40,40,40);
+  }
+
+  .iwt-missing {
+    opacity: 0.7;
+    font-style: italic;
+  }
+  .iwt-image{
+    width:570px;
+    height:570px;
+  }
+
+  .image-with-text-mf .iwt-block:nth-of-type(2) .text-container {
+    display: flex;
+    justify-content: center; /* center horizontally */
+  }
+
+  .image-with-text-mf .iwt-block:nth-of-type(2) .text-inner {
+    width: 570px;
+    margin: 0; 
+    padding:0px 60px;
+  }
+
+
+  /* ===== Media queries from your first style block ===== */
+  @media (max-width: 1025px) {
+    .image-with-text-mf {
+      padding-left: 15px;
+      padding-right: 15px;
+    }
+
+    .iwt-image {
+      width: 492px;
+      height: 492px;
+      margin-bottom: 45px;
+      padding-left: 10px;
+      padding-right: 10px;
+    }
+
+    .text-inner {
+      padding-left: 10px;
+      padding-right: 10px;
+    }
+    
+
+  .image-with-text-mf .iwt-block:nth-of-type(2) .text-inner {
+    width: auto;
+    margin: 0; 
+    padding:0px;
+  }
+  }
+
+  @media (max-width: 770px) {
+    .iwt-title{
+      font-size:24px;
+    }
+    .iwt-description{
+      font-size:15px;
+    }
+    .iwt-image {
+      width: 364px;
+      height: 364px;
+      margin-left: 0;
+      margin-right: 0;
+    }
+    
+  /* Make the text container align content to the top */
+  .image-with-text-mf .text-container {
+    align-items: flex-start;   /* vertical start */
+    justify-content: flex-start; /* horizontal start */
+  }
+
+  /* Remove top padding/margin from the inner text wrapper */
+  .image-with-text-mf .text-inner {
+    padding-top: 0;
+    margin-top: 0;
+  } 
+  .text-inner {
+    margin-right: 0px;
+  }
+
+  }
+
+@media (max-width: 450px) {
+  /* Let all containers grow naturally */
+  .iwt-block,
+  .iwt-inner,
+  .image-container,
+  .text-container {
+    max-height: none;
+    height: auto;
+  }
+
+  /* Keep your existing mobile layout adjustments */
+  .iwt-inner {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 15px;
+    width: 100%;
+    background: transparent;
+  }
+
+  .iwt-image {
+    width: 100%;
+    height: auto;
+    margin-bottom: 10px;
+    padding: 0;
+  }
+
+  .text-container {
+    align-items: flex-start;
+    justify-content: flex-start;
+    width: 100%;
+  }
+
+  .text-inner {
+    padding-left: 5px;
+    padding-right: 5px;
+    margin: 0;
+    max-width: 100%;
+  }
+  /* Force column layout for all blocks in all breakpoints */
+.image-with-text-mf .iwt-inner {
+  display: flex;
+  flex-direction: column; /* stack image above text */
+  align-items: flex-start; /* keep text start-aligned */
+  gap: 15px; /* space between image and text */
+  width: 100%;
+  max-height: none; /* let content grow naturally */
+}
+
+/* Remove the row-reverse override */
+.image-with-text-mf .iwt-block.is-image-right .iwt-inner {
+  flex-direction: column;
+}
+}
+</style>
+
+
+{% schema %}
+{
+  "name": "Text with Metafields",
+  "tag": "section",
+  "class": "image-with-text-metafields",
+  "settings": [],
+  "blocks": [
+    {
+      "type": "origin_and_terroir",
+      "name": "Origin and terroir",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "select",
+          "id": "image_position",
+          "label": "Image position",
+          "options": [
+            { "value": "left", "label": "Left" },
+            { "value": "right", "label": "Right" }
+          ],
+          "default": "left"
+        }
+      ]
+    },
+    {
+      "type": "perfectly_paired",
+      "name": "Perfectly paired",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "select",
+          "id": "image_position",
+          "label": "Image position",
+          "options": [
+            { "value": "left", "label": "Left" },
+            { "value": "right", "label": "Right" }
+          ],
+          "default": "right"
+        }
+      ]
+    }
+  ],
+  "max_blocks": 2,
+  "presets": [
+    {
+      "name": "Text with metafields",
+      "blocks": [
+        { "type": "origin_and_terroir", "settings": { "image_position": "left" } },
+        { "type": "perfectly_paired",  "settings": { "image_position": "right" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

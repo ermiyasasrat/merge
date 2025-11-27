@@ -1,0 +1,22 @@
+{%- for block in section.blocks -%}
+    {% render block %}
+{%- endfor -%}
+
+{% schema %}
+{
+  "name": "Apps",
+  "settings": [
+  ],
+  "blocks": [
+    {
+      "type": "@app"
+    }
+  ],
+  "presets": [
+    {
+        "name": "Apps",
+        "category": "7) Apps"
+    }
+  ]
+}
+{% endschema %}

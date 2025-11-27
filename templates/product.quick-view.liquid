@@ -1,0 +1,9 @@
+{% layout none %}
+<div class="quick-view">
+    <div class="container">
+        {% section 'main-product' %}
+    </div>
+    {%- if product.metafields.sizeguide.html and product.metafields.sizeguide.html != 'hide' -%}
+        <div class="rte d-none" data-product-size-guide-content>{{ product.metafields.sizeguide.html }}</div>
+    {%- endif -%}
+</div>

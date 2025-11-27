@@ -1,69 +1,176 @@
 <!doctype html>
-<html
-  class="no-js{% if request.design_mode %} shopify-design-mode{% endif %}"
-  lang="{{ request.locale.iso_code }}"
->
-  <head>
-    {%- if settings.favicon != blank -%}
-      <link
-        rel="icon"
-        type="image/png"
-        href="{{ settings.favicon | image_url: width: 32, height: 32 }}"
-      >
-    {%- endif -%}
+<!--[if IE 9]> <html class="ie9 no-js supports-no-cookies" lang="{{ shop.locale }}"{% if settings.layout_enable_rtl %} dir="rtl"{% endif %}> <![endif]-->
+<!--[if (gt IE 9)|!(IE)]><!--> <html class="no-js supports-no-cookies" lang="{{ shop.locale }}"{% if settings.layout_enable_rtl %} dir="rtl"{% endif %}> <!--<![endif]-->
+<head>
+  {% capture get_content_for_header %}{{ content_for_header }}
+{%- render 'bold-common' -%}
+{%- render 'bold-includes' -%}{% endcapture %}
+  {% include 'head' %}
+<meta name="google-site-verification" content="qgC0PJV6XttHLJklDtr6i7s3WdNd93ejCVNWWyEQoY0" />
+  <!-- Google Tag Manager -->
 
-    {% comment %} This a way to wait for main content to load when navigating to a new page so that the view transitions can work consistently {% endcomment %}
-    <link
-      rel="expect"
-      href="#MainContent"
-      blocking="render"
-      id="view-transition-render-blocker"
-    >
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-KL7NX8H');</script>
 
-    {%- render 'meta-tags' -%}
-    {%- render 'stylesheets' -%}
-    {%- render 'fonts' -%}
-    {%- render 'scripts' -%}
-    {%- render 'theme-styles-variables' -%}
-    {%- render 'color-schemes' -%}
+<!-- End Google Tag Manager -->
 
-    {% if request.design_mode %}
-      {%- render 'theme-editor' -%}
-    {% endif %}
+<!-- Hotjar Tracking Code for https://hk.saichodrinks.com/ -->
+<script>
+    (function(h,o,t,j,a,r){
+        h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
+        h._hjSettings={hjid:3096972,hjsv:6};
+        a=o.getElementsByTagName('head')[0];
+        r=o.createElement('script');r.async=1;
+        r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
+        a.appendChild(r);
+    })(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');
+</script>
+  
+<!-- Meta Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '440139277527577');
+fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=440139277527577&ev=PageView&noscript=1"
+/></noscript>
+<!-- End Meta Pixel Code -->
 
-    {{ content_for_header }}
-  </head>
 
-  <body class="page-width-{{ settings.page_width }} card-hover-effect-{{ settings.card_hover_effect }}">
-    {% render 'skip-to-content-link', href: '#MainContent', text: 'accessibility.skip_to_text' %}
-    <div id="header-group">
-      {% sections 'header-group' %}
-    </div>
 
-    <script
-      src="{{ 'critical.js' | asset_url }}"
-      type="module"
-      async
-      blocking="render"
-    ></script>
 
-    <main
-      id="MainContent"
-      class="content-for-layout"
-      role="main"
-      data-page-transition-enabled="{{ settings.page_transition_enabled }}"
-      data-product-transition="{{ settings.transition_to_main_product }}"
-      data-template="{{ template }}"
-    >
-      {{ content_for_layout }}
-    </main>
 
-    {% sections 'footer-group' %}
 
-    {% render 'search-modal' %}
 
-    {% if settings.quick_add or settings.mobile_quick_add %}
-      {% render 'quick-add-modal' %}
-    {% endif %}
-  </body>
+
+
+{% include 'pagefly-app-header' %}</head>
+<body{% render 'layout-get-body-attributes' %}>
+  
+  <!-- Google Tag Manager (noscript) -->
+
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KL7NX8H" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
+<!-- End Google Tag Manager (noscript) -->
+  
+{% include 'layout-get-includes-start' %}
+{%- if settings.product_show_custom_options and settings.product_enable_variants_section -%}
+  {% section 'product-variants' %}
+{%- endif -%}
+{% section 'header' %}
+<main id="MainContent">
+  {%- if request.page_type == 'page' -%}
+    {% include 'breadcrumbs' %}
+  {%- endif -%}
+  {{ content_for_layout }}
+</main>
+{% section 'footer' %}
+{% include 'popups' %}
+{% include 'footbar' %}
+{%- if settings.presentation_enable or template == 'product' and settings.product_info_page_show_usage_info_sidebar -%}
+  {% include 'fixed-sidebar' %}
+{%- endif -%}
+{% include 'templates' %}
+{% include 'layout-get-includes-end' %}
+<!-- START APPS -->
+{%- if settings.app_klarna_enable -%}
+  <!-- start Klarna app -->
+  <script>window.KlarnaThemeGlobals={};{%case template.name%} {%when"product"%} window.KlarnaThemeGlobals.data_purchase_amount={{product.first_available_variant.price}};window.KlarnaThemeGlobals.productVariants={{product.variants|json}};window.KlarnaThemeGlobals.documentCopy=document.cloneNode(true);{%when"cart"%} window.KlarnaThemeGlobals.data_purchase_amount={{cart.total_price}};window.KlarnaThemeGlobals.documentCopy=document.cloneNode(true);{%endcase%}</script>
+  <!-- end Klarna app -->
+{%- endif -%}
+{%- if settings.app_growave_enable -%}
+  <!-- start Growave app -->
+  {% capture the_snippet_content %}{% render 'socialshopwave-helper' %}{% endcapture %}
+  {%- unless the_snippet_content contains 'Liquid error' -%}
+    {{ the_snippet_content }}
+  {%- endunless -%}
+  <script>
+    sswRun(function(){
+      var intervalId = setInterval(function() {
+        if(ssw('.ssw-stars.ssw-stars-large').length) {
+          ssw('.ssw-stars.ssw-stars-large').on('click', function() {
+            ssw('.product-page__tabs .tabs__btn[data-tab="reviews"]').click();
+            ssw('html, body').animate({
+              scrollTop: ssw("#ssw-widget-recommends-html").offset().top - 200
+            }, 100);
+          });
+          clearInterval(intervalId);
+        }
+      },1000);
+    });
+  </script>
+  <!-- end Growave app -->
+{%- endif -%}
+{%- if settings.reviews_type == 'loox' -%}
+  {{ shop.metafields.loox["global_html_body"] }}
+  <style>
+    .loox-rating .loox-icon {
+      font-size: 1.22em;
+    }
+    .loox-rating .loox-icon:not(:last-child) {
+      margin-right: 5px;
+    }
+    .loox-rating span {
+      margin-left: 2px;
+      vertical-align: 2px;
+    }
+  </style>
+{%- endif -%}
+<!-- END APPS -->
+<script>window.performance.mark('theme:DOM:loaded');</script>
+{% comment %}
+{% render 'js-api' %}
+{% endcomment %}
+{% render 'spurit_dmr_theme_snippet' %}
+
+  <script src="https://a.klaviyo.com/media/js/onsite/onsite.js"></script>
+  <script async type="text/javascript" src="https://static.klaviyo.com/onsite/js/klaviyo.js?company_id=QNxELq"></script>
+<script>
+    var klaviyo = klaviyo || [];
+    klaviyo.init({
+      account: "QNxELq",
+      platform: "shopify"
+    });
+    klaviyo.enable("backinstock",{ 
+    trigger: {
+      product_page_text: "Notify Me When Available",
+      product_page_class: "button",
+      product_page_text_align: "center",
+      product_page_margin: "0px",
+      replace_anchor: false
+    },
+    modal: {
+     headline: "{product_name}",
+     body_content: "Register to receive a notification when this item comes back in stock.",
+     email_field_label: "Email",
+     button_label: "Notify me when available",
+     subscription_success_label: "You're in! We'll let you know when it's back.",
+     footer_content: '',
+     additional_styles: "@import url('https://fonts.googleapis.com/css?family=Helvetica+Neue');",
+     drop_background_color: "#000",
+     background_color: "#fff",
+     text_color: "#222",
+     button_text_color: "#fff",
+     button_background_color: "#C6AD84",
+     close_button_color: "#ccc",
+     error_background_color: "#fcd6d7",
+     error_text_color: "#C72E2F",
+     success_background_color: "#d3efcd",
+     success_text_color: "#1B9500"
+    }
+  });
+</script>
+
+</body>
 </html>

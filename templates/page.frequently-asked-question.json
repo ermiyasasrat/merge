@@ -1,0 +1,208 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "settings": {
+        "show_title": true,
+        "show_content": true
+      }
+    },
+    "16282847074d0e3104": {
+      "type": "faqs",
+      "blocks": {
+        "f3511b75-84d4-4312-b117-59e344146c9f": {
+          "type": "section",
+          "settings": {
+            "question": "What is sparkling tea?",
+            "page_content": "",
+            "answer": "Sparkling tea is a delightful, effervescent, and refreshing beverage made by using high-quality tea leaves. It offers a unique twist to traditional tea with its bubbly texture and sophisticated flavor profile.",
+            "is_open": false
+          }
+        },
+        "2dfb7281-4521-46ff-89fb-f9057af73cd8": {
+          "type": "section",
+          "settings": {
+            "question": "Is sparkling tea the same as iced tea?",
+            "page_content": "",
+            "answer": "Iced tea is made by hot brewing tea and then cooling it in the fridge or with ice. Saicho sparkling tea is made by cold-brewing high-quality tea for a long period of time. This results in less bitterness and a more complex flavor.",
+            "is_open": false
+          }
+        },
+        "f8c03a32-1625-4e1f-8cce-ebba6f95320a": {
+          "type": "section",
+          "settings": {
+            "question": "How is Saicho sparkling tea made?",
+            "page_content": "",
+            "answer": "Sparkling tea is crafted by cold brewing the finest tea leaves for up to 24 hours to extract the most delicate flavors without too much bitterness and astringency. The tea is then naturally sweetened with grape juice and lightly carbonated to create effervescence, giving it a delightful sparkling quality.",
+            "is_open": false
+          }
+        },
+        "5d6e4c65-ce48-45bc-9a09-7d2b78baa7ac": {
+          "type": "section",
+          "settings": {
+            "question": "Are there different varieties of sparkling tea?",
+            "page_content": "",
+            "answer": "Yes, sparkling tea comes in a wide range of flavors and tea types. You can find sparkling green tea, black tea, herbal tea, and even specialty blends like hibiscus or chamomile sparkling teas. Each Saicho sparkling tea uses single-origin tea leaves which offer a unique taste and aroma to cater to different taste preferences.",
+            "is_open": false
+          }
+        },
+        "d2638f16-0d60-4ed6-b7fd-b6cd6eb71224": {
+          "type": "section",
+          "settings": {
+            "question": "Is sparkling tea caffeinated?",
+            "page_content": "",
+            "answer": "The caffeine content in Saicho sparkling tea varies depending on the type of tea used. Traditional teas like black and green tea contain caffeine, while herbal teas are usually caffeine-free. Please check the label or ingredient information for more details.",
+            "is_open": false
+          }
+        },
+        "bfb973e4-ae00-40d4-b4b9-66ed9f486998": {
+          "type": "section",
+          "settings": {
+            "question": "Does sparkling tea contain added sugars?",
+            "page_content": "",
+            "answer": "Not all sparkling teas contain added sugars. Some brands offer unsweetened sparkling teas, while others may include natural sweeteners or artificial sweeteners to enhance the flavor. Saicho sparkling tea uses a natural sweetener, grape juice, to delicately lift and enhance the flavor of our teas. Always check the label to know the sugar content before making a purchase.",
+            "is_open": false
+          }
+        },
+        "cede9b2f-53e9-4693-879d-715df1665be2": {
+          "type": "section",
+          "settings": {
+            "question": "Is there any alcohol in sparkling tea?",
+            "page_content": "",
+            "answer": "Although there may be some brands on the market that do have alcohol content, we are proud to say that Saicho sparkling tea does not contain any alcohol.",
+            "is_open": false
+          }
+        },
+        "2ea0499a-3f51-4c3f-b900-d5eef7158815": {
+          "type": "section",
+          "settings": {
+            "question": "Is sparkling tea a healthier alternative to soda?",
+            "page_content": "",
+            "answer": "Sparkling tea can be a healthier option compared to soda, especially if you choose unsweetened or low-sugar varieties. It typically contains antioxidants and other beneficial compounds found in tea, without the excessive sugars and artificial additives commonly found in soda.",
+            "is_open": false
+          }
+        },
+        "section_6jXEri": {
+          "type": "section",
+          "settings": {
+            "question": "Why is there sediment in my bottle of Saicho?",
+            "page_content": "",
+            "answer": "Natural sedimentation can occur over time. This results from the tea’s polyphenols (tannins) binding and settling, much like what you might observe in a fine red wine. It is completely safe to consume and does not affect the quality or flavour of the product.\n\nDepending on the tea, the sediment may look different. In Jasmine, it can appear pale or white due to the delicacy of the tea itself. In others, like Hojicha or Darjeeling, it may be darker and more familiar.",
+            "is_open": false
+          }
+        },
+        "49e94871-f493-4dac-8d54-d012f1d52890": {
+          "type": "section",
+          "settings": {
+            "question": "Can sparkling tea be consumed as a mixer for cocktails?",
+            "page_content": "",
+            "answer": "Yes, Saicho sparkling tea can be a fantastic mixer for cocktails and mocktails. Its effervescence and diverse flavors can add a unique twist to traditional cocktails, making it more refreshing and enjoyable. For recipe ideas take a look at our cocktail page.",
+            "is_open": false
+          }
+        },
+        "3b9d1a8c-4752-495d-af59-3ea8c6920ca2": {
+          "type": "section",
+          "settings": {
+            "question": "Where can I buy sparkling tea?",
+            "page_content": "",
+            "answer": "Saicho Sparkling tea can be found in various hotels, restaurants, specialty drinks shops, and online retailers. Please refer to our stockist page for more details.",
+            "is_open": false
+          }
+        },
+        "b2082b94-ffe1-414e-b1bc-5b2133760979": {
+          "type": "section",
+          "settings": {
+            "question": "Is sparkling tea suitable for all ages?",
+            "page_content": "",
+            "answer": "Sparkling tea is generally suitable for all ages, but it's essential to consider the caffeine content, especially for children.",
+            "is_open": false
+          }
+        },
+        "37e64cd9-a400-4769-878d-eafa604be4cf": {
+          "type": "section",
+          "settings": {
+            "question": "What is the best way to serve Saicho sparkling tea?",
+            "page_content": "",
+            "answer": "Saicho is best served chilled in a champagne glass.",
+            "is_open": false
+          }
+        },
+        "section_yMQBGA": {
+          "type": "section",
+          "settings": {
+            "question": "Are Saicho Sparkling Teas Halal-certified?",
+            "page_content": "",
+            "answer": "Yes, all Saicho Sparkling Teas are certified Halal by the Halal Certification Organisation (HCO). Our products contain only pure, natural ingredients with no alcohol or prohibited substances.",
+            "is_open": false
+          }
+        },
+        "section_epabCP": {
+          "type": "section",
+          "settings": {
+            "question": "What are the Saicho gift box dimensions?",
+            "page_content": "",
+            "answer": "A Saicho Gift Box (750mL) is: 9.2cm (L) x 9.2cm (W) x 30.5cm (H).\n\nThe Saicho Mini Collection Gift Box is: 21.8cm (L) x 6.5cm (W) x 21cm (H).\n\nThese sizes make them perfect for gifting or storing on your drinks shelf.",
+            "is_open": false
+          }
+        }
+      },
+      "block_order": [
+        "f3511b75-84d4-4312-b117-59e344146c9f",
+        "2dfb7281-4521-46ff-89fb-f9057af73cd8",
+        "f8c03a32-1625-4e1f-8cce-ebba6f95320a",
+        "5d6e4c65-ce48-45bc-9a09-7d2b78baa7ac",
+        "d2638f16-0d60-4ed6-b7fd-b6cd6eb71224",
+        "bfb973e4-ae00-40d4-b4b9-66ed9f486998",
+        "cede9b2f-53e9-4693-879d-715df1665be2",
+        "2ea0499a-3f51-4c3f-b900-d5eef7158815",
+        "section_6jXEri",
+        "49e94871-f493-4dac-8d54-d012f1d52890",
+        "3b9d1a8c-4752-495d-af59-3ea8c6920ca2",
+        "b2082b94-ffe1-414e-b1bc-5b2133760979",
+        "37e64cd9-a400-4769-878d-eafa604be4cf",
+        "section_yMQBGA",
+        "section_epabCP"
+      ],
+      "settings": {}
+    },
+    "162828471524694188": {
+      "type": "spacer",
+      "settings": {
+        "margin_top": 60,
+        "margin_bottom": 0,
+        "margin_top_mobile": 0,
+        "margin_bottom_mobile": 0,
+        "container": "boxed",
+        "show_separator": false,
+        "title": ""
+      }
+    },
+    "e35ad1ac-d4d3-487b-a74c-be48e3f703c1": {
+      "type": "spacer",
+      "settings": {
+        "margin_top": 60,
+        "margin_bottom": 0,
+        "margin_top_mobile": 0,
+        "margin_bottom_mobile": 0,
+        "container": "boxed",
+        "show_separator": false,
+        "title": ""
+      }
+    }
+  },
+  "order": [
+    "main",
+    "16282847074d0e3104",
+    "162828471524694188",
+    "e35ad1ac-d4d3-487b-a74c-be48e3f703c1"
+  ]
+}
