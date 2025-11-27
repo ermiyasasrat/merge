@@ -2418,10 +2418,11 @@
   
           $.each(data.json.variants_quantity, function() {
               if(+this.id === +data.update_variant.id) {
-                  if(+this.quantity <= 0 && this.policy == 'continue') {
-                      data.update_variant.variant_pre_order = true;
-                  }
-  
+                  // Pre-order logic disabled: Products with inventory_policy 'continue' will use normal add-to-cart flow
+                  // if(+this.quantity <= 0 && this.policy == 'continue') {
+                  //     data.update_variant.variant_pre_order = true;
+                  // }
+
                   return false;
               }
           });

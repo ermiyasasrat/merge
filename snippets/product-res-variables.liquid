@@ -53,8 +53,6 @@
 {%- endif -%}
 {%- assign select_current_variant_by_id = null -%}
 {%- assign variant_pre_order = false -%}
-{%- if product.tags contains 'pre-order' or product.tags contains 'preorder' -%}
-    {%- if current_variant.inventory_quantity <= 0 and current_variant.inventory_policy == 'continue' -%}
-        {%- assign variant_pre_order = true -%}
-    {%- endif -%}
-{%- endif -%}
+{%- comment -%}
+Pre-order logic disabled: Products with inventory_policy 'continue' will use normal add-to-cart flow
+{%- endcomment -%}
