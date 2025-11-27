@@ -52,8 +52,9 @@
     {%- assign countdown_date = product.metafields.countdown.date -%}
 {%- endif -%}
 {%- assign select_current_variant_by_id = null -%}
-{%- if current_variant.inventory_quantity <= 0 and current_variant.inventory_policy == 'continue' -%}
-    {%- assign variant_pre_order = true -%}
-{%- else -%}
-    {%- assign variant_pre_order = false -%}
+{%- assign variant_pre_order = false -%}
+{%- if product.tags contains 'pre-order' or product.tags contains 'preorder' -%}
+    {%- if current_variant.inventory_quantity <= 0 and current_variant.inventory_policy == 'continue' -%}
+        {%- assign variant_pre_order = true -%}
+    {%- endif -%}
 {%- endif -%}
